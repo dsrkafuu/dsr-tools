@@ -7,12 +7,15 @@ import jsdelivr from './jsdelivr';
 
 export const api = axios.create({
   baseURL: jsdelivr('', 'dsr-cdn-api'),
+  timeout: 5000,
 });
 export const cdn = axios.create({
   baseURL: jsdelivr('', 'dsr-cdn-main'),
+  timeout: 5000,
 });
 export const workers = axios.create({
   baseURL: 'https://workers.dsrkafuu.su',
+  timeout: 5000,
 });
 export const xhr = axios.create();
 
@@ -21,7 +24,7 @@ const interceptors = (text) => [
   (e) => {
     const response = e.response;
     if (!response) {
-      message.error(`发送请求失败`);
+      message.error(text);
       console.error(e);
     } else {
       message.error(`${response.status} - ${text}`);
