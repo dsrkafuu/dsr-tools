@@ -1,9 +1,10 @@
+import path from 'path';
 import { defineConfig } from 'vite';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import svgr from '@svgr/rollup';
-import path from 'path';
-import antd from './src/css/antd';
+import imp from 'vite-plugin-imp';
 import { visualizer } from 'rollup-plugin-visualizer';
+import antd from './src/css/antd';
 
 /**
  * https://vitejs.dev/config/
@@ -11,6 +12,9 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default defineConfig({
   plugins: [
     reactRefresh(),
+    imp({
+      libList: [{ libName: 'antd', style: (name) => `antd/es/${name}/style` }],
+    }),
     svgr(),
     visualizer({
       filename: 'dist/bundle.html',
