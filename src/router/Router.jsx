@@ -35,7 +35,6 @@ function Router(props) {
           key={route.path}
           exact={route.exact || false}
           path={route.path}
-          meta={route.meta}
           render={() => (
             <Fragment>
               <Helmet>
@@ -51,9 +50,9 @@ function Router(props) {
                 >
                   {/* show construction when in prod and not finished */}
                   {!route.component || (import.meta.env.PROD && route.meta.dev) ? (
-                    <Construction {...props} />
+                    <Construction {...props} route={route} />
                   ) : (
-                    <route.component {...props} />
+                    <route.component {...props} route={route} />
                   )}
                 </Suspense>
               </ErrorBoundary>
