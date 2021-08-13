@@ -12,7 +12,6 @@ ga();
 
 // antd
 import 'normalize.css';
-import 'antd/lib/style/index.less';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 

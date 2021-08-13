@@ -1,9 +1,6 @@
 import React, { useEffect, useState, memo } from 'react';
 import { useHistory } from 'react-router';
-
 import { Button, Result } from 'antd';
-import 'antd/lib/button/style/index.less';
-import 'antd/lib/result/style/index.less';
 
 function NotFound() {
   const history = useHistory();

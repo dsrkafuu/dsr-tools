@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import { Button } from 'antd';
-import 'antd/lib/button/style/index.less';
-
 import './Home.scss';
 import jsdelivr from '@/utils/jsdelivr';
 import { api } from '@/utils/axios';

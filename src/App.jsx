@@ -1,9 +1,5 @@
 import React, { useCallback, useEffect, useState, memo } from 'react';
-
 import { Layout } from 'antd';
-import 'antd/lib/layout/style/index.less';
-import 'antd/lib/alert/style/index.less';
-
 import './App.scss';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';

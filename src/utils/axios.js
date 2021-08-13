@@ -1,8 +1,5 @@
 import axios from 'axios';
-
 import { message } from 'antd';
-import 'antd/lib/message/style/index.less';
-
 import jsdelivr from './jsdelivr';
 
 export const api = axios.create({

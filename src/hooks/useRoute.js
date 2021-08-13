@@ -1,6 +1,5 @@
 import { useLocation } from 'react-router-dom';
 import minimatch from 'minimatch';
-
 import routes from '@/router/index';
 
 /**
@@ -36,7 +35,7 @@ const cache = Object.create(null);
  * get current matched route
  * @returns {Object|null}
  */
-export default function useRoute() {
+function useRoute() {
   const location = useLocation();
   const path = location.pathname;
   if (cache[path]) {
@@ -47,3 +46,5 @@ export default function useRoute() {
     return matched;
   }
 }
+
+export default useRoute;

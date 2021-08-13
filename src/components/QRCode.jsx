@@ -1,11 +1,6 @@
 import React, { useEffect, useState, memo } from 'react';
 import PropTypes from 'prop-types';
-
 import { Image, Skeleton, Spin } from 'antd';
-import 'antd/lib/image/style/index.less';
-import 'antd/lib/skeleton/style/index.less';
-import 'antd/lib/spin/style/index.less';
-
 import './QRCode.scss';
 import { IMAGE_FALLBACK, SCRIPT_AWESOME_QR } from '@/utils/constants';
 

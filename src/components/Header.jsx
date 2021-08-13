@@ -1,18 +1,12 @@
 import React, { Fragment, useCallback, useEffect, useMemo, useState, memo } from 'react';
 import PropTypes from 'prop-types';
-
 import { Button, message, PageHeader, Popover } from 'antd';
-import 'antd/lib/button/style/index.less';
-import 'antd/lib/message/style/index.less';
-import 'antd/lib/page-header/style/index.less';
-import 'antd/lib/popover/style/index.less';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ShareAltOutlined,
   SyncOutlined,
 } from '@ant-design/icons';
-
 import './Header.scss';
 import dayjs from '@/utils/dayjs';
 import useRoute from '@/hooks/useRoute';

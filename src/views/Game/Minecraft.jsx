@@ -1,15 +1,5 @@
 import React, { memo, useState, useEffect, useCallback } from 'react';
-
 import { Row, Col, Card, Image, Carousel, List, Button, Alert } from 'antd';
-import 'antd/lib/grid/style/index.less';
-import 'antd/lib/card/style/index.less';
-import 'antd/lib/image/style/index.less';
-import 'antd/lib/carousel/style/index.less';
-import 'antd/lib/list/style/index.less';
-import 'antd/lib/empty/style/index.less'; // list empty
-import 'antd/lib/button/style/index.less';
-import 'antd/lib/alert/style/index.less';
-
 import './Minecraft.scss';
 import Loading from '@/components/Loading';
 import { api } from '@/utils/axios';

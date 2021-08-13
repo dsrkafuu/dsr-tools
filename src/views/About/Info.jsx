@@ -1,19 +1,11 @@
 import React, { memo } from 'react';
-
 import { Row, Col, Card, Image, Collapse, List } from 'antd';
-import 'antd/lib/grid/style/index.less';
-import 'antd/lib/card/style/index.less';
-import 'antd/lib/image/style/index.less';
-import 'antd/lib/collapse/style/index.less';
-import 'antd/lib/list/style/index.less';
-import 'antd/lib/empty/style/index.less'; // list empty
 import {
   PaperClipOutlined,
   FileTextOutlined,
   TwitterOutlined,
   GithubOutlined,
 } from '@ant-design/icons';
-
 import './Info.scss';
 import jsdelivr from '@/utils/jsdelivr';
 import statements from '@/assets/statements';

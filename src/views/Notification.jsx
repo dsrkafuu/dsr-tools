@@ -1,13 +1,6 @@
 import React, { memo, useCallback, useState } from 'react';
 import { useHistory } from 'react-router';
-
 import { Button, Result, Alert, Typography, Space } from 'antd';
-import 'antd/lib/button/style/index.less';
-import 'antd/lib/result/style/index.less';
-import 'antd/lib/alert/style/index.less';
-import 'antd/lib/typography/style/index.less';
-import 'antd/lib/space/style/index.less';
-
 import { setLS, getLS } from '@/utils/storage';
 import notification from '@/notification';
 const { show, key, type, title, content } = notification;

@@ -1,9 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-
 import { Spin } from 'antd';
-import 'antd/lib/spin/style/index.less';
-
 import './Loading.scss';
 
 function Loading({ loading, children }) {

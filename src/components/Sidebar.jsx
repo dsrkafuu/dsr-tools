@@ -1,11 +1,7 @@
 import React, { useMemo, useState, memo } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import { Menu } from 'antd';
-import 'antd/lib/menu/style/index.less';
-import 'antd/lib/tooltip/style/index.less';
-
 import './Sidebar.scss';
 import useRoute from '@/hooks/useRoute';
 import routes from '@/router/index';

@@ -1,15 +1,6 @@
 import React, { memo, useCallback, useState, useMemo } from 'react';
-
 import { Input, Button, Space, message, Card, List, Typography } from 'antd';
-import 'antd/lib/input/style/index.less';
-import 'antd/lib/button/style/index.less';
-import 'antd/lib/space/style/index.less';
-import 'antd/lib/message/style/index.less';
-import 'antd/lib/card/style/index.less';
-import 'antd/lib/list/style/index.less';
-import 'antd/lib/typography/style/index.less';
 import { LeftOutlined, RightOutlined, DeleteOutlined } from '@ant-design/icons';
-
 import './KataCode.scss';
 import { encodeKata, decodeKata } from '@/utils/katacode';
 

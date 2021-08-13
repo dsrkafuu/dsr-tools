@@ -1,8 +1,5 @@
 import React, { memo } from 'react';
-
 import { Timeline } from 'antd';
-import 'antd/lib/timeline/style/index.less';
-
 import './Changelog.scss';
 import { changelog } from '@/assets/changelog';
 

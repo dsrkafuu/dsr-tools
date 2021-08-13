@@ -1,28 +1,52 @@
 import React, { useCallback, useEffect, useMemo, useState, memo } from 'react';
-import { useHistory } from 'react-router';
-
-import { Tabs, Table, Card, Alert, List } from 'antd';
-import 'antd/lib/tabs/style/index.less';
-import 'antd/lib/table/style/index.less';
-import 'antd/lib/empty/style/index.less'; // table empty
-import 'antd/lib/card/style/index.less';
-import 'antd/lib/alert/style/index.less';
-import 'antd/lib/list/style/index.less';
-
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Tabs, Table, Card, List } from 'antd';
 import './FFXIV.scss';
 import dayjs from '@/utils/dayjs';
 import Loading from '@/components/Loading';
+import TZSelector from '@/components/TZSelector';
 import { workers, api } from '@/utils/axios';
+import { getLS, setLS } from '@/utils/storage';
 
-// table configs
-const shadowbringers = () => '5.X SHADOWBRINGERS';
-const stormblood = () => '4.X STORMBLOOD';
+// table titles
+const tableTitles = ['5.X 暗影之逆焰', '4.X 红莲之狂潮'];
+// now day in CST
+const cstDay = dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD');
 
-function FFXIV() {
+const SettingsPanel = memo(({ value, onChange, update }) => {
+  const updateMessage = useMemo(() => {
+    console.log(dayjs(update).tz(value));
+    let text = `更新于 ${dayjs(update).tz(value).format('YYYY-MM-DD HH:mm:ss')}`;
+    if (dayjs().isDST()) {
+      text += ' (DST)';
+    }
+    return text;
+  }, [update, value]);
+
+  return (
+    <div className='ffxiv-settings'>
+      <div className='ffxiv-settings-update'>{updateMessage}</div>
+      <div className='ffxiv-settings-tz'>
+        <span>当前时区</span>
+        <TZSelector value={value} onChange={onChange} />
+      </div>
+    </div>
+  );
+});
+
+SettingsPanel.displayName = 'SettingsPanel';
+SettingsPanel.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  update: PropTypes.string.isRequired,
+};
+
+const FFXIV = memo(() => {
   const [loading, setLoading] = useState(true);
 
   // metadata and server records
-  const [meta, setMeta] = useState({ message: '', update: '', license: '' });
+  const [meta, setMeta] = useState({ update: '', license: '' });
   const [data, setData] = useState({ chocobo: [], moogle: [], fatCat: [] });
 
   /**
@@ -30,17 +54,22 @@ function FFXIV() {
    */
   const fetchData = useCallback(async () => {
     let res = null;
-    res = await workers.get('/dsr-cdn-api/dsr-tools/ffxiv/index.min.json');
-    if (!res) {
+    let fallback = false;
+    try {
+      res = await workers.get('/dsr-cdn-api/dsr-tools/ffxiv/index.min.json');
+      if (!res) {
+        fallback = true;
+      }
+    } catch {
+      fallback = true;
+    }
+    if (fallback) {
       res = await api.get('/dsr-tools/ffxiv/index.min.json');
     }
     if (res?.data) {
-      setMeta({
-        message: res.data.message || '',
-        update: res.data.update,
-        license: res.data.license,
-      });
-      setData(res.data.data);
+      const { data = {}, update = '', license = '' } = res.data;
+      setMeta({ update, license });
+      setData(data);
       setLoading(false);
     }
   }, []);
@@ -53,20 +82,30 @@ function FFXIV() {
       { name: '莫古力', key: 'moogle', records: data.moogle },
       { name: '猫小胖', key: 'fatcat', records: data.fatCat },
     ],
-    [data.chocobo, data.fatCat, data.moogle]
+    [data]
   );
 
+  // timezone configs
+  const [curTZ, setCurTZ] = useState(() => {
+    const savedTZ = getLS('ffxiv-tz');
+    if (savedTZ) {
+      return savedTZ;
+    } else {
+      return dayjs.tz.guess() || 'Asia/Shanghai';
+    }
+  });
+  const handleTimeZoneChange = useCallback((tz) => {
+    setLS('ffxiv-tz', tz);
+    setCurTZ(tz);
+  }, []);
+
   // table configs
-  const curTZ = useMemo(() => dayjs.tz.guess() || 'Asia/Shanghai', []);
-  const cstDay = useMemo(() => dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD'), []);
   const render = useCallback(
     (t) => {
-      if (!t) {
-        return '';
-      }
+      if (!t) return '';
       return dayjs.tz(`${cstDay} ${t}`, 'Asia/Shanghai').tz(curTZ).format('HH:mm');
     },
-    [cstDay, curTZ]
+    [curTZ]
   );
   const columns = useMemo(
     () => [
@@ -118,13 +157,6 @@ function FFXIV() {
     ],
     [meta.license]
   );
-  const updateMessage = useMemo(() => {
-    let text = `更新于 ${dayjs(meta.update).format('YYYY-MM-DD HH:mm:ss')} | 时区 ${curTZ}`;
-    if (dayjs().isDST()) {
-      text += ' (DST)';
-    }
-    return text;
-  }, [curTZ, meta.update]);
 
   // router selected tab detector
   const history = useHistory();
@@ -139,11 +171,9 @@ function FFXIV() {
   const onTabChange = useCallback(
     (key) => {
       setCurTab(key);
-      const search = new URLSearchParams();
+      const search = new URLSearchParams(history.location.search);
       search.set('tab', key);
-      history.replace({
-        search: '?' + search.toString(),
-      });
+      history.replace({ search: '?' + search.toString() });
     },
     [history]
   );
@@ -151,6 +181,7 @@ function FFXIV() {
   return (
     <Loading loading={loading}>
       <div className='ffxiv'>
+        <SettingsPanel value={curTZ} onChange={handleTimeZoneChange} update={meta.update} />
         <Tabs
           type='card'
           size='large'
@@ -160,12 +191,8 @@ function FFXIV() {
           defaultActiveKey={curTab}
           activeKey={curTab}
         >
-          <Tabs.TabPane tab='设置' key='settings' className='tabs-settings'>
+          <Tabs.TabPane tab='关于' key='settings' className='tabs-settings'>
             <Card>
-              <div className='messages'>
-                {meta.message && <Alert message={meta.message} type='error' showIcon={true} />}
-                <Alert message={updateMessage} type='success' showIcon={true} />
-              </div>
               <List
                 dataSource={metaList}
                 renderItem={(item) => (
@@ -178,14 +205,20 @@ function FFXIV() {
           </Tabs.TabPane>
           {tabPanes.map((dataCenter) => (
             <Tabs.TabPane tab={dataCenter.name} key={dataCenter.key}>
-              <Table {...tableProps} dataSource={dataCenter.records[0]} title={shadowbringers} />
-              <Table {...tableProps} dataSource={dataCenter.records[1]} title={stormblood} />
+              {tableTitles.map((title, idx) => (
+                <Table
+                  {...tableProps}
+                  key={title}
+                  title={() => title}
+                  dataSource={dataCenter.records[idx]}
+                />
+              ))}
             </Tabs.TabPane>
           ))}
         </Tabs>
       </div>
     </Loading>
   );
-}
+});
 
-export default memo(FFXIV);
+export default FFXIV;

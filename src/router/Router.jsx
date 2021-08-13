@@ -2,10 +2,7 @@ import React, { Fragment, Suspense, memo } from 'react';
 import { Switch } from 'react-router-dom';
 import { GuardedRoute } from 'react-router-guards';
 import { Helmet } from 'react-helmet';
-
 import { Spin } from 'antd';
-import 'antd/lib/spin/style/index.less';
-
 import './Router.scss';
 import routes from './index';
 import Construction from './Construction';
