@@ -1,5 +1,10 @@
 export const changelog = [
   {
+    version: 'v4.3.0',
+    date: '2021-08-13',
+    logs: ['FFXIV 模块支持手动调整时区设置', '优化自动 SCSS 引入', '修复路由参数传递'],
+  },
+  {
     version: 'v4.2.0',
     date: '2021-06-22',
     logs: [
