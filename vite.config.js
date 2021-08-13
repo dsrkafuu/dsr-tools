@@ -4,7 +4,6 @@ import reactRefresh from '@vitejs/plugin-react-refresh';
 import svgr from '@svgr/rollup';
 import imp from 'vite-plugin-imp';
 import { visualizer } from 'rollup-plugin-visualizer';
-import antd from './src/css/antd';
 
 /**
  * https://vitejs.dev/config/
@@ -13,7 +12,12 @@ export default defineConfig({
   plugins: [
     reactRefresh(),
     imp({
-      libList: [{ libName: 'antd', style: (name) => `antd/es/${name}/style` }],
+      libList: [
+        {
+          libName: 'antd',
+          style: (name) => `antd/es/${name}/style`,
+        },
+      ],
     }),
     svgr(),
     visualizer({
@@ -30,6 +34,7 @@ export default defineConfig({
         manualChunks: {
           antd: ['antd'],
           icons: ['@ant-design/icons'],
+          tzdb: ['@vvo/tzdb'],
         },
       },
     },
@@ -47,7 +52,9 @@ export default defineConfig({
       // antd custom theme
       less: {
         javascriptEnabled: true,
-        modifyVars: { ...antd },
+        modifyVars: {
+          'primary-color': '#8aa2d3',
+        },
       },
       // auto variable inject
       scss: {
