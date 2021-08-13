@@ -6,7 +6,6 @@ import Sidebar from './components/Sidebar';
 import Router from './router/Router';
 import Footer from './components/Footer';
 import responsive from './utils/responsive';
-import { throttle } from './utils/performance';
 import { NotificationBanner } from './views/Notification';
 
 const App = memo(function App() {
@@ -21,10 +20,10 @@ const App = memo(function App() {
 
   // react screen size change
   useEffect(() => {
-    const resizeHandler = throttle(() => {
+    const resizeHandler = () => {
       setHeight(window.innerHeight ? `${window.innerHeight}px` : '100vh');
       setMinimal(responsive() === 'sm');
-    });
+    };
     window.addEventListener('resize', resizeHandler);
     return () => window.removeEventListener('resize', resizeHandler);
   }, []);

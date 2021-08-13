@@ -6,7 +6,6 @@ import './Anime.scss';
 import dayjs from '@/utils/dayjs';
 import { workers } from '@/utils/axios';
 import responsive from '@/utils/responsive';
-import { throttle } from '@/utils/performance';
 import { IMAGE_FALLBACK } from '@/utils/constants';
 import Loading from '@/components/Loading';
 
@@ -249,9 +248,9 @@ function Anime() {
   const [showExtend, setShowExtend] = useState(() => responsive() === 'lg');
 
   useEffect(() => {
-    const resizeHandler = throttle(() => {
+    const resizeHandler = () => {
       setShowExtend(responsive() === 'lg');
-    });
+    };
     window.addEventListener('resize', resizeHandler);
     return () => window.removeEventListener('resize', resizeHandler);
   }, []);
