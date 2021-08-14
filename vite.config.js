@@ -20,21 +20,25 @@ export default defineConfig({
       ],
     }),
     svgr(),
-    visualizer({
-      filename: 'dist/bundle.html',
-      gzipSize: true,
-      brotliSize: true,
-    }),
+    // visualizer({
+    //   filename: 'dist/bundle.html',
+    //   gzipSize: true,
+    //   brotliSize: true,
+    // }),
   ],
 
   build: {
     sourcemap: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          antd: ['antd'],
-          icons: ['@ant-design/icons'],
-          tzdb: ['@vvo/tzdb'],
+        manualChunks(id) {
+          if (/node_modules\/antd\/(.*)\/style(.*)\.(c|le)ss/i.exec(id)) {
+            return 'antd-style';
+          } else if (/node_modules\/@ant-design\/icons/i.exec(id)) {
+            return 'antd-icon';
+          } else if (/node_modules\/antd/i.exec(id)) {
+            return 'antd-lib';
+          }
         },
       },
     },
@@ -49,16 +53,14 @@ export default defineConfig({
 
   css: {
     preprocessorOptions: {
-      // antd custom theme
       less: {
         javascriptEnabled: true,
         modifyVars: {
-          'primary-color': '#8aa2d3',
+          'primary-color': '#8aa2d3', // antd custom theme
         },
       },
-      // auto variable inject
       scss: {
-        additionalData: `@import '@/css/variables.scss';`,
+        additionalData: `@import '@/css/variables.scss';`, // auto variable inject
       },
     },
   },

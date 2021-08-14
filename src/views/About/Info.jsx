@@ -9,7 +9,7 @@ import {
 import './Info.scss';
 import jsdelivr from '@/utils/jsdelivr';
 import statements from '@/assets/statements';
-import { dependencies, devDependencies } from '@/../package.json';
+import { dependencies } from '@/../package.json';
 import { IMAGE_FALLBACK } from '@/utils/constants';
 
 const Personal = memo(function Personal() {
@@ -26,7 +26,7 @@ const Personal = memo(function Personal() {
 });
 
 function Info() {
-  const deps = { ...dependencies, ...devDependencies };
+  const deps = { ...dependencies };
 
   return (
     <div className='info'>
