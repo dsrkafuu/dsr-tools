@@ -12,7 +12,7 @@
     "lint": "eslint",
     "dev": "cross-env NODE_ENV=development concurrently npm:vite:dev",
     "build": "cross-env NODE_ENV=production concurrently -m 1 npm:lint npm:vite:build",
-    "serve": "cross-env NODE_ENV=production concurrently -m 1 npm:lint npm:vite:build npm:vite:preview"
+    "preview": "cross-env NODE_ENV=production concurrently -m 1 npm:lint npm:vite:build npm:vite:preview"
   },
   "dependencies": {
     "@ant-design/icons": "~4.6.2",
