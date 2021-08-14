@@ -64,11 +64,12 @@
     flex-direction: column;
 
     &-nav {
-      margin-bottom: 0;
+      margin-bottom: 0 !important;
     }
 
     &-tab {
       border-radius: 0 !important;
+      background: transparent !important;
     }
 
     &-content-holder {
