@@ -17,9 +17,9 @@
   &__icon {
     position: absolute;
     left: $space-xs;
-    bottom: -3.5rem;
-    width: 7rem;
-    height: 7rem;
+    bottom: -50px;
+    width: 100px;
+    height: 100px;
     animation: spin 5s infinite linear;
   }
 }

@@ -3,13 +3,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 1.5rem;
+    padding-top: 21px;
 
     .ant-pagination {
-      margin-right: 0.5714rem;
+      margin-right: 8px;
 
       &-item {
-        padding: 0 1rem;
+        padding: 0 14px;
 
         &-active {
           background-color: $color-primary;
@@ -30,7 +30,7 @@
       }
 
       .ant-pagination-item-link {
-        padding: 0 2rem;
+        padding: 0 28px;
       }
     }
 
@@ -43,10 +43,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem 1.5rem 0.75rem 2.5rem;
+    margin: 14px 21px 5px 35px;
 
     &__sort > span {
-      margin-right: 0.75rem;
+      margin-right: 10px;
     }
 
     @include responsive(md) {
@@ -54,7 +54,7 @@
       justify-content: center;
 
       &__sort {
-        margin-top: 0.5rem;
+        margin-top: 7px;
       }
     }
   }
@@ -69,11 +69,11 @@
       overflow: hidden;
 
       &:first-child {
-        margin: 1.5rem;
+        margin: 21px;
       }
 
       &:not(:first-child) {
-        margin: 1.5rem;
+        margin: 21px;
         margin-left: 0;
       }
 
@@ -91,7 +91,7 @@
       }
 
       &-body {
-        padding: 0 1rem;
+        padding: 0 14px;
       }
     }
   }
@@ -103,8 +103,8 @@
     position: relative;
 
     .ant-image {
-      width: 5rem;
-      height: 5rem;
+      width: 70px;
+      height: 70px;
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -113,7 +113,7 @@
     }
 
     &__wrapper {
-      padding: 0.25rem;
+      padding: 4px;
       padding-right: 0;
     }
 
@@ -123,11 +123,11 @@
 
     &__meta {
       flex: 1 1 auto;
-      margin-left: 1rem;
+      margin-left: 14px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      height: 5.25rem;
+      height: 74px;
       align-items: flex-start;
       cursor: pointer;
 
@@ -159,20 +159,20 @@
       justify-content: space-between;
       align-items: flex-end;
       flex-wrap: nowrap;
-      font-size: 1.1rem;
+      font-size: 15px;
 
       .ant-rate {
-        font-size: 1.125rem;
+        font-size: 15px;
         color: $color-primary;
       }
 
       & > div:last-child .anticon svg {
-        font-size: 1.1rem;
+        font-size: 15px;
         color: $color-primary;
       }
 
       & > div {
-        font-size: 1rem;
+        font-size: 14px;
         white-space: nowrap;
       }
     }

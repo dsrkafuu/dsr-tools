@@ -1,5 +1,5 @@
 .mc {
-  padding: 2.2857rem;
+  padding: 32px;
 
   &__card {
     .ant-card-body {
@@ -7,20 +7,20 @@
     }
 
     .ant-card:not(:first-child) {
-      margin-top: 2.2857rem;
+      margin-top: 32px;
     }
 
     .list__item {
-      padding-left: 1.7143rem !important;
-      padding-right: 1.7143rem !important;
+      padding-left: 24px !important;
+      padding-right: 24px !important;
     }
   }
 
   .blist {
-    padding: 1rem 1.7143rem;
+    padding: 14px 24px;
 
     &__item:not(:last-child) {
-      margin-right: 0.75rem;
+      margin-right: 10px;
     }
   }
 

@@ -29,7 +29,7 @@ $title-dark: hsla(0, 0%, 0%, 0.45);
     .ant-btn {
       color: $title-dark;
       border-color: $title-dark;
-      margin: 0 0.75rem;
+      margin: 0 10px;
 
       @include responsive(sm) {
         color: $title-light;
@@ -47,7 +47,7 @@ $title-dark: hsla(0, 0%, 0%, 0.45);
     position: absolute;
     text-align: center;
     width: 100%;
-    bottom: 0.25rem;
+    bottom: 4px;
     color: $title-dark;
 
     @include responsive(sm) {

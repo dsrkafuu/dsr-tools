@@ -3,27 +3,27 @@ $font-family-zh: 'Noto Sans SC', 'PingFang SC', 'Source Han Sans CN', 'Source Ha
 $font-family-base: $font-family-en, $font-family-zh, ui-sans-serif, sans-serif;
 $font-family-mono: 'Fira Code', ui-monospace, $font-family-zh, monospace;
 
-$font-size-xs: 0.7143rem;
-$font-size-sm: 0.8571rem;
+$font-size-xs: 10px;
+$font-size-sm: 12px;
 $font-size-base: 14px;
-$font-size-lg: 1.0714rem;
-$font-size-xl: 1.2143rem;
+$font-size-lg: 15px;
+$font-size-xl: 17px;
 
 $responsive-lg: 992px;
 $responsive-md: 768px;
 
-$space-xs: 0.725rem;
-$space-sm: 0.85rem;
-$space-base: 1rem;
+$space-xs: 10px;
+$space-sm: 12px;
+$space-base: 14px;
 
 $color-primary: #8aa2d3;
 
-$shadow-box: 0 0.1425rem 0.5725rem #eeeeee;
+$shadow-box: 0 2px 8px #eeeeee;
 $border-box: 1px solid #eeeeee;
 
-$header-height: 4.4rem;
-$footer-height: 4.2rem;
-$content-min-height: calc(100vh - 8.6rem);
+$header-height: 62px;
+$footer-height: 58px;
+$content-min-height: calc(100vh - 120px);
 
 @mixin responsive($size) {
   @if $size == md {

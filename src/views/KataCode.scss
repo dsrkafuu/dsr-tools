@@ -1,10 +1,10 @@
 .kata-code {
-  padding: 2rem 4rem;
+  padding: 28px 56px;
   display: flex;
   flex-direction: column;
 
   @include responsive(sm) {
-    padding: 1rem;
+    padding: 14px;
   }
 
   &-func {
@@ -33,10 +33,10 @@
 
   &-ctrl {
     align-self: center;
-    padding: 0 2rem;
+    padding: 0 28px;
 
     @include responsive(sm) {
-      padding: 1rem;
+      padding: 14px;
 
       .ant-space {
         flex-direction: row;
@@ -45,7 +45,7 @@
           margin-bottom: 0 !important;
 
           &:not(:first-child) {
-            margin-left: 0.5rem;
+            margin-left: 7px;
           }
         }
       }
@@ -53,10 +53,10 @@
   }
 
   &-info {
-    padding-top: 2rem;
+    padding-top: 28px;
 
     @include responsive(sm) {
-      padding-top: 1rem;
+      padding-top: 14px;
     }
   }
 }

@@ -9,7 +9,7 @@ function Construction() {
   return (
     <div className='construction'>
       <Result
-        icon={<ConstructionIcon style={{ width: '12rem', height: '12rem' }} />}
+        icon={<ConstructionIcon style={{ width: '168px', height: '168px' }} />}
         title='页面施工中'
         extra={
           <Button type='primary' onClick={() => history.goBack()}>
