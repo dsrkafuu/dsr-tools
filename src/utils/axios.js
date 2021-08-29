@@ -4,15 +4,15 @@ import jsdelivr from './jsdelivr';
 
 export const api = axios.create({
   baseURL: jsdelivr('', 'dsr-cdn-api'),
-  timeout: 5000,
+  timeout: 10000,
 });
 export const cdn = axios.create({
   baseURL: jsdelivr('', 'dsr-cdn-main'),
-  timeout: 5000,
+  timeout: 10000,
 });
 export const workers = axios.create({
   baseURL: 'https://workers.dsrkafuu.su',
-  timeout: 5000,
+  timeout: 10000,
 });
 export const xhr = axios.create();
 
