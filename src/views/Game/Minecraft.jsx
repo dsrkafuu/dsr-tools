@@ -7,7 +7,7 @@ import jsdelivr from '@/utils/jsdelivr';
 import { IMAGE_FALLBACK } from '@/utils/constants';
 
 function Minecraft() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
 
   /**
