@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect, useCallback } from 'react';
 import { Row, Col, Card, Image, Carousel, List, Button, Alert } from 'antd';
 import './Minecraft.scss';
 import Loading from '@/components/Loading';
-import { api } from '@/utils/axios';
+import { workers, api } from '@/utils/axios';
 import jsdelivr from '@/utils/jsdelivr';
 import { IMAGE_FALLBACK } from '@/utils/constants';
 
@@ -14,7 +14,19 @@ function Minecraft() {
    * fetch data from remote
    */
   const fetchData = useCallback(async () => {
-    const res = await api.get('/dsr-tools/minecraft/index.min.json');
+    let res = null;
+    let fallback = false;
+    try {
+      res = await workers.get('/dsr-cdn-api/dsr-tools/minecraft/index.min.json');
+      if (!res) {
+        fallback = true;
+      }
+    } catch {
+      fallback = true;
+    }
+    if (fallback) {
+      res = await api.get('/dsr-tools/minecraft/index.min.json');
+    }
     if (res?.data) {
       setData(res.data);
       setLoading(false);

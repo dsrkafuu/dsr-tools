@@ -1,5 +1,10 @@
 export const changelog = [
   {
+    version: 'v4.3.2',
+    date: '2021-09-09',
+    logs: ['优化 Minecraft 整合包模块资源加载'],
+  },
+  {
     version: 'v4.3.1',
     date: '2021-08-30',
     logs: ['修复 FFXIV 模块资源加载问题'],
