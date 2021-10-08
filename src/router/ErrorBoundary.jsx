@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Result } from 'antd';
+import 'antd/es/button/style';
+import 'antd/es/result/style';
 
 class ErrorBoundary extends PureComponent {
   constructor(props) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { Row, Col, Card, Image, Carousel, List, Button, Alert } from 'antd';
 import 'antd/es/row/style';
 import 'antd/es/col/style';
@@ -10,40 +10,17 @@ import 'antd/es/button/style';
 import 'antd/es/alert/style';
 import './Minecraft.scss';
 import Loading from '@/components/Loading';
-import { workers, api } from '@/utils/axios';
+import { useSWRAPI } from '@/hooks/swr';
 import jsdelivr from '@/utils/jsdelivr';
 import { IMAGE_FALLBACK } from '@/utils/constants';
 
 function Minecraft() {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState(null);
-
-  /**
-   * fetch data from remote
-   */
-  const fetchData = useCallback(async () => {
-    let res = null;
-    let fallback = false;
-    try {
-      res = await workers.get('/dsr-cdn-api/dsr-tools/minecraft/index.min.json');
-      if (!res) {
-        fallback = true;
-      }
-    } catch {
-      fallback = true;
-    }
-    if (fallback) {
-      res = await api.get('/dsr-tools/minecraft/index.min.json');
-    }
-    if (res?.data) {
-      setData(res.data);
-      setLoading(false);
-    }
-  }, []);
-  useEffect(() => fetchData(), [fetchData]);
+  const { data, error } = useSWRAPI('/minecraft/index.min.json', false);
+  const isLoading = Boolean(!data && !error);
+  const isError = Boolean(error);
 
   return (
-    <Loading loading={loading}>
+    <Loading isLoading={isLoading} isError={isError}>
       <div className='mc'>
         <Row gutter={[32, 32]}>
           <Col className='mc__card' xs={24} md={12}>

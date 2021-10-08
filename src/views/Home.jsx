@@ -1,32 +1,18 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Button } from 'antd';
 import 'antd/es/button/style';
 import './Home.scss';
 import jsdelivr from '@/utils/jsdelivr';
-import { api } from '@/utils/axios';
+import { useSWRAPI } from '@/hooks/swr';
 
 const imageRow = jsdelivr('/dsr-tools/home/cover_row.jpg', 'dsr-cdn-api');
 const imageCol = jsdelivr('/dsr-tools/home/cover_col.jpg', 'dsr-cdn-api');
 
 function Home({ isMobile }) {
-  const [data, setData] = useState({
-    title: '',
-    links: [],
-    license: '',
-  });
-
-  /**
-   * fetch data from remote
-   */
-  const fetchData = useCallback(async () => {
-    const res = await api.get('/dsr-tools/home/index.min.json');
-    if (res?.data) {
-      setData(res.data);
-    }
-  }, []);
-  useEffect(() => fetchData(), [fetchData]);
+  const { data: rawData } = useSWRAPI('/home/index.min.json', false);
+  const data = useMemo(() => rawData || { title: '', links: [], license: '' }, [rawData]);
 
   return (
     <div

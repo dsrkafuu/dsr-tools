@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Tabs, Table, Card, List } from 'antd';
@@ -7,10 +7,10 @@ import 'antd/es/table/style';
 import 'antd/es/card/style';
 import 'antd/es/list/style';
 import './FFXIV.scss';
+import { useSWRAPI } from '@/hooks/swr';
 import dayjs from '@/utils/dayjs';
 import Loading from '@/components/Loading';
 import TZSelector from '@/components/TZSelector';
-import { workers, api } from '@/utils/axios';
 import { getLS, setLS } from '@/utils/storage';
 
 // table titles
@@ -20,7 +20,6 @@ const cstDay = dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD');
 
 function SettingsPanel({ value, onChange, update }) {
   const updateMessage = useMemo(() => {
-    console.log(dayjs(update).tz(value));
     let text = `更新于 ${dayjs(update).tz(value).format('YYYY-MM-DD HH:mm:ss')}`;
     if (dayjs().isDST()) {
       text += ' (DST)';
@@ -46,37 +45,29 @@ SettingsPanel.propTypes = {
 };
 
 function FFXIV() {
-  const [loading, setLoading] = useState(true);
-
-  // metadata and server records
-  const [meta, setMeta] = useState({ update: '', license: '' });
-  const [data, setData] = useState({ chocobo: [], moogle: [], fatCat: [] });
-
-  /**
-   * fetch data from remote
-   */
-  const fetchData = useCallback(async () => {
-    let res = null;
-    let fallback = false;
-    try {
-      res = await workers.get('/dsr-cdn-api/dsr-tools/ffxiv/index.min.json');
-      if (!res) {
-        fallback = true;
-      }
-    } catch {
-      fallback = true;
+  // fetcher
+  const { data: idata, error: ierror } = useSWRAPI('/ffxiv/index.min.json', true);
+  const { data: fdata, error: ferror } = useSWRAPI('/ffxiv/index.min.json', false);
+  const isLoading = Boolean((!idata && !ierror) || (ierror && !fdata && !ferror));
+  const isError = Boolean(ierror && ferror);
+  const meta = useMemo(() => {
+    if (idata && idata.update && idata.license) {
+      return idata;
+    } else if (ierror && fdata && fdata.update && fdata.license) {
+      return fdata;
+    } else {
+      return { update: '', license: '' };
     }
-    if (fallback) {
-      res = await api.get('/dsr-tools/ffxiv/index.min.json');
+  }, [fdata, idata, ierror]);
+  const data = useMemo(() => {
+    if (idata && idata.data) {
+      return idata.data;
+    } else if (ierror && fdata && fdata.data) {
+      return fdata.data;
+    } else {
+      return { chocobo: [], moogle: [], fatCat: [] };
     }
-    if (res?.data) {
-      const { data = {}, update = '', license = '' } = res.data;
-      setMeta({ update, license });
-      setData(data);
-      setLoading(false);
-    }
-  }, []);
-  useEffect(() => fetchData(), [fetchData]);
+  }, [fdata, idata, ierror]);
 
   // tab settings
   const tabPanes = useMemo(
@@ -182,7 +173,7 @@ function FFXIV() {
   );
 
   return (
-    <Loading loading={loading}>
+    <Loading isLoading={isLoading} isError={isError}>
       <div className='ffxiv'>
         <SettingsPanel value={curTZ} onChange={handleTimeZoneChange} update={meta.update} />
         <Tabs

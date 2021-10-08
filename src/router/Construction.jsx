@@ -1,6 +1,8 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Result } from 'antd';
+import 'antd/es/button/style';
+import 'antd/es/result/style';
 import { ReactComponent as ConstructionIcon } from '@/assets/svg/construction.svg';
 
 function Construction() {
@@ -21,4 +23,4 @@ function Construction() {
   );
 }
 
-export default memo(Construction);
+export default Construction;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import cloneDeep from 'lodash/cloneDeep';
 import { Card, List, Pagination, Button, Image, Rate, Tooltip, Radio } from 'antd';
 import 'antd/es/card/style';
 import 'antd/es/list/style';
@@ -11,8 +12,8 @@ import 'antd/es/tooltip/style';
 import 'antd/es/radio/style';
 import { FireOutlined } from '@ant-design/icons';
 import './Anime.scss';
+import { useSWRBGM } from '@/hooks/swr';
 import dayjs from '@/utils/dayjs';
-import { workers } from '@/utils/axios';
 import responsive from '@/utils/responsive';
 import { IMAGE_FALLBACK } from '@/utils/constants';
 import Loading from '@/components/Loading';
@@ -205,15 +206,17 @@ Bangumi.propTypes = {
  * anime page
  */
 function Anime() {
-  // get anime calendar data
-  const [data, setData] = useState([]);
-  /**
-   * parse bangumi api data
-   * @param {Array} data
-   * @returns {Array} data
-   */
-  const parseData = useCallback((data) => {
-    data.forEach((val) => {
+  const { data: rawData, error } = useSWRBGM('/calendar');
+  const isLoading = Boolean(!rawData && !error);
+  const isError = Boolean(error || (rawData && rawData.error));
+
+  // parse bangumi api data
+  const data = useMemo(() => {
+    if (!rawData || !Array.isArray(rawData)) {
+      return [];
+    }
+    const temp = cloneDeep(rawData);
+    temp.forEach((val) => {
       val.items.forEach((val) => {
         // replace url
         if (val.url) {
@@ -238,19 +241,9 @@ function Anime() {
         }
       });
     });
-    data.unshift(data.pop());
-    return data;
-  }, []);
-
-  useEffect(() => {
-    (async () => {
-      const res = await workers.get('/bgm-api/calendar');
-      if (res.data) {
-        const data = parseData(res.data);
-        setData(data);
-      }
-    })();
-  }, [parseData]);
+    temp.unshift(temp.pop());
+    return temp;
+  }, [isLoading, rawData]);
 
   // whether show prev weekday and next weekday
   const [showExtend, setShowExtend] = useState(() => responsive() === 'lg');
@@ -287,7 +280,7 @@ function Anime() {
   }, [data, sortRule]);
 
   return (
-    <Loading loading={data.length === 0}>
+    <Loading isLoading={isLoading} isError={isError}>
       <div className='anime'>
         <Weekday day={day} today={today} onDayChange={setDay} />
         <Meta

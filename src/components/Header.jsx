@@ -13,7 +13,7 @@ import {
 } from '@ant-design/icons';
 import './Header.scss';
 import dayjs from '@/utils/dayjs';
-import useRoute from '@/hooks/useRoute';
+import useRoute from '@/hooks/route';
 import QRCode from './QRCode';
 
 function Header({ collapsed, onCollapsedChange }) {

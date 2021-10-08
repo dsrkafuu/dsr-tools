@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Menu } from 'antd';
 import 'antd/es/menu/style';
 import './Sidebar.scss';
-import useRoute from '@/hooks/useRoute';
+import useRoute from '@/hooks/route';
 import routes from '@/router/index';
 import responsive from '@/utils/responsive';
 import Logo from './Logo';
