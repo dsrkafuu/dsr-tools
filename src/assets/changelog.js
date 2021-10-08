@@ -1,5 +1,10 @@
 export const changelog = [
   {
+    version: 'v4.3.3',
+    date: '2021-10-08',
+    logs: ['优化资源请求逻辑'],
+  },
+  {
     version: 'v4.3.2',
     date: '2021-09-09',
     logs: ['优化 Minecraft 整合包模块资源加载'],
