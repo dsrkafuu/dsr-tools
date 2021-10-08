@@ -1,5 +1,13 @@
-import React, { memo, useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Row, Col, Card, Image, Carousel, List, Button, Alert } from 'antd';
+import 'antd/es/row/style';
+import 'antd/es/col/style';
+import 'antd/es/card/style';
+import 'antd/es/image/style';
+import 'antd/es/carousel/style';
+import 'antd/es/list/style';
+import 'antd/es/button/style';
+import 'antd/es/alert/style';
 import './Minecraft.scss';
 import Loading from '@/components/Loading';
 import { workers, api } from '@/utils/axios';
@@ -110,4 +118,4 @@ function Minecraft() {
   );
 }
 
-export default memo(Minecraft);
+export default Minecraft;

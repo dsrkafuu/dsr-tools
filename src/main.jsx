@@ -12,6 +12,7 @@ ga();
 
 // antd
 import 'normalize.css';
+import 'antd/es/style';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 

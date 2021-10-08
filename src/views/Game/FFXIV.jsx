@@ -1,7 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useState, memo } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Tabs, Table, Card, List } from 'antd';
+import 'antd/es/tabs/style';
+import 'antd/es/table/style';
+import 'antd/es/card/style';
+import 'antd/es/list/style';
 import './FFXIV.scss';
 import dayjs from '@/utils/dayjs';
 import Loading from '@/components/Loading';
@@ -14,7 +18,7 @@ const tableTitles = ['5.X 暗影之逆焰', '4.X 红莲之狂潮'];
 // now day in CST
 const cstDay = dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD');
 
-const SettingsPanel = memo(({ value, onChange, update }) => {
+function SettingsPanel({ value, onChange, update }) {
   const updateMessage = useMemo(() => {
     console.log(dayjs(update).tz(value));
     let text = `更新于 ${dayjs(update).tz(value).format('YYYY-MM-DD HH:mm:ss')}`;
@@ -33,16 +37,15 @@ const SettingsPanel = memo(({ value, onChange, update }) => {
       </div>
     </div>
   );
-});
+}
 
-SettingsPanel.displayName = 'SettingsPanel';
 SettingsPanel.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   update: PropTypes.string.isRequired,
 };
 
-const FFXIV = memo(() => {
+function FFXIV() {
   const [loading, setLoading] = useState(true);
 
   // metadata and server records
@@ -219,6 +222,6 @@ const FFXIV = memo(() => {
       </div>
     </Loading>
   );
-});
+}
 
 export default FFXIV;

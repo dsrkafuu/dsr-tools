@@ -1,6 +1,7 @@
-import React, { memo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Spin } from 'antd';
+import 'antd/es/spin/style';
 import './Loading.scss';
 
 function Loading({ loading, children }) {
@@ -23,4 +24,4 @@ Loading.propTypes = {
   children: PropTypes.element,
 };
 
-export default memo(Loading);
+export default Loading;

@@ -1,11 +1,16 @@
-import React, { memo, useCallback, useState } from 'react';
-import { useHistory } from 'react-router';
+import React, { useCallback, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button, Result, Alert, Typography, Space } from 'antd';
+import 'antd/es/button/style';
+import 'antd/es/result/style';
+import 'antd/es/alert/style';
+import 'antd/es/typography/style';
+import 'antd/es/space/style';
 import { setLS, getLS } from '@/utils/storage';
 import notification from '@/notification';
 const { show, key, type, title, content } = notification;
 
-export const NotificationBanner = memo(function NotificationBanner() {
+export function NotificationBanner() {
   const history = useHistory();
 
   const [showBanner, setShowBanner] = useState(show && !getLS(key));
@@ -35,7 +40,7 @@ export const NotificationBanner = memo(function NotificationBanner() {
   } else {
     return null;
   }
-});
+}
 
 function Notification() {
   const history = useHistory();
@@ -57,4 +62,4 @@ function Notification() {
   );
 }
 
-export default memo(Notification);
+export default Notification;

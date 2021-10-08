@@ -1,5 +1,11 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { Row, Col, Card, Image, Collapse, List } from 'antd';
+import 'antd/es/row/style';
+import 'antd/es/col/style';
+import 'antd/es/card/style';
+import 'antd/es/image/style';
+import 'antd/es/collapse/style';
+import 'antd/es/list/style';
 import {
   PaperClipOutlined,
   FileTextOutlined,
@@ -12,7 +18,7 @@ import statements from '@/assets/statements';
 import { dependencies } from '@/../package.json';
 import { IMAGE_FALLBACK } from '@/utils/constants';
 
-const Personal = memo(function Personal() {
+function Personal() {
   return (
     <div className='personal'>
       <img
@@ -23,7 +29,7 @@ const Personal = memo(function Personal() {
       <span className='personal__id'>DSRKafuU</span>
     </div>
   );
-});
+}
 
 function Info() {
   const deps = { ...dependencies };
@@ -88,4 +94,4 @@ function Info() {
   );
 }
 
-export default memo(Info);
+export default Info;

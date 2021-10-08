@@ -1,10 +1,17 @@
-import React, { memo, useCallback, useState, useMemo } from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { Input, Button, Space, message, Card, List, Typography } from 'antd';
+import 'antd/es/input/style';
+import 'antd/es/button/style';
+import 'antd/es/space/style';
+import 'antd/es/message/style';
+import 'antd/es/card/style';
+import 'antd/es/list/style';
+import 'antd/es/typography/style';
 import { LeftOutlined, RightOutlined, DeleteOutlined } from '@ant-design/icons';
 import './KataCode.scss';
 import { encodeKata, decodeKata } from '@/utils/katacode';
 
-const KataCodeInfo = memo(function KataCodeInfo() {
+function KataCodeInfo() {
   const infoList = useMemo(
     () => [
       {
@@ -41,7 +48,7 @@ const KataCodeInfo = memo(function KataCodeInfo() {
       </Card>
     </div>
   );
-});
+}
 
 function KataCode() {
   const [srcValue, setSrcValue] = useState('');
@@ -100,4 +107,4 @@ function KataCode() {
   );
 }
 
-export default memo(KataCode);
+export default KataCode;

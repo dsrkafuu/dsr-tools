@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { Button, Result } from 'antd';
 import { ReactComponent as ConstructionIcon } from '@/assets/svg/construction.svg';
 

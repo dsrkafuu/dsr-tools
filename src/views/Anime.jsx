@@ -1,6 +1,14 @@
-import React, { useState, useEffect, memo, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Card, List, Pagination, Button, Image, Rate, Tooltip, Radio } from 'antd';
+import 'antd/es/card/style';
+import 'antd/es/list/style';
+import 'antd/es/pagination/style';
+import 'antd/es/button/style';
+import 'antd/es/image/style';
+import 'antd/es/rate/style';
+import 'antd/es/tooltip/style';
+import 'antd/es/radio/style';
 import { FireOutlined } from '@ant-design/icons';
 import './Anime.scss';
 import dayjs from '@/utils/dayjs';
@@ -50,7 +58,7 @@ function formatHot(hot = 0) {
 /**
  * weekday selector renderer
  */
-const Weekday = memo(function Weekday({ day, today, onDayChange }) {
+function Weekday({ day, today, onDayChange }) {
   return (
     <div className='weekday'>
       <Pagination
@@ -72,7 +80,7 @@ const Weekday = memo(function Weekday({ day, today, onDayChange }) {
       <Button onClick={() => onDayChange(today)}>今天</Button>
     </div>
   );
-});
+}
 
 Weekday.propTypes = {
   day: PropTypes.number.isRequired,
@@ -83,7 +91,7 @@ Weekday.propTypes = {
 /**
  * meta data renderer
  */
-const Meta = memo(function Meta({ totalCount, todayCount, sortRule, onSortRuleChange }) {
+function Meta({ totalCount, todayCount, sortRule, onSortRuleChange }) {
   return (
     <div className='meta'>
       <div className='meta__info'>
@@ -102,7 +110,7 @@ const Meta = memo(function Meta({ totalCount, todayCount, sortRule, onSortRuleCh
       </div>
     </div>
   );
-});
+}
 
 Meta.propTypes = {
   totalCount: PropTypes.number.isRequired,
@@ -114,7 +122,7 @@ Meta.propTypes = {
 /**
  * bangumi list renderer
  */
-const Bangumi = memo(function Bangumi({ items, weekday, sortRule }) {
+function Bangumi({ items, weekday, sortRule }) {
   const sortedItems = useMemo(() => {
     const res = [...items];
     if (!sortRule || sortRule === 'native') {
@@ -185,7 +193,7 @@ const Bangumi = memo(function Bangumi({ items, weekday, sortRule }) {
       </List>
     </Card>
   );
-});
+}
 
 Bangumi.propTypes = {
   items: PropTypes.array.isRequired,
@@ -298,4 +306,4 @@ function Anime() {
   );
 }
 
-export default memo(Anime);
+export default Anime;

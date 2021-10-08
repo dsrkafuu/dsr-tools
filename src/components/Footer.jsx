@@ -1,7 +1,5 @@
-import React, { memo } from 'react';
-
+import React from 'react';
 import { CopyrightOutlined } from '@ant-design/icons';
-
 import './Footer.scss';
 import dayjs from '@/utils/dayjs';
 import { version } from '@/assets/changelog';
@@ -19,4 +17,4 @@ function Footer() {
   );
 }
 
-export default memo(Footer);
+export default Footer;

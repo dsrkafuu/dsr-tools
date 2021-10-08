@@ -1,6 +1,8 @@
-import React, { useEffect, useState, memo } from 'react';
-import { useHistory } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button, Result } from 'antd';
+import 'antd/es/button/style';
+import 'antd/es/result/style';
 
 function NotFound() {
   const history = useHistory();
@@ -30,4 +32,4 @@ function NotFound() {
   );
 }
 
-export default memo(NotFound);
+export default NotFound;

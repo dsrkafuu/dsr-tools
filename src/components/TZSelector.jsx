@@ -1,10 +1,11 @@
-import React, { memo, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Select } from 'antd';
+import 'antd/es/select/style';
 import { timeZonesNames } from '@vvo/tzdb';
 import './TZSelector.scss';
 
-const TZSelector = memo(({ value, onChange }) => {
+function TZSelector({ value, onChange }) {
   // 有效的时区
   const validValue = useMemo(() => {
     return timeZonesNames.includes(value) ? value : 'Asia/Shanghai';
@@ -25,9 +26,8 @@ const TZSelector = memo(({ value, onChange }) => {
       ))}
     </Select>
   );
-});
+}
 
-TZSelector.displayName = 'TZSelector';
 TZSelector.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,

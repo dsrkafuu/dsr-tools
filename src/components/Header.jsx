@@ -1,6 +1,10 @@
-import React, { Fragment, useCallback, useEffect, useMemo, useState, memo } from 'react';
+import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, message, PageHeader, Popover } from 'antd';
+import 'antd/es/button/style';
+import 'antd/es/message/style';
+import 'antd/es/page-header/style';
+import 'antd/es/popover/style';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -78,4 +82,4 @@ Header.propTypes = {
   onCollapsedChange: PropTypes.func.isRequired,
 };
 
-export default memo(Header);
+export default Header;

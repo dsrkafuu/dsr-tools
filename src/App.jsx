@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useState, memo } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Layout } from 'antd';
+import 'antd/es/layout/style';
 import './App.scss';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
@@ -8,7 +9,7 @@ import Footer from './components/Footer';
 import responsive from './utils/responsive';
 import { NotificationBanner } from './views/Notification';
 
-const App = memo(function App() {
+function App() {
   // dynamic height for support of mobile devices
   const [height, setHeight] = useState(() =>
     window.innerHeight ? `${window.innerHeight}px` : '100vh'
@@ -70,6 +71,6 @@ const App = memo(function App() {
       </Layout>
     </Layout>
   );
-});
+}
 
 export default App;

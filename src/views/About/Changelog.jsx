@@ -1,5 +1,6 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { Timeline } from 'antd';
+import 'antd/es/timeline/style';
 import './Changelog.scss';
 import { changelog } from '@/assets/changelog';
 
@@ -20,4 +21,4 @@ function Changelog() {
   );
 }
 
-export default memo(Changelog);
+export default Changelog;

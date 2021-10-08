@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useCallback, memo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Button } from 'antd';
+import 'antd/es/button/style';
 import './Home.scss';
 import jsdelivr from '@/utils/jsdelivr';
 import { api } from '@/utils/axios';
@@ -49,4 +50,4 @@ Home.propTypes = {
   isMobile: PropTypes.bool,
 };
 
-export default memo(Home);
+export default Home;
