@@ -1,5 +1,10 @@
 export const changelog = [
   {
+    version: 'v4.4.0',
+    date: '2021-11-06',
+    logs: ['重构路由逻辑', '更新路由依赖版本'],
+  },
+  {
     version: 'v4.3.3',
     date: '2021-10-08',
     logs: ['优化资源请求逻辑'],
