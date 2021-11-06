@@ -51,7 +51,7 @@ function Notification() {
         type={type}
         title={title}
         extra={
-          <Button type='primary' onClick={() => navigate.goBack()}>
+          <Button type='primary' onClick={() => navigate(-1)}>
             返回
           </Button>
         }
