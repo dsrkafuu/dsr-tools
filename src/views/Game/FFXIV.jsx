@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Tabs, Table, Card, List } from 'antd';
 import 'antd/es/tabs/style';
@@ -153,10 +153,9 @@ function FFXIV() {
   );
 
   // router selected tab detector
-  const history = useHistory();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [curTab, setCurTab] = useState(() => {
-    const search = new URLSearchParams(history.location.search);
-    return search.get('tab') || 'settings';
+    return searchParams.get('tab') || 'settings';
   });
 
   /**
@@ -165,11 +164,9 @@ function FFXIV() {
   const onTabChange = useCallback(
     (key) => {
       setCurTab(key);
-      const search = new URLSearchParams(history.location.search);
-      search.set('tab', key);
-      history.replace({ search: '?' + search.toString() });
+      setSearchParams({ tab: key });
     },
-    [history]
+    [setCurTab, setSearchParams]
   );
 
   return (

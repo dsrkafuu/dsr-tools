@@ -14,3 +14,17 @@
     cursor: auto;
   }
 }
+
+.ant-tooltip-inner,
+.ant-tooltip-arrow-content {
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+
+  a {
+    color: rgba(0, 0, 0, 0.85) !important;
+
+    &:hover {
+      color: $color-primary !important;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Result, Alert, Typography, Space } from 'antd';
 import 'antd/es/button/style';
 import 'antd/es/result/style';
@@ -11,7 +11,7 @@ import notification from '@/notification';
 const { show, key, type, title, content } = notification;
 
 export function NotificationBanner() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [showBanner, setShowBanner] = useState(show && !getLS(key));
   const closeBanner = useCallback(() => {
@@ -27,7 +27,7 @@ export function NotificationBanner() {
         banner={true}
         action={
           <Space>
-            <Button size='small' onClick={() => history.push('/notification')}>
+            <Button size='small' onClick={() => navigate('/notification')}>
               了解详情
             </Button>
             <Button size='small' danger={true} onClick={closeBanner}>
@@ -43,7 +43,7 @@ export function NotificationBanner() {
 }
 
 function Notification() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <div className='notification'>
@@ -51,7 +51,7 @@ function Notification() {
         type={type}
         title={title}
         extra={
-          <Button type='primary' onClick={() => history.goBack()}>
+          <Button type='primary' onClick={() => navigate.goBack()}>
             返回
           </Button>
         }

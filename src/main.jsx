@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { GuardProvider } from 'react-router-guards';
-import guards from './router/guards';
 
 // sentry and ga
 import sentry from './plugins/sentry';
@@ -25,9 +23,7 @@ ReactDOM.render(
   /* <React.StrictMode> */
   <ConfigProvider autoInsertSpaceInButton={false} locale={zhCN}>
     <BrowserRouter>
-      <GuardProvider guards={guards}>
-        <App />
-      </GuardProvider>
+      <App />
     </BrowserRouter>
   </ConfigProvider>,
   /* </React.StrictMode> */

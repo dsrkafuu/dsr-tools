@@ -1,18 +1,28 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
+import React, { useMemo, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Button } from 'antd';
 import 'antd/es/button/style';
 import './Home.scss';
 import jsdelivr from '@/utils/jsdelivr';
+import responsive from '@/utils/responsive';
 import { useSWRAPI } from '@/hooks/swr';
 
 const imageRow = jsdelivr('/dsr-tools/home/cover_row.jpg', 'dsr-cdn-api');
 const imageCol = jsdelivr('/dsr-tools/home/cover_col.jpg', 'dsr-cdn-api');
 
-function Home({ isMobile }) {
+function Home() {
+  const [isMobile, setIsMobile] = useState(() => responsive() === 'sm');
   const { data: rawData } = useSWRAPI('/home/index.min.json', false);
   const data = useMemo(() => rawData || { title: '', links: [], license: '' }, [rawData]);
+
+  // react screen size change
+  useEffect(() => {
+    const resizeHandler = () => {
+      setIsMobile(responsive() === 'sm');
+    };
+    window.addEventListener('resize', resizeHandler);
+    return () => window.removeEventListener('resize', resizeHandler);
+  }, []);
 
   return (
     <div
@@ -31,9 +41,5 @@ function Home({ isMobile }) {
     </div>
   );
 }
-
-Home.propTypes = {
-  isMobile: PropTypes.bool,
-};
 
 export default Home;

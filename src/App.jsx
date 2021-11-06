@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Layout } from 'antd';
 import 'antd/es/layout/style';
 import './App.scss';
+import Routes from './router/Routes';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Router from './router/Router';
 import Footer from './components/Footer';
 import responsive from './utils/responsive';
 import { NotificationBanner } from './views/Notification';
@@ -65,7 +65,7 @@ function App() {
           <Header collapsed={collapsed} onCollapsedChange={switchCollapse} />
         </Layout.Header>
         <Layout.Content className='content__layout'>
-          <Router isMobile={minimal} />
+          <Routes />
           <Footer />
         </Layout.Content>
       </Layout>

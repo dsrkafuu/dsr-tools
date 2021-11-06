@@ -6,19 +6,25 @@ import routes from '@/router/index';
  * recursively match routes
  * @param {Array<Object>} routes
  * @param {string} path
- * @returns {Object|null}
+ * @param {string} fatherPath
  */
-function matchRoute(routes, path) {
+function matchRoute(routes, path, fatherPath) {
   for (let i = 0; i < routes.length; i++) {
     const route = routes[i];
-    const pattern = route.path;
+    // generate full path
+    let pattern = fatherPath + '/';
+    if (route.path && !route.index) {
+      pattern += route.path;
+    }
+    pattern = pattern.replaceAll('//', '/');
     if (minimatch(path, pattern)) {
       return route;
     }
     // recursive match
-    if (route.routes) {
-      for (let j = 0; j < route.routes.length; j++) {
-        const match = matchRoute(route.routes, path);
+    if (route.children) {
+      for (let j = 0; j < route.children.length; j++) {
+        // save father path for those has index but no path pages
+        const match = matchRoute(route.children, path, pattern);
         if (match) {
           return match;
         }
@@ -41,7 +47,7 @@ function useRoute() {
   if (cache[path]) {
     return cache[path];
   } else {
-    const matched = matchRoute(routes, location.pathname);
+    const matched = matchRoute(routes, path, '/');
     cache[path] = matched;
     return matched;
   }

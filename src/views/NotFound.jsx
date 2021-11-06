@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button, Result } from 'antd';
 import 'antd/es/button/style';
 import 'antd/es/result/style';
 
 function NotFound() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   // count down
   const [counter, setCounter] = useState(8);
@@ -23,7 +23,7 @@ function NotFound() {
         status='warning'
         title='404 NOT FOUND'
         extra={
-          <Button type='primary' onClick={() => history.push('/')}>
+          <Button type='primary' onClick={() => navigate('/')}>
             返回首页「{counter}」
           </Button>
         }

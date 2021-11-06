@@ -1,10 +1,9 @@
-import React, { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Menu } from 'antd';
 import 'antd/es/menu/style';
 import './Sidebar.scss';
-import useRoute from '@/hooks/route';
 import routes from '@/router/index';
 import responsive from '@/utils/responsive';
 import Logo from './Logo';
@@ -13,15 +12,15 @@ import Logo from './Logo';
  * map route to component
  * @param {Object} route
  * @param {Object} onRouteClick
- * @returns {React.ReactElement}
  */
-function mapRoute(route, onRouteClick) {
-  if (route.meta.icon) {
+function mapRoute(route, onRouteClick, fatherPath) {
+  if (!route.meta.hide && route.meta.icon) {
+    const newPath = (fatherPath + `/${route.path || ''}`).replaceAll('//', '/');
     // with sub route
-    if (route.routes && route.routes.length > 0) {
+    if (route.children) {
       return (
-        <Menu.SubMenu key={route.path} icon={<route.meta.icon />} title={route.meta.name}>
-          {route.routes.map((route) => mapRoute(route, onRouteClick))}
+        <Menu.SubMenu key={newPath} icon={<route.meta.icon />} title={route.meta.name}>
+          {route.children.map((route) => mapRoute(route, onRouteClick, newPath))}
         </Menu.SubMenu>
       );
     }
@@ -29,11 +28,11 @@ function mapRoute(route, onRouteClick) {
     else {
       return (
         <Menu.Item
-          key={route.path}
+          key={newPath}
           icon={<route.meta.icon />}
           onClick={(d) => onRouteClick(d.domEvent)}
         >
-          <Link to={route.path}>{route.meta.short || route.meta.name}</Link>
+          <Link to={newPath}>{route.meta.short || route.meta.name}</Link>
         </Menu.Item>
       );
     }
@@ -46,9 +45,9 @@ function mapRoute(route, onRouteClick) {
 
 function Sidebar({ collapsed, onRouteClick }) {
   // current route
-  const route = useRoute();
+  const location = useLocation();
+  const active = location.pathname;
   // current opened group
-  const active = useMemo(() => route?.path, [route?.path]);
   const [opened] = useState(() => {
     let arr = ['/' + active?.split('/')[1] || ''];
     if (responsive() !== 'lg') {
@@ -62,7 +61,7 @@ function Sidebar({ collapsed, onRouteClick }) {
       <Menu.Item className='sidebar__icon' key='icon' title={null}>
         <Logo collapsed={collapsed} />
       </Menu.Item>
-      {routes.map((route) => mapRoute(route, onRouteClick))}
+      {routes.map((route) => mapRoute(route, onRouteClick, '/'))}
     </Menu>
   );
 }

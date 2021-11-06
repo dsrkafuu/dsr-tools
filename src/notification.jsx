@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 
 export default {
-  show: false,
+  show: true,
   key: 'notification-auto-redirect',
   type: 'warning',
-  title: '自动路径跳转即将取消',
+  title: '本站点域名即将更换',
   content: (
     <Fragment>
       <p>在过去的行为中，对以下任一网址：</p>

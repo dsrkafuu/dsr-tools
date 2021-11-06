@@ -13,15 +13,11 @@ class ErrorBoundary extends PureComponent {
   /**
    * update state so the next render will show the fallback UI
    * @param {Error} error
-   * @returns {Object}
    */
   static getDerivedStateFromError(error) {
     return { error };
   }
 
-  /**
-   * @returns {React.ReactElement}
-   */
   render() {
     if (this.state.error) {
       return (
