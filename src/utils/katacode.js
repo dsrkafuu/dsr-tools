@@ -1,4 +1,4 @@
-/*! kata-code | DSRKafuU (https://dsrkafuu.su) | Copyright (c) MIT License */
+/*! kata-code | DSRKafuU (https://dsrkafuu.net) | Copyright (c) MIT License */
 
 // katakana char code dict ア~モ(35)
 // katakana char code split ヤ~ン(11)

@@ -9,7 +9,7 @@ const fetcher = (url) => ainst.get(url).then((res) => res.data);
  * @param {string} path bangumi api path
  */
 export function useSWRBGM(path) {
-  return useSWR(`https://workers.dsrkafuu.su/bgm-api${path}`, fetcher);
+  return useSWR(`https://workers.dsrkafuu.net/bgm-api${path}`, fetcher);
 }
 
 /**
@@ -18,7 +18,7 @@ export function useSWRBGM(path) {
  */
 export function useSWRAPI(path, workers = false) {
   if (workers) {
-    return useSWR(`https://workers.dsrkafuu.su/dsr-cdn-api/dsr-tools${path}`, fetcher);
+    return useSWR(`https://workers.dsrkafuu.net/dsr-cdn-api/dsr-tools${path}`, fetcher);
   } else {
     return useSWR(jsdelivr(`/dsr-tools${path}`, 'dsr-cdn-api'), fetcher);
   }

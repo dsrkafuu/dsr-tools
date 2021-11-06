@@ -4,7 +4,7 @@
   "version": "4.4.0",
   "description": "新版 DSRToolS 站点项目，基于 React 和 Ant Design。",
   "license": "Apache-2.0",
-  "author": "DSRKafuU <dsrkafuu@outlook.com> (https://dsrkafuu.su)",
+  "author": "DSRKafuU <dsrkafuu@outlook.com> (https://dsrkafuu.net)",
   "scripts": {
     "vite:dev": "vite",
     "vite:build": "vite build",

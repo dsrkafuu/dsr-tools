@@ -2,31 +2,17 @@ import React, { Fragment } from 'react';
 
 export default {
   show: true,
-  key: 'notification-auto-redirect',
+  key: 'domain-change-20211106',
   type: 'warning',
   title: '本站点域名即将更换',
   content: (
     <Fragment>
-      <p>在过去的行为中，对以下任一网址：</p>
-      <ul>
-        <li>
-          <code>https://amzrk2.cc/ffxiv</code>
-        </li>
-        <li>
-          <code>https://amzrk2.cc/game/ffxiv</code>
-        </li>
-        <li>
-          <code>https://dsrca.amzrk2.cc/ffxiv</code>
-        </li>
-        <li>
-          <code>https://dsrca.amzrk2.cc/game/ffxiv</code>
-        </li>
-      </ul>
       <p>
-        的访问均会被重定向至 <code>https://tools.dsrkafuu.su/game/ffxiv</code>；
+        对域名 <code>dsrkafuu.su</code> 的任何访问将会被重定向至新域名
+        <code>dsrkafuu.net</code>；
       </p>
       <p>
-        该行为将在 <code>2021-04-30</code>
+        该行为将在 <code>2021-12-31</code>
         被移除，请需要访问本站的用户更新收藏链接以避免链接失效。
       </p>
     </Fragment>

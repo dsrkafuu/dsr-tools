@@ -42,10 +42,10 @@ function Info() {
             className='personal__card'
             cover={<Personal />}
             actions={[
-              <a href='https://dsrkafuu.su' key='homepage' target='_blank'>
+              <a href='https://dsrkafuu.net' key='homepage' target='_blank'>
                 <PaperClipOutlined />
               </a>,
-              <a href='https://blog.dsrkafuu.su' key='blog' target='_blank'>
+              <a href='https://blog.dsrkafuu.net' key='blog' target='_blank'>
                 <FileTextOutlined />
               </a>,
               <a href='https://twitter.com/dsrkafuu' key='twitter' target='_blank'>
