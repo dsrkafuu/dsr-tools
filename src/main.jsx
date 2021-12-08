@@ -2,11 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-// sentry and ga
+// sentry
 import sentry from './plugins/sentry';
-import ga from './plugins/ga';
 sentry();
-ga();
 
 // antd
 import 'normalize.css';
