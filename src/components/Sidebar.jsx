@@ -15,7 +15,7 @@ import Logo from './Logo';
  */
 function mapRoute(route, onRouteClick, fatherPath) {
   if (!route.meta.hide && route.meta.icon) {
-    const newPath = (fatherPath + `/${route.path || ''}`).replaceAll('//', '/');
+    const newPath = (fatherPath + `/${route.path || ''}`).replace(/\/\//gi, '/');
     // with sub route
     if (route.children) {
       return (

@@ -1,5 +1,10 @@
 export const changelog = [
   {
+    version: 'v4.4.1',
+    date: '2021-12-08',
+    logs: ['修复路由匹配错误', 'React 17 迁移'],
+  },
+  {
     version: 'v4.4.0',
     date: '2021-11-06',
     logs: ['重构路由逻辑', '更新路由依赖版本'],

@@ -16,7 +16,7 @@ function matchRoute(routes, path, fatherPath) {
     if (route.path && !route.index) {
       pattern += route.path;
     }
-    pattern = pattern.replaceAll('//', '/');
+    pattern = pattern.replace(/\/\//gi, '/');
     if (minimatch(path, pattern)) {
       return route;
     }
