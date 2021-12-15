@@ -1,8 +1,8 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import './Home.scss';
+import 'antd/es/button/style';
+import { useMemo, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { Button } from 'antd';
-import 'antd/es/button/style';
-import './Home.scss';
 import jsdelivr from '@/utils/jsdelivr';
 import responsive from '@/utils/responsive';
 import { useSWRAPI } from '@/hooks/swr';

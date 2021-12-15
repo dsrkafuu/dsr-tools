@@ -1,12 +1,12 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Tabs, Table, Card, List } from 'antd';
+import './FFXIV.scss';
 import 'antd/es/tabs/style';
 import 'antd/es/table/style';
 import 'antd/es/card/style';
 import 'antd/es/list/style';
-import './FFXIV.scss';
+import { Tabs, Table, Card, List } from 'antd';
+import { useCallback, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { useSWRAPI } from '@/hooks/swr';
 import dayjs from '@/utils/dayjs';
 import Loading from '@/components/Loading';
@@ -143,7 +143,7 @@ function FFXIV() {
       {
         title: 'NGA 原帖',
         desc: (
-          <a href={meta.license} target='_blank'>
+          <a href={meta.license} target='_blank' rel='noreferrer'>
             {meta.license}
           </a>
         ),

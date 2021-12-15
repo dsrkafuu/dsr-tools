@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
-import { Layout } from 'antd';
-import 'antd/es/layout/style';
 import './App.scss';
+import 'antd/es/layout/style';
+import { Layout } from 'antd';
+import { useCallback, useEffect, useState } from 'react';
 import Routes from './router/Routes';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';

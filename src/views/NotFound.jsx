@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, Result } from 'antd';
 import 'antd/es/button/style';
 import 'antd/es/result/style';
+import { Button, Result } from 'antd';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function NotFound() {
   const navigate = useNavigate();

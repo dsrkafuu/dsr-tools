@@ -1,6 +1,6 @@
-import { Timeline } from 'antd';
-import 'antd/es/timeline/style';
 import './Changelog.scss';
+import 'antd/es/timeline/style';
+import { Timeline } from 'antd';
 import { changelog } from '@/assets/changelog';
 
 function Changelog() {

@@ -1,7 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import PropTypes from 'prop-types';
-import cloneDeep from 'lodash/cloneDeep';
-import { Card, List, Pagination, Button, Image, Rate, Tooltip, Radio } from 'antd';
+import './Anime.scss';
 import 'antd/es/card/style';
 import 'antd/es/list/style';
 import 'antd/es/pagination/style';
@@ -10,8 +7,11 @@ import 'antd/es/image/style';
 import 'antd/es/rate/style';
 import 'antd/es/tooltip/style';
 import 'antd/es/radio/style';
+import { Card, List, Pagination, Button, Image, Rate, Tooltip, Radio } from 'antd';
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import PropTypes from 'prop-types';
+import cloneDeep from 'lodash/cloneDeep';
 import { FireOutlined } from '@ant-design/icons';
-import './Anime.scss';
 import { useSWRBGM } from '@/hooks/swr';
 import dayjs from '@/utils/dayjs';
 import responsive from '@/utils/responsive';
@@ -243,7 +243,7 @@ function Anime() {
     });
     temp.unshift(temp.pop());
     return temp;
-  }, [isLoading, rawData]);
+  }, [rawData]);
 
   // whether show prev weekday and next weekday
   const [showExtend, setShowExtend] = useState(() => responsive() === 'lg');

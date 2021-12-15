@@ -1,13 +1,14 @@
-import React, { useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, Result, Alert, Typography, Space } from 'antd';
 import 'antd/es/button/style';
 import 'antd/es/result/style';
 import 'antd/es/alert/style';
 import 'antd/es/typography/style';
 import 'antd/es/space/style';
+import { Button, Result, Alert, Typography, Space } from 'antd';
+import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { setLS, getLS } from '@/utils/storage';
 import notification from '@/notification';
+
 const { show, key, type, title, content } = notification;
 
 export function NotificationBanner() {

@@ -1,18 +1,17 @@
-import React from 'react';
-import { Row, Col, Card, Image, Collapse, List } from 'antd';
+import './Info.scss';
 import 'antd/es/row/style';
 import 'antd/es/col/style';
 import 'antd/es/card/style';
 import 'antd/es/image/style';
 import 'antd/es/collapse/style';
 import 'antd/es/list/style';
+import { Row, Col, Card, Image, Collapse, List } from 'antd';
 import {
   PaperClipOutlined,
   FileTextOutlined,
   TwitterOutlined,
   GithubOutlined,
 } from '@ant-design/icons';
-import './Info.scss';
 import jsdelivr from '@/utils/jsdelivr';
 import statements from '@/assets/statements';
 import { dependencies } from '@/../package.json';
@@ -42,16 +41,16 @@ function Info() {
             className='personal__card'
             cover={<Personal />}
             actions={[
-              <a href='https://dsrkafuu.net' key='homepage' target='_blank'>
+              <a href='https://dsrkafuu.net' key='homepage' target='_blank' rel='noreferrer'>
                 <PaperClipOutlined />
               </a>,
-              <a href='https://blog.dsrkafuu.net' key='blog' target='_blank'>
+              <a href='https://blog.dsrkafuu.net' key='blog' target='_blank' rel='noreferrer'>
                 <FileTextOutlined />
               </a>,
-              <a href='https://twitter.com/dsrkafuu' key='twitter' target='_blank'>
+              <a href='https://twitter.com/dsrkafuu' key='twitter' target='_blank' rel='noreferrer'>
                 <TwitterOutlined />
               </a>,
-              <a href='https://githuib.com/dsrkafuu' key='github' target='_blank'>
+              <a href='https://githuib.com/dsrkafuu' key='github' target='_blank' rel='noreferrer'>
                 <GithubOutlined />
               </a>,
             ]}

@@ -1,5 +1,4 @@
-import React, { useCallback, useState, useMemo } from 'react';
-import { Input, Button, Space, message, Card, List, Typography } from 'antd';
+import './KataCode.scss';
 import 'antd/es/input/style';
 import 'antd/es/button/style';
 import 'antd/es/space/style';
@@ -7,8 +6,9 @@ import 'antd/es/message/style';
 import 'antd/es/card/style';
 import 'antd/es/list/style';
 import 'antd/es/typography/style';
+import { Input, Button, Space, message, Card, List, Typography } from 'antd';
+import { useCallback, useState, useMemo } from 'react';
 import { LeftOutlined, RightOutlined, DeleteOutlined } from '@ant-design/icons';
-import './KataCode.scss';
 import { encodeKata, decodeKata } from '@/utils/katacode';
 
 function KataCodeInfo() {

@@ -1,5 +1,4 @@
-import React from 'react';
-import { Row, Col, Card, Image, Carousel, List, Button, Alert } from 'antd';
+import './Minecraft.scss';
 import 'antd/es/row/style';
 import 'antd/es/col/style';
 import 'antd/es/card/style';
@@ -8,7 +7,7 @@ import 'antd/es/carousel/style';
 import 'antd/es/list/style';
 import 'antd/es/button/style';
 import 'antd/es/alert/style';
-import './Minecraft.scss';
+import { Row, Col, Card, Image, Carousel, List, Button, Alert } from 'antd';
 import Loading from '@/components/Loading';
 import { useSWRAPI } from '@/hooks/swr';
 import jsdelivr from '@/utils/jsdelivr';

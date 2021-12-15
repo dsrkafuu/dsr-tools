@@ -2,6 +2,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from '@svgr/rollup';
+import htmlEnv from 'vite-plugin-html-env';
 import { visualizer } from 'rollup-plugin-visualizer';
 
 /**
@@ -9,13 +10,14 @@ import { visualizer } from 'rollup-plugin-visualizer';
  */
 export default defineConfig({
   plugins: [
-    react(),
-    svgr(),
-    visualizer({
-      filename: 'dist/bundle.html',
-      gzipSize: true,
-      brotliSize: true,
+    svgr({
+      icon: true,
+      typescript: true,
+      svgProps: { className: 'g-icon' },
     }),
+    react(),
+    htmlEnv(process.env),
+    visualizer(),
   ],
 
   build: {
