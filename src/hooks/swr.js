@@ -17,11 +17,10 @@ export function useSWRBGM(path) {
  * @param {boolean} workers use CloudFlare Workers
  */
 export function useSWRAPI(path, workers = false) {
-  if (workers) {
-    return useSWR(`https://workers.dsrkafuu.net/dsr-cdn-api/dsr-tools${path}`, fetcher);
-  } else {
-    return useSWR(jsdelivr(`/dsr-tools${path}`, 'dsr-cdn-api'), fetcher);
-  }
+  const realPath = workers
+    ? `https://workers.dsrkafuu.net/dsr-cdn-api/dsr-tools${path}`
+    : jsdelivr(`/dsr-tools${path}`, 'dsr-cdn-api');
+  return useSWR(realPath, fetcher);
 }
 
 /**

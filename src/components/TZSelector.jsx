@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import { Select } from 'antd';
-import 'antd/es/select/style';
-import { timeZonesNames } from '@vvo/tzdb';
 import './TZSelector.scss';
+import 'antd/es/select/style';
+import { Select } from 'antd';
+import { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import { timeZonesNames } from '@vvo/tzdb';
 
 function TZSelector({ value, onChange }) {
   // 有效的时区

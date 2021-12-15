@@ -1,8 +1,8 @@
-import React, { Fragment, Suspense } from 'react';
+import './Routes.scss';
+import { Spin } from 'antd';
+import { Fragment, Suspense } from 'react';
 import { useRoutes, Outlet } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { Spin } from 'antd';
-import './Routes.scss';
 import index from './index';
 import ErrorBoundary from './ErrorBoundary';
 import NotFound from '@/views/NotFound';

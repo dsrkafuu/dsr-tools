@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Spin, Result, Button } from 'antd';
+import './Loading.scss';
 import 'antd/es/spin/style';
 import 'antd/es/button/style';
 import 'antd/es/result/style';
-import './Loading.scss';
+import { Spin, Result, Button } from 'antd';
+import PropTypes from 'prop-types';
 
 function Loading({ isLoading, isError, children }) {
   if (isError) {

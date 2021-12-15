@@ -1,4 +1,3 @@
-import React from 'react';
 import { Timeline } from 'antd';
 import 'antd/es/timeline/style';
 import './Changelog.scss';

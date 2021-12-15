@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Image, Skeleton, Spin } from 'antd';
+import './QRCode.scss';
 import 'antd/es/image/style';
 import 'antd/es/skeleton/style';
 import 'antd/es/spin/style';
-import './QRCode.scss';
+import { Image, Skeleton, Spin } from 'antd';
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { IMAGE_FALLBACK, SCRIPT_AWESOME_QR } from '@/utils/constants';
 
 const size = 128;

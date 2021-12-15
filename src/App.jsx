@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Layout } from 'antd';
 import 'antd/es/layout/style';
 import './App.scss';

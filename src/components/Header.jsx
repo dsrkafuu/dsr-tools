@@ -1,17 +1,17 @@
-import React, { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Button, message, PageHeader, Popover } from 'antd';
+import './Header.scss';
 import 'antd/es/button/style';
 import 'antd/es/message/style';
 import 'antd/es/page-header/style';
 import 'antd/es/popover/style';
+import { Button, message, PageHeader, Popover } from 'antd';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   ShareAltOutlined,
   SyncOutlined,
 } from '@ant-design/icons';
-import './Header.scss';
 import dayjs from '@/utils/dayjs';
 import useRoute from '@/hooks/route';
 import QRCode from './QRCode';
@@ -62,12 +62,12 @@ function Header({ collapsed, onCollapsedChange }) {
           key='share'
           trigger='click'
           content={
-            <Fragment>
+            <>
               <QRCode className='header__qrcode' content={window.location.href} />
               <Button className='header__copy' block={true} type='primary' onClick={copyShareLink}>
                 复制链接
               </Button>
-            </Fragment>
+            </>
           }
         >
           <Button type='primary' icon={<ShareAltOutlined />} />

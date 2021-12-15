@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import './Sidebar.scss';
+import 'antd/es/menu/style';
+import { Menu } from 'antd';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Menu } from 'antd';
-import 'antd/es/menu/style';
-import './Sidebar.scss';
 import routes from '@/router/index';
 import responsive from '@/utils/responsive';
 import Logo from './Logo';

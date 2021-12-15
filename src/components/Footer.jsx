@@ -1,6 +1,5 @@
-import React from 'react';
-import { CopyrightOutlined } from '@ant-design/icons';
 import './Footer.scss';
+import { CopyrightOutlined } from '@ant-design/icons';
 import dayjs from '@/utils/dayjs';
 import { version } from '@/assets/changelog';
 import { ReactComponent as ReactIcon } from '@/assets/svg/react.svg';
