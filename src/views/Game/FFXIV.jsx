@@ -65,7 +65,7 @@ function FFXIV() {
     } else if (ierror && fdata && fdata.data) {
       return fdata.data;
     } else {
-      return { chocobo: [], moogle: [], fatCat: [] };
+      return { chocobo: [], moogle: [], fatCat: [], dog: [] };
     }
   }, [fdata, idata, ierror]);
 
@@ -75,6 +75,7 @@ function FFXIV() {
       { name: '陆行鸟', key: 'chocobo', records: data.chocobo },
       { name: '莫古力', key: 'moogle', records: data.moogle },
       { name: '猫小胖', key: 'fatcat', records: data.fatCat },
+      { name: '豆豆柴', key: 'dog', records: data.dog },
     ],
     [data]
   );
@@ -128,6 +129,10 @@ function FFXIV() {
   // settings panel data
   const metaList = useMemo(
     () => [
+      {
+        title: '关于本站',
+        desc: '自 2020 年 2 月运营至今，国服最早的全区服狩猎时间汇总站',
+      },
       {
         title: '数据更新',
         desc: '数据更新后 CDN 缓存需要约 10-15 分钟全球刷新，若出现问题则最高需要 12 小时',
