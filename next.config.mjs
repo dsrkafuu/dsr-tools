@@ -1,6 +1,9 @@
 /**
  * https://nextjs.org/docs/basic-features/typescript#type-checking-nextconfigjs
+ * https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#extend-nextjs-configuration
  */
+
+import { withSentryConfig } from '@sentry/nextjs';
 
 /**
  * @type {import('next').NextConfig}
@@ -59,4 +62,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, { silent: true });
