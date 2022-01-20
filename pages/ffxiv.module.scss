@@ -81,9 +81,9 @@
   position: relative;
   width: max-content;
   min-width: 100%;
-  table-layout: fixed;
   border-collapse: collapse;
   line-height: 1.5;
+  white-space: nowrap;
 
   tr {
     transition: background-color $transition-fast ease;
