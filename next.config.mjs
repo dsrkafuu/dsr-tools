@@ -8,6 +8,27 @@
 const nextConfig = {
   reactStrictMode: true,
 
+  // migration
+  async redirects() {
+    return [
+      {
+        source: '/game/:path*',
+        destination: '/:path*',
+        permanent: true,
+      },
+      {
+        source: '/about/info',
+        destination: '/about',
+        permanent: true,
+      },
+      {
+        source: '/about/changelog',
+        destination: '/changelog',
+        permanent: true,
+      },
+    ];
+  },
+
   // allowed optimization domains
   images: {
     domains: ['cdn.jsdelivr.net'],
