@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tools.dsrkafuu.net/sitemap.xml
