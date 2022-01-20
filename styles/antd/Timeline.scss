@@ -1,0 +1,25 @@
+@import 'antd/es/timeline/style/index';
+
+.ant-timeline {
+  width: 100%;
+  color: var(--color-font);
+  padding-top: 16px; // fix position
+
+  p {
+    margin-top: 0;
+  }
+}
+
+.ant-timeline-item-head-blue {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.ant-timeline-item-head-green {
+  color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.ant-timeline-item-tail {
+  border-left: $highlight-size solid var(--color-bg);
+}

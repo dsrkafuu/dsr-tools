@@ -1,30 +1,36 @@
-.DS_Store
-.npm/
-.pnpm-store/
-node_modules/
-jspm_packages/
-web_modules/
-dist/
-
-# mock
-public/mock/
-
-# env files
+# custom
 .env*
 
-# Log files
+# output
+dist/
+dist-ssr/
+/.next/
+/out/
+/build
+
+# logs
+logs/
+*.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
 
-# Editor directories and files
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-.vercel
-stats.html
+# runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# dependency directories
+.npm/
+node_modules/
+
+# system
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

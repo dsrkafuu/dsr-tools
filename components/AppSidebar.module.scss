@@ -1,0 +1,78 @@
+.sidebar {
+  width: $width-sidebar;
+  background-color: var(--color-bg);
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+
+  .siteIcon {
+    height: 140px;
+  }
+}
+
+.siteIcon {
+  flex: 0 0 auto;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.siteIconImage {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.menu {
+  padding-top: 12px;
+  flex: 1 0 auto;
+}
+
+.menuItem {
+  display: flex;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 $space-card;
+  user-select: none;
+  cursor: pointer;
+  transition: background-color $transition-fast ease,
+    border-color $transition-fast ease;
+  border-right: $highlight-size solid transparent;
+
+  &:hover {
+    background-color: var(--color-transparent-active);
+  }
+
+  &_active {
+    border-color: var(--color-primary);
+  }
+}
+
+.menuIcon {
+  margin-right: 8px;
+  position: relative;
+  top: 0.15em;
+
+  :global(.svgr) {
+    width: 1.1em;
+    height: 1.1em;
+  }
+}
+
+.footer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: $font-xs;
+  line-height: 1.5;
+  padding: 12px 0;
+  padding-bottom: 16px;
+  opacity: 0.75;
+}

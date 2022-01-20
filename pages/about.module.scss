@@ -1,0 +1,42 @@
+.container {
+  padding: $space-card;
+  display: flex;
+
+  @include responsive {
+    flex-direction: column;
+  }
+}
+
+.left,
+.right {
+  flex: 1 1 50%;
+}
+
+.left {
+  padding-right: calc($space-card / 2);
+
+  @include responsive {
+    padding-right: 0;
+  }
+}
+.right {
+  padding-left: calc($space-card / 2);
+
+  @include responsive {
+    padding-top: $space-card;
+    padding-left: 0;
+  }
+}
+
+.image {
+  position: relative;
+  height: 280px;
+  border-radius: $corner-radius;
+  overflow: hidden;
+  margin-bottom: $space-card;
+  box-shadow: var(--box-shadow);
+
+  @include responsive {
+    height: 180px;
+  }
+}

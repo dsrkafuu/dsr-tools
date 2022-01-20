@@ -1,0 +1,29 @@
+@import 'antd/es/message/style/index';
+
+.ant-message {
+  color: var(--color-font);
+  font-size: $font-md;
+}
+
+.ant-message-notice-content {
+  background: var(--color-bg);
+  border-radius: $corner-radius;
+  box-shadow: var(--box-shadow);
+}
+
+.ant-message-success .anticon {
+  color: var(--color-success);
+}
+
+.ant-message-error .anticon {
+  color: var(--color-danger);
+}
+
+.ant-message-warning .anticon {
+  color: var(--color-danger);
+}
+
+.ant-message-info .anticon,
+.ant-message-loading .anticon {
+  color: var(--color-primary);
+}

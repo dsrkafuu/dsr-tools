@@ -1,0 +1,46 @@
+// 和根元素 _root 相同
+.layout {
+  height: 100%;
+  width: 100%;
+  flex: 1 0 100%;
+  display: flex;
+}
+
+.sidebar {
+  z-index: 2;
+  flex: 0 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+@include responsive {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+.main {
+  z-index: 1;
+  height: 100%;
+  flex: 1 1 auto;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.content {
+  height: calc(100% - $height-navbar);
+  margin-top: $height-navbar;
+  overflow-y: auto;
+}

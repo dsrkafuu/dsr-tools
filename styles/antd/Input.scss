@@ -1,0 +1,21 @@
+@import 'antd/es/input/style/index';
+
+textarea.ant-input {
+  transition: border-color $transition-fast ease;
+  color: var(--color-font);
+}
+
+.ant-input,
+.ant-input:hover {
+  border-radius: $corner-radius;
+  border: $border-size solid transparent;
+  border-right-width: $border-size !important;
+  background-color: var(--color-wrapper);
+  box-shadow: none;
+}
+
+.ant-input:focus {
+  border: $border-size solid var(--color-primary);
+  border-right-width: $border-size !important;
+  box-shadow: none;
+}

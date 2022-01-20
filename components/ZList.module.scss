@@ -1,0 +1,44 @@
+.zlist {
+  background-color: var(--color-bg);
+  padding: $space-card;
+  border-radius: $corner-radius;
+  position: relative;
+  box-shadow: var(--box-shadow);
+  line-height: 1.5;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.section {
+  border-top: $border-size solid var(--color-border);
+  padding: $space-para 0;
+
+  &:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.title {
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.inline {
+  .section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title {
+    margin-bottom: 0;
+  }
+}
