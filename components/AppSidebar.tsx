@@ -3,7 +3,6 @@ import { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
-import useOutsideClick from '../hooks/useOutsideClick';
 import routes, { Route } from '../utils/routes';
 
 interface AppSidebarProps {
