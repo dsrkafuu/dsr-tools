@@ -2,7 +2,7 @@ export default [
   {
     version: 'v5.0.1',
     date: '2022-01-21',
-    logs: ['修复 Safari 表格样式问题'],
+    logs: ['修复 Safari 表格样式问题', '优化 FFXIV 页面刷新时间'],
   },
   {
     version: 'v5.0.0',
