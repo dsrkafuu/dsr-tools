@@ -30,7 +30,7 @@
   padding: $space-card;
   display: flex;
 
-  @media screen and (max-width: 1079px) {
+  @media screen and (max-width: 1099px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -48,7 +48,7 @@
   font-weight: 500;
   color: var(--color-success);
 
-  @media screen and (max-width: 1079px) {
+  @media screen and (max-width: 1099px) {
     margin: 10px;
   }
 }

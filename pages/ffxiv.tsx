@@ -23,14 +23,14 @@ interface FFXIVAPIData {
 }
 
 /**
- * 每日重新生成页面刷新数据
+ * 每小时重新生成页面刷新数据
  */
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetchAPI('/ffxiv/hunting');
   const data = res.status ? (res.data as FFXIVAPIData) : null;
   return {
     props: { data },
-    revalidate: 86400,
+    revalidate: 3600,
   };
 };
 
@@ -185,7 +185,7 @@ function FFXIV({ data }: FFXIVProps) {
   // 更新时间转换
   const updateMessage = useMemo(() => {
     const updateTime = dayjs(data?.stime || 0).tz(curTZ);
-    let text = `更新于 ${updateTime.format('YYYY-MM-DD')}`;
+    let text = `更新于 ${updateTime.format('YYYY-MM-DD HH:mm')}`;
     if (isDST(updateTime)) {
       text += ' (DST)';
     }
