@@ -63,7 +63,6 @@ function Minecraft({ data }: MinecraftProps) {
               src='/images/minecraft.png'
               layout='fill'
               objectFit='cover'
-              priority
             />
           </div>
           <div className={styles.download}>

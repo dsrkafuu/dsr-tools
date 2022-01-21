@@ -37,7 +37,6 @@ function About() {
             src='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@2.0.0/opengraph/dsrkafuu.jpg'
             layout='fill'
             objectFit='cover'
-            priority
           />
         </div>
         <ZList list={licenseList} />

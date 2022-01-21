@@ -9,7 +9,6 @@ function Home() {
         src='/images/81060246_p0.png'
         layout='fill'
         objectFit='cover'
-        priority
       />
       <div className={styles.inner}>
         <h2 className={styles.title}>DAILY</h2>
