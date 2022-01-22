@@ -41,7 +41,7 @@ function ZCover({ type = 'error', className }: ZCoverProps) {
   const router = useRouter();
 
   return (
-    <div className={clsx(styles.zcover, className)}>
+    <div className={clsx(styles.container, className)}>
       <div className={styles.undraw}>{icon}</div>
       <p className={styles.text}>{text}</p>
       <ZButton

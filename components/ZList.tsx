@@ -14,7 +14,9 @@ interface ZListProps {
 
 function ZList({ list, inline, className }: ZListProps) {
   return (
-    <div className={clsx(styles.zlist, { [styles.inline]: inline }, className)}>
+    <div
+      className={clsx(styles.container, { [styles.inline]: inline }, className)}
+    >
       {list.map((item, idx) => {
         let titleRender: React.ReactNode = item.title;
         if (!titleRender) {

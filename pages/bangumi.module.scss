@@ -2,3 +2,26 @@
   position: relative;
   height: 100%;
 }
+
+.control {
+  background-color: var(--color-bg);
+  border-radius: $corner-radius;
+  box-shadow: var(--box-shadow);
+  margin: $space-card;
+  padding: $space-card;
+  display: flex;
+  align-items: center;
+}
+
+.weekday {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.sorter {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 10px;
+}

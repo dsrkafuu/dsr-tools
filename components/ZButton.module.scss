@@ -14,6 +14,8 @@
   white-space: nowrap;
   text-decoration: none;
   color: inherit;
+  height: 32px;
+  padding: 4px 15px;
 
   &:hover,
   &.disabled {
@@ -57,23 +59,6 @@
   }
 }
 
-// 各类尺寸
-.smallSize {
-  height: 24px;
-  padding: 0 7px;
-}
-
-.mediumSize {
-  height: 32px;
-  padding: 4px 15px;
-}
-
-.largeSize {
-  height: 40px;
-  padding: 6px 15px;
-  font-size: $font-lg;
-}
-
 // 带图标的
 .withIcon {
   justify-content: space-between;
@@ -87,16 +72,5 @@
 .onlyIcon {
   padding: 0;
   justify-content: center;
-
-  &.smallSize {
-    width: 24px;
-  }
-
-  &.mediumSize {
-    width: 32px;
-  }
-
-  &.largeSize {
-    width: 40px;
-  }
+  width: 32px;
 }

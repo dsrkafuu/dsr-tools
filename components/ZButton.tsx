@@ -4,26 +4,24 @@ import { useCallback } from 'react';
 
 interface ZButtonProps {
   type?: 'primary' | 'transparent' | 'success' | 'danger';
-  size?: 'small' | 'medium' | 'large';
   href?: string;
   icon?: React.ReactNode;
   disabled?: boolean;
   children?: React.ReactNode;
   className?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  [key: string]: unknown;
+  suppressHydrationWarning?: boolean;
 }
 
 function ZButton({
   children,
   type = 'transparent',
-  size = 'medium',
   href,
   icon,
   disabled,
   className,
   onClick,
-  ...props
+  suppressHydrationWarning,
 }: ZButtonProps) {
   const ButtonTag = href ? 'a' : 'button';
 
@@ -54,9 +52,6 @@ function ZButton({
           [styles.transparentColor]: type === 'transparent',
           [styles.successColor]: type === 'success',
           [styles.dangerColor]: type === 'danger',
-          [styles.smallSize]: size === 'small',
-          [styles.mediumSize]: size === 'medium',
-          [styles.largeSize]: size === 'large',
           [styles.disabled]: disabled,
           [styles.withIcon]: children && icon,
           [styles.onlyIcon]: !children && icon,
@@ -64,7 +59,7 @@ function ZButton({
         className
       )}
       {...buttonProps}
-      {...props}
+      suppressHydrationWarning={suppressHydrationWarning}
     >
       {icon}
       {children}

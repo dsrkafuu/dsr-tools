@@ -1,0 +1,29 @@
+.label {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 5px;
+}
+
+.input {
+  cursor: pointer;
+  margin-right: 5px;
+  appearance: none;
+  position: relative;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: $border-size solid var(--color-primary);
+  outline: none;
+  background-color: transparent;
+  transition: background-color $transition-fast ease;
+
+  &:hover {
+    background-color: var(--color-transparent-active);
+  }
+
+  &:checked {
+    background-color: var(--color-primary);
+  }
+}
