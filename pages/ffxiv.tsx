@@ -23,14 +23,14 @@ interface FFXIVAPIData {
 }
 
 /**
- * 每小时重新生成页面刷新数据
+ * 每三小时重新生成页面刷新数据
  */
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetchAPI('/ffxiv/hunting');
   const data = res.status ? (res.data as FFXIVAPIData) : null;
   return {
     props: { data },
-    revalidate: 3600,
+    revalidate: 10800,
   };
 };
 
@@ -71,7 +71,6 @@ const infoList = [
   },
 ];
 
-const tzdbOptions = tzdb.map((tz) => ({ value: tz, label: tz }));
 /**
  * 转换北京时间到目标时区
  * @param time 北京时间的 HH:mm
@@ -149,11 +148,14 @@ function FFXIV({ data }: FFXIVProps) {
 
   // 时区设置
   const [curTZ, setCurTZ] = useState('Asia/Shanghai');
-  const handleTimeZoneChange = useCallback((option) => {
-    const newTZ = option.value;
-    setLS('ffxiv-tz', newTZ);
-    setCurTZ(newTZ);
-  }, []);
+  const handleTimeZoneChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const newTZ = e.target.value;
+      setLS('ffxiv-tz', newTZ);
+      setCurTZ(newTZ);
+    },
+    []
+  );
 
   // 确保时区更新
   useEffect(() => {
@@ -220,9 +222,8 @@ function FFXIV({ data }: FFXIVProps) {
           <span>时区</span>
           <ZSelect
             className={styles.tzselect}
-            instanceId='ffxiv-tz'
-            options={tzdbOptions}
-            value={{ label: curTZ, value: curTZ }}
+            options={tzdb}
+            value={curTZ}
             onChange={handleTimeZoneChange}
           />
         </div>

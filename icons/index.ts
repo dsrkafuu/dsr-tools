@@ -1,6 +1,5 @@
 export { default as Bars } from './bars.svg';
 export { default as CalendarWeek } from './calendar-week.svg';
-export { default as ClipboardList } from './clipboard-list.svg';
 export { default as ChevronLeft } from './chevron-left.svg';
 export { default as ChevronRight } from './chevron-right.svg';
 export { default as DiceD6 } from './dice-d6.svg';

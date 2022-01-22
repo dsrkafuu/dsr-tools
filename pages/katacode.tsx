@@ -1,7 +1,8 @@
 import styles from './katacode.module.scss';
 import { useCallback, useState } from 'react';
-import { Input, message } from 'antd';
+import { message } from '../components/ZMessage';
 import ZButton from '../components/ZButton';
+import ZTextArea from '../components/ZTextArea';
 import ZList from '../components/ZList';
 import { encodeKata, decodeKata } from '../utils/katacode';
 import { ChevronLeft, ChevronRight, Trash } from '../icons';
@@ -59,7 +60,7 @@ function KataCode() {
     <div className={styles.container}>
       <div className={styles.main}>
         <div className={styles.card}>
-          <Input.TextArea
+          <ZTextArea
             className={styles.input}
             value={srcValue}
             onChange={(e) => setSrcValue(e.target.value)}
@@ -92,7 +93,7 @@ function KataCode() {
           </ZButton>
         </div>
         <div className={styles.card}>
-          <Input.TextArea
+          <ZTextArea
             className={styles.input}
             value={encValue}
             onChange={(e) => setEncValue(e.target.value)}

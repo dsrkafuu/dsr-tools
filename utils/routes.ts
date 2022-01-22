@@ -6,7 +6,6 @@ import {
   DiceD6,
   QRCode,
   InfoCircle,
-  ClipboardList,
 } from '../icons';
 
 export interface Route {
@@ -50,11 +49,6 @@ const routes: Route[] = [
     path: '/about',
     title: '关于本站',
     icon: InfoCircle,
-  },
-  {
-    path: '/changelog',
-    title: '更新记录',
-    icon: ClipboardList,
   },
 ];
 

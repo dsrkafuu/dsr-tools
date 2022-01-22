@@ -95,8 +95,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
   return {
     props: {
-      // data: parsedData,
-      data: null,
+      data: parsedData,
     },
     revalidate: 86400,
   };

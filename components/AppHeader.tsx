@@ -1,6 +1,6 @@
 import styles from './AppHeader.module.scss';
 import { useState, useEffect, useCallback } from 'react';
-import { message } from 'antd';
+import { message } from './ZMessage';
 import clsx from 'clsx';
 import dayjs from '../utils/dayjs';
 import { Route } from '../utils/routes';

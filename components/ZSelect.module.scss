@@ -1,0 +1,36 @@
+.select {
+  position: relative;
+  height: 32px;
+  line-height: 32px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: 14px 8px 2px 8px;
+    border: 6px solid transparent;
+    border-top: 6px solid var(--color-primary);
+  }
+}
+
+.selectInner {
+  width: 100%;
+  appearance: none;
+  outline: none;
+  height: 32px;
+  line-height: 32px;
+  border: $border-size solid transparent;
+  border-radius: $corner-radius;
+  background-color: var(--color-wrapper);
+  cursor: pointer;
+  color: var(--color-font);
+  padding: 0 6px;
+  transition: border-color $transition-fast ease;
+  position: relative;
+
+  &:focus {
+    border: $border-size solid var(--color-primary);
+  }
+}

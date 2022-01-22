@@ -26,10 +26,8 @@ function ZButton({
   const ButtonTag = href ? 'a' : 'button';
 
   // 若添加了链接，则点击事件无效
-  const handleClick = useCallback<
-    (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
-  >(
-    (e) => {
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       return onClick && onClick(e as React.MouseEvent<HTMLButtonElement>);
     },
     [onClick]

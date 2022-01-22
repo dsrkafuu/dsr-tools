@@ -1,0 +1,47 @@
+.message {
+  position: relative;
+  height: 36px;
+  line-height: 36px;
+  color: #fdfdfd;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+.close {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color $transition-fast ease;
+}
+
+.info {
+  background-color: var(--color-primary);
+
+  .close:hover {
+    background-color: var(--color-primary-active);
+  }
+}
+
+.success {
+  background-color: var(--color-success);
+
+  .close:hover {
+    background-color: var(--color-success-active);
+  }
+}
+
+.error {
+  background-color: var(--color-error);
+
+  .close:hover {
+    background-color: var(--color-error-active);
+  }
+}
