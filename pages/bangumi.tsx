@@ -43,7 +43,7 @@ interface BangumiAPIDataDay {
 type BangumiAPIData = BangumiAPIDataDay[];
 
 /**
- * 每日重新生成页面刷新数据
+ * 每周重新生成页面刷新数据
  */
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetchAPI('/bangumi/calendar');
@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       data: parsedData,
     },
-    revalidate: 86400,
+    revalidate: 604800,
   };
 };
 
