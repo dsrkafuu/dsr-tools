@@ -34,7 +34,7 @@ const nextConfig = {
 
   // allowed optimization domains
   images: {
-    domains: ['cdn.jsdelivr.net'],
+    domains: ['cdn.jsdelivr.net', 'lain.bgm.tv'],
   },
 
   // add global variables

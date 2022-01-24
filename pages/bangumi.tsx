@@ -1,8 +1,5 @@
 import { GetStaticProps } from 'next';
-import { useState } from 'react';
-import ZButton from '../components/ZButton';
-import ZCover from '../components/ZCover';
-import ZRadio from '../components/ZRadio';
+
 import { fetchAPI } from '../lib/api';
 
 interface RawBangumiAPIDataItem {
@@ -16,7 +13,6 @@ interface RawBangumiAPIDataItem {
     score: number;
   };
   images?: {
-    common?: string;
     large?: string;
   };
   collection?: {
@@ -34,16 +30,17 @@ interface BangumiAPIDataItem {
   url: string;
   rawName: string;
   transName?: string;
-  previewImage?: string;
-  largeImage?: string;
+  image?: string;
   raiting?: number;
   hot?: number;
 }
 
-type BangumiAPIData = Array<{
+interface BangumiAPIDataDay {
   weekday: string;
   items: BangumiAPIDataItem[];
-}>;
+}
+
+type BangumiAPIData = BangumiAPIDataDay[];
 
 /**
  * 每日重新生成页面刷新数据
@@ -55,10 +52,7 @@ export const getStaticProps: GetStaticProps = async () => {
   let parsedData: BangumiAPIData | null = null;
   if (data && Array.isArray(data)) {
     parsedData = data.map((weekday) => {
-      const parsed: {
-        weekday: string;
-        items: BangumiAPIDataItem[];
-      } = {
+      const parsed: BangumiAPIDataDay = {
         weekday: weekday.weekday.cn,
         items: [],
       };
@@ -73,13 +67,8 @@ export const getStaticProps: GetStaticProps = async () => {
           ret.transName = item.name_cn;
         }
         // 图片
-        if (item.images && item.images.common) {
-          let img: string | undefined = item.images.common;
-          ret.previewImage = `${img}`.replace(/https?:\/\//gi, '//');
-          img = item.images.large;
-          if (img) {
-            ret.largeImage = `${img}`.replace(/https?:\/\//gi, '//');
-          }
+        if (item.images && item.images.large) {
+          ret.image = `${item.images.large}`.replace(/https?:\/\//gi, '//');
         }
         // 评分和热度
         if (item.rating?.score) {
@@ -102,42 +91,84 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 import styles from './bangumi.module.scss';
-
-/**
- * 解析日期 id 为中文星期几
- */
-function formatWeekday(day: number) {
-  const dayNames = ['日', '一', '二', '三', '四', '五', '六'];
-  return '星期' + (dayNames[day] || ' ?');
-}
-
-/**
- * 将 10 分制评分对应到五星制评分；
- * 返回数组第一项为 10 分制评分，第二项为五星制评分
- */
-function formatRating(score = 0) {
-  const rating = (Math.ceil(score) / 2).toFixed(1);
-  const _score = score.toFixed(1);
-  return [_score, rating];
-}
+import Image from 'next/image';
+import { useCallback, useMemo, useState } from 'react';
+import ZButton from '../components/ZButton';
+import ZCover from '../components/ZCover';
+import ZRadio from '../components/ZRadio';
+import { Rating } from 'react-simple-star-rating';
+import { FireAlt, Star } from '../icons';
 
 /**
  * 格式化热度数据
  */
 function formatHot(hot = 0) {
-  let res: string[] = [];
-  if (hot > 10000) {
-    res = (hot / 1000).toFixed(2).split('');
-    // remove end 0
-    while (res[res.length - 1] === '.' || res[res.length - 1] === '0') {
-      res.pop();
-    }
-    return `${res.join('')}k`;
-  } else if (hot) {
-    return `${hot}`;
-  } else {
-    return '';
+  return `${hot}`;
+}
+
+interface BangumiDayProps {
+  data: BangumiAPIDataDay | null;
+}
+
+function BangumiDay({ data }: BangumiDayProps) {
+  if (!data) {
+    return <div className={styles.day}></div>;
   }
+  return (
+    <div className={styles.day}>
+      <div className={styles.daycard}>
+        <div className={styles.daytitle}>{data.weekday}</div>
+        <div className={styles.daylist}>
+          {data.items.map((item) => {
+            return (
+              <a
+                key={item.id}
+                className={styles.dayitem}
+                href={item.url}
+                target='_blank'
+                rel='noopener'
+              >
+                <div className={styles.dayimage}>
+                  {item.image ? (
+                    <Image
+                      src={`https:${item.image}`}
+                      width={80}
+                      height={80}
+                      objectFit='cover'
+                    />
+                  ) : null}
+                </div>
+                <div className={styles.daymeta}>
+                  <h3 className={styles.dayname}>{item.rawName}</h3>
+                  {item.transName && (
+                    <span className={styles.daytrans}>{item.transName}</span>
+                  )}
+                  <div className={styles.dayscore}>
+                    <div className={styles.rating}>
+                      <Rating
+                        ratingValue={(item.raiting || 0) * 10}
+                        readonly={true}
+                        allowHalfIcon={true}
+                        allowHover={false}
+                        fillColor='#8aa2d3'
+                        fullIcon={<Star />}
+                        emptyIcon={<Star />}
+                      />
+                      {(item.raiting || 0).toFixed(1)}
+                    </div>
+                    <div className={styles.hot}>
+                      {formatHot(item.hot)}
+                      <FireAlt />
+                    </div>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 interface BangumiProps {
@@ -147,6 +178,56 @@ interface BangumiProps {
 function Bangumi({ data }: BangumiProps) {
   const [curWeekdayIdx, setCurWeekdayIdx] = useState(0);
   const [sortRule, setSortRule] = useState(0);
+
+  const sorter = useCallback(
+    (a: BangumiAPIDataItem, b: BangumiAPIDataItem) => {
+      if (sortRule === 0) {
+        return (b.hot || 0) - (a.hot || 0);
+      } else {
+        return (b.raiting || 0) - (a.raiting || 0);
+      }
+    },
+    [sortRule]
+  );
+
+  const todayData = useMemo(() => {
+    const _data = data?.[curWeekdayIdx];
+    if (!_data) {
+      return null;
+    }
+    return {
+      weekday: _data.weekday,
+      items: _data.items.sort(sorter),
+    };
+  }, [curWeekdayIdx, data, sorter]);
+  const prevdayData = useMemo(() => {
+    const idx = curWeekdayIdx - 1;
+    if (idx > 7 || idx < 0) {
+      return null;
+    }
+    const _data = data?.[idx];
+    if (!_data) {
+      return null;
+    }
+    return {
+      weekday: _data.weekday,
+      items: _data.items.sort(sorter),
+    };
+  }, [curWeekdayIdx, data, sorter]);
+  const nextdayData = useMemo(() => {
+    const idx = curWeekdayIdx + 1;
+    if (idx > 7 || idx < 0) {
+      return null;
+    }
+    const _data = data?.[idx];
+    if (!_data) {
+      return null;
+    }
+    return {
+      weekday: _data.weekday,
+      items: _data.items.sort(sorter),
+    };
+  }, [curWeekdayIdx, data, sorter]);
 
   if (!data) {
     return (
@@ -178,7 +259,11 @@ function Bangumi({ data }: BangumiProps) {
           </ZRadio>
         </div>
       </div>
-      <div className={styles.content}></div>
+      <div className={styles.content}>
+        <BangumiDay data={prevdayData} />
+        <BangumiDay data={todayData} />
+        <BangumiDay data={nextdayData} />
+      </div>
     </div>
   );
 }

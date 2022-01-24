@@ -25,3 +25,144 @@
   display: flex;
   gap: 10px;
 }
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 calc($space-card / 2) $space-card calc($space-card / 2);
+}
+
+.day {
+  flex: 1 1 33%;
+  padding: 0 calc($space-card / 2);
+  min-width: 0; // for text-overflow: ellipsis;
+
+  @media (max-width: 1080px) {
+    &:first-child,
+    &:last-child {
+      display: none;
+    }
+  }
+}
+
+.daycard {
+  background-color: var(--color-bg);
+  border-radius: $corner-radius;
+  box-shadow: var(--box-shadow);
+}
+
+.daytitle {
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+  padding: $space-card;
+  border-bottom: $border-size solid var(--color-border);
+}
+
+.daylist {
+  padding: $space-card 0;
+}
+
+.dayitem {
+  display: flex;
+  margin: $space-card;
+  color: var(--color-font);
+  text-decoration: none;
+  border-radius: $corner-radius;
+  transition: background-color $transition-fast ease;
+
+  &:hover {
+    background-color: var(--color-transparent-active);
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.dayimage {
+  flex: 0 0 auto;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  border-radius: $corner-radius;
+  overflow: hidden;
+  background-color: var(--color-wrapper);
+  margin-right: $space-card;
+}
+
+.daymeta {
+  flex: 1 1 auto;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 0; // for text-overflow: ellipsis;
+  padding-right: 1px;
+  line-height: 1.5;
+  position: relative;
+}
+
+.dayname {
+  margin: 0;
+  font-size: 16px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.daytrans {
+  font-size: 14px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dayscore {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+
+  @media (max-width: 1480px) and (min-width: 1080px) {
+    display: none !important;
+  }
+
+  & > span {
+    margin-right: 10px;
+  }
+
+  svg {
+    font-size: 20px;
+    position: relative;
+    top: 1.5px;
+    margin-right: 2px;
+  }
+}
+
+.hot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+
+  & > svg {
+    font-size: 20px;
+    position: relative;
+    top: -1.5px;
+    margin-left: 6px;
+    color: var(--color-primary);
+  }
+}

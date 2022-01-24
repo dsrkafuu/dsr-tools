@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "dsr-tools",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "新版 DSRToolS 站点项目，基于 Next。",
   "license": "AGPL-3.0",
   "author": "DSRKafuU <dsrkafuu@outlook.com> (https://dsrkafuu.net)",
@@ -23,6 +23,7 @@
     "normalize.css": "~8.0.1",
     "react": "~17.0.2",
     "react-dom": "~17.0.2",
+    "react-simple-star-rating": "~4.0.5",
     "react-transition-group": "~4.4.2",
     "sass": "~1.49.0",
     "sharp": "~0.29.3"
