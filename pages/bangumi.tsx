@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async () => {
   if (data && Array.isArray(data)) {
     parsedData = data.map((weekday) => {
       const parsed: BangumiAPIDataDay = {
-        weekday: weekday.weekday.cn,
+        weekday: `${weekday.weekday.cn}`.replace('星期', '周'),
         items: [],
       };
       weekday.items.forEach((item) => {
@@ -146,6 +146,7 @@ function BangumiDay({ data }: BangumiDayProps) {
                   <div className={styles.dayscore}>
                     <div className={styles.rating}>
                       <Rating
+                        className={styles.rtpn}
                         ratingValue={(item.raiting || 0) * 10}
                         readonly={true}
                         allowHalfIcon={true}

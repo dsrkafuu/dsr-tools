@@ -11,6 +11,11 @@
   padding: $space-card;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+
+  @include responsive {
+    flex-direction: column;
+  }
 }
 
 .weekday {
@@ -18,12 +23,21 @@
   justify-content: flex-start;
   align-items: center;
   flex: 1 1 auto;
+  flex-wrap: wrap;
+
+  @include responsive {
+    justify-content: center;
+  }
 }
 
 .sorter {
   flex: 0 0 auto;
   display: flex;
   gap: 10px;
+
+  @include responsive {
+    margin-top: 18px;
+  }
 }
 
 .content {
@@ -136,12 +150,23 @@
   align-items: center;
   font-size: 16px;
 
-  @media (max-width: 1480px) and (min-width: 1080px) {
-    display: none !important;
+  .rtpn {
+    margin-right: 10px;
   }
 
-  & > span {
-    margin-right: 10px;
+  @media (min-width: 1080px) and (max-width: 1480px) {
+    font-weight: 500;
+    color: var(--color-primary);
+    .rtpn {
+      display: none !important;
+    }
+  }
+  @include responsive {
+    font-weight: 500;
+    color: var(--color-primary);
+    .rtpn {
+      display: none !important;
+    }
   }
 
   svg {
