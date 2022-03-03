@@ -3,14 +3,46 @@
  */
 
 import '../styles/index.scss';
+import { useEffect } from 'react';
 import Script from 'next/script';
 import type { AppProps } from 'next/app';
-import GlobalHead from '../components/GlobalHead';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import GlobalLayout from '../components/GlobalLayout';
 
+import DSRA from 'dsr-analytics';
+
 function MyApp({ Component, pageProps }: AppProps) {
+  // intergate dsr-analytics
+  const router = useRouter();
+  useEffect(() => {
+    // dsra is a singleton instance
+    const dsra = DSRA('V1StGXR8_Z', 'https://analytics.dsrkafuu.cn:8443/', {
+      autoView: false,
+      autoVital: false,
+      autoError: false,
+    });
+    // catch first page load
+    dsra.sendView(router.asPath, document.referrer);
+    // catch client side page change
+    const handleRouteComplete = (url: string) => {
+      dsra.sendView(url);
+    };
+    router.events.on('routeChangeComplete', handleRouteComplete);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteComplete);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
+      <Head>
+        <meta charSet='UTF-8' />
+        <meta content='IE=edge' httpEquiv='X-UA-Compatible' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='author' content='DSRKafuU' />
+      </Head>
       {/* Google Analytics */}
       <Script
         strategy='afterInteractive'
@@ -28,7 +60,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Script strategy='afterInteractive'>
         {`window.$crisp=[];window.CRISP_WEBSITE_ID="d3750a6b-c763-4252-8ec7-bce6050774f6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}
       </Script>
-      <GlobalHead />
       <GlobalLayout>
         <Component {...pageProps} />
       </GlobalLayout>
