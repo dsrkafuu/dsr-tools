@@ -13,7 +13,7 @@ specifiers:
   '@typescript-eslint/parser': ~5.13.0
   clsx: ~1.1.1
   dayjs: ~1.10.8
-  dsr-analytics: ~0.5.0
+  dsr-analytics: ~0.6.0
   dsr-design: ~2.5.1
   eslint: ~8.10.0
   eslint-plugin-react: ~7.29.2
@@ -36,7 +36,7 @@ dependencies:
   '@svgr/webpack': 6.2.1
   clsx: 1.1.1
   dayjs: 1.10.8
-  dsr-analytics: 0.5.0
+  dsr-analytics: 0.6.0
   dsr-design: 2.5.1_normalize.css@8.0.1
   minimatch: 5.0.1
   next: 12.1.0_b8b2418670651b634ff05a91b7cd94fe
@@ -2457,8 +2457,8 @@ packages:
       domhandler: 4.3.0
     dev: false
 
-  /dsr-analytics/0.5.0:
-    resolution: {integrity: sha512-Ws7noQ+kOeHPtbmvA6GDs73CTx0qsSYvT4w6FtC2IoDp5/4xvB9ALDgxVuJfEulfDQkk4VCbvPKdzK5Dc13MMQ==}
+  /dsr-analytics/0.6.0:
+    resolution: {integrity: sha512-1fTkh3dmY8Ls8sUJvwKgFyFQjmzRb+x1S7XcViRLFQaQQhK7ZH0k3k3/JClck5XEzu62PX+dMosg+/4zMEsS9A==}
     dev: false
 
   /dsr-design/2.5.1_normalize.css@8.0.1:
