@@ -23,10 +23,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       autoError: false,
     });
     // catch first page load
-    dsra.sendView(router.asPath, document.referrer);
+    dsra.sendView(router.asPath, document.title, document.referrer);
     // catch client side page change
     const handleRouteComplete = (url: string) => {
-      dsra.sendView(url);
+      dsra.sendView(url, document.title);
     };
     router.events.on('routeChangeComplete', handleRouteComplete);
     return () => {
