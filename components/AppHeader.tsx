@@ -6,6 +6,7 @@ import dayjs from '../utils/dayjs';
 import { Route } from '../utils/routes';
 import { Sync, ShareAlt, Bars } from '../icons';
 import ZButton from './ZButton';
+import AppBanner from './AppBanner';
 
 interface AppHeaderProps {
   route: Route;
@@ -50,37 +51,40 @@ function AppHeader({ route, onSidebarCollapseClick }: AppHeaderProps) {
   }, []);
 
   return (
-    <div className={styles.header}>
-      <div className={styles.control}>
-        <ZButton
-          type='primary'
-          icon={<Bars />}
-          onClick={onSidebarCollapseClick}
-        />
+    <>
+      <AppBanner />
+      <div className={styles.header}>
+        <div className={styles.control}>
+          <ZButton
+            type='primary'
+            icon={<Bars />}
+            onClick={onSidebarCollapseClick}
+          />
+        </div>
+        <div className={styles.meta}>
+          <h1 className={styles.title}>{route.title}</h1>
+          <span className={clsx(styles.subTitle, styles.hideOnMobile)}>
+            DSRToolS
+          </span>
+        </div>
+        <div className={styles.rightSide}>
+          <ZButton
+            className={clsx(styles.clock, styles.hideOnMobile)}
+            onClick={toggleTimeMode}
+            suppressHydrationWarning // 时间无法保证 SSR 和 CSR 同步
+          >
+            {timeMode === 'local' ? localTime : utcTime}
+          </ZButton>
+          <ZButton
+            className={styles.hideOnMobile}
+            type='primary'
+            icon={<Sync />}
+            onClick={() => window.location.reload()}
+          />
+          <ZButton type='primary' icon={<ShareAlt />} onClick={copyShareLink} />
+        </div>
       </div>
-      <div className={styles.meta}>
-        <h1 className={styles.title}>{route.title}</h1>
-        <span className={clsx(styles.subTitle, styles.hideOnMobile)}>
-          DSRToolS
-        </span>
-      </div>
-      <div className={styles.rightSide}>
-        <ZButton
-          className={clsx(styles.clock, styles.hideOnMobile)}
-          onClick={toggleTimeMode}
-          suppressHydrationWarning // 时间无法保证 SSR 和 CSR 同步
-        >
-          {timeMode === 'local' ? localTime : utcTime}
-        </ZButton>
-        <ZButton
-          className={styles.hideOnMobile}
-          type='primary'
-          icon={<Sync />}
-          onClick={() => window.location.reload()}
-        />
-        <ZButton type='primary' icon={<ShareAlt />} onClick={copyShareLink} />
-      </div>
-    </div>
+    </>
   );
 }
 

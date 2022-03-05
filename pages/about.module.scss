@@ -1,6 +1,7 @@
 .container {
   padding: $space-card;
   display: flex;
+  min-height: 100%;
 
   @include responsive {
     flex-direction: column;

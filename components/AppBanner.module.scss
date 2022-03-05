@@ -1,0 +1,20 @@
+.banner {
+  height: 45px;
+  color: var(--color-font-inverse);
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+}
+
+.text {
+  margin-right: 6px;
+}
+
+.emoji {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: -1px;
+}

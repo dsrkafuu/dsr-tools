@@ -12,10 +12,13 @@ import GlobalLayout from '../components/GlobalLayout';
 
 import withDSRA from 'dsr-analytics';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function useDSRA() {
   const router = useRouter();
 
   useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') {
+      return;
+    }
     // dsra is a singleton instance
     const dsra = withDSRA('DEBUGXR8_Z', 'https://analytics.dsrkafuu.cn:8443/');
     // catch first page load
@@ -30,6 +33,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+}
+
+function MyApp({ Component, pageProps }: AppProps) {
+  useDSRA();
 
   return (
     <>
