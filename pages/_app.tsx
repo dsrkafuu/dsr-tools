@@ -10,18 +10,13 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import GlobalLayout from '../components/GlobalLayout';
 
-import DSRA from 'dsr-analytics';
+import useDSRA from 'dsr-analytics';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  // intergate dsr-analytics
   const router = useRouter();
+  // dsra is a singleton instance
+  const dsra = useDSRA('DEBUGXR8_Z', 'https://analytics.dsrkafuu.cn:8443/');
   useEffect(() => {
-    // dsra is a singleton instance
-    const dsra = DSRA('V1StGXR8_Z', 'https://analytics.dsrkafuu.cn:8443/', {
-      autoView: false,
-      autoVital: false,
-      autoError: false,
-    });
     // catch first page load
     dsra.sendView(router.asPath, document.title, document.referrer);
     // catch client side page change
