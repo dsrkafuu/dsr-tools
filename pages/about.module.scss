@@ -41,3 +41,15 @@
     height: 180px;
   }
 }
+
+.info {
+  display: flex;
+  margin-bottom: $space-card;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &Btn:not(:last-child) {
+    margin-right: $space-card;
+  }
+}

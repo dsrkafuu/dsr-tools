@@ -2,6 +2,7 @@ import styles from './about.module.scss';
 import Image from 'next/image';
 import ZList from '../components/ZList';
 import pkg from '../package.json';
+import ZButton from '../components/ZButton';
 
 const licenseList = [
   {
@@ -38,6 +39,29 @@ function About() {
             layout='fill'
             objectFit='cover'
           />
+        </div>
+        <div className={styles.info}>
+          <ZButton
+            type='primary'
+            className={styles.infoBtn}
+            href='https://dsrkafuu.net'
+          >
+            主页
+          </ZButton>
+          <ZButton
+            type='primary'
+            className={styles.infoBtn}
+            href='https://blog.dsrkafuu.net'
+          >
+            博客
+          </ZButton>
+          <ZButton
+            type='primary'
+            className={styles.infoBtn}
+            href='https://design.dsrkafuu.net'
+          >
+            设计
+          </ZButton>
         </div>
         <ZList list={licenseList} />
       </div>
