@@ -54,7 +54,7 @@ function GlobalLayout({ children }: GlobalLayoutProps) {
       suppressHydrationWarning // 移动端端侧边栏首次渲染无法保证 SSR 和 CSR 同步
     >
       <Head>
-        <title>{matchedRoute.title} | DSRToolS</title>
+        <title>{matchedRoute.title} | DSRTOOLS</title>
       </Head>
       <CSSTransition
         in={!sidebarCollapsed}

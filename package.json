@@ -2,7 +2,7 @@
   "private": true,
   "name": "dsr-tools",
   "version": "5.2.2",
-  "description": "新版 DSRToolS 站点项目，基于 Next。",
+  "description": "新版 DSRTOOLS 站点项目，基于 Next。",
   "license": "AGPL-3.0",
   "author": "DSRKafuU <dsrkafuu@outlook.com> (https://dsrkafuu.net)",
   "scripts": {

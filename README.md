@@ -1,10 +1,10 @@
-# DSRToolS
+# DSRTOOLS
 
 ![BADGE](https://img.shields.io/github/workflow/status/dsrkafuu/dsr-tools/test?style=flat-square)
 ![BADGE](https://img.shields.io/github/languages/top/dsrkafuu/dsr-tools?style=flat-square)
 ![BADGE](https://img.shields.io/github/license/dsrkafuu/dsr-tools?style=flat-square)
 
-新版 DSRToolS 站点项目，基于 [React](https://github.com/facebook/react) 和 [Ant Design](https://github.com/ant-design/ant-design/)。
+新版 DSRTOOLS 站点项目，基于 [React](https://github.com/facebook/react) 和 [Ant Design](https://github.com/ant-design/ant-design/)。
 
 ## 开发
 

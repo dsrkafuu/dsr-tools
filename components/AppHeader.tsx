@@ -64,7 +64,7 @@ function AppHeader({ route, onSidebarCollapseClick }: AppHeaderProps) {
         <div className={styles.meta}>
           <h1 className={styles.title}>{route.title}</h1>
           <span className={clsx(styles.subTitle, styles.hideOnMobile)}>
-            DSRToolS
+            DSRTOOLS
           </span>
         </div>
         <div className={styles.rightSide}>
