@@ -27,7 +27,7 @@ interface FFXIVAPIData {
  */
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetchAPI('/ffxiv/hunting');
-  const data = res.status ? (res.data as FFXIVAPIData) : null;
+  const data = (res as FFXIVAPIData) || null;
   return {
     props: { data },
     revalidate: 43200,

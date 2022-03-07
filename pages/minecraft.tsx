@@ -15,7 +15,7 @@ interface MinecraftAPIData {
  */
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetchAPI('/minecraft/vanilla');
-  const data = res.status ? (res.data as MinecraftAPIData) : null;
+  const data = (res as MinecraftAPIData) || null;
   return {
     props: { data },
     revalidate: 86400,

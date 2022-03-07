@@ -47,7 +47,7 @@ type BangumiAPIData = BangumiAPIDataDay[];
  */
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetchAPI('/bangumi/calendar');
-  const data = res.status ? (res.data as RawBangumiAPIData) : null;
+  const data = (res as RawBangumiAPIData) || null;
   // 解析数据
   let parsedData: BangumiAPIData | null = null;
   if (data && Array.isArray(data)) {
