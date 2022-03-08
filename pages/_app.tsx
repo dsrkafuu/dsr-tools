@@ -20,7 +20,10 @@ function useDSRA() {
       return;
     }
     // dsra is a singleton instance
-    const dsra = withDSRA('DEBUGXR8_Z', 'https://analytics.dsrkafuu.cn:8443/');
+    const dsra = withDSRA(
+      '6227666d9783ab4da97451e1',
+      'https://analytics.dsrkafuu.cn:8443/'
+    );
     // catch first page load
     dsra.sendView(router.asPath, document.title, document.referrer);
     // catch client side page change
