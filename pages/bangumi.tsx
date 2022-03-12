@@ -31,7 +31,7 @@ interface BangumiAPIDataItem {
   rawName: string;
   transName?: string;
   image?: string;
-  raiting?: number;
+  rating?: number;
   hot?: number;
 }
 
@@ -72,7 +72,7 @@ export const getStaticProps: GetStaticProps = async () => {
         }
         // 评分和热度
         if (item.rating?.score) {
-          ret.raiting = item.rating.score;
+          ret.rating = item.rating.score;
         }
         if (item.collection?.doing) {
           ret.hot = item.collection.doing;
@@ -147,7 +147,7 @@ function BangumiDay({ data }: BangumiDayProps) {
                     <div className={styles.rating}>
                       <Rating
                         className={styles.rtpn}
-                        ratingValue={(item.raiting || 0) * 10}
+                        ratingValue={(item.rating || 0) * 10}
                         readonly={true}
                         allowHalfIcon={true}
                         allowHover={false}
@@ -155,7 +155,9 @@ function BangumiDay({ data }: BangumiDayProps) {
                         fullIcon={<Star />}
                         emptyIcon={<Star />}
                       />
-                      {(item.raiting || 0).toFixed(1)}
+                      {typeof item.rating === 'number' && item.rating
+                        ? item.rating.toFixed(1)
+                        : '-.-'}
                     </div>
                     <div className={styles.hot}>
                       {formatHot(item.hot)}
@@ -177,7 +179,7 @@ interface BangumiProps {
 }
 
 function Bangumi({ data }: BangumiProps) {
-  const [curWeekdayIdx, setCurWeekdayIdx] = useState(0);
+  const [curWeekdayIdx, setCurWeekdayIdx] = useState(3);
   const [sortRule, setSortRule] = useState(0);
 
   const sorter = useCallback(
@@ -185,7 +187,7 @@ function Bangumi({ data }: BangumiProps) {
       if (sortRule === 0) {
         return (b.hot || 0) - (a.hot || 0);
       } else {
-        return (b.raiting || 0) - (a.raiting || 0);
+        return (b.rating || 0) - (a.rating || 0);
       }
     },
     [sortRule]
