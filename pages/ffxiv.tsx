@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 import styles from './ffxiv.module.scss';
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import dayjs, { isDST, tzdb } from '../utils/dayjs';
+import dayjs, { isDST, tzdb, Dayjs } from '../utils/dayjs';
 import ZButton from '../components/ZButton';
 import ZCover from '../components/ZCover';
 import ZList from '../components/ZList';
@@ -82,28 +82,57 @@ function cstToTimeZone(time: string, tz: string) {
   // 合并北京时间的日期和时间
   const fullCSTTime = `${cstDay} ${time}`;
   // 转换为目标时区的时间
-  return dayjs.tz(fullCSTTime, 'Asia/Shanghai').tz(tz).format('HH:mm');
+  return dayjs.tz(fullCSTTime, 'Asia/Shanghai').tz(tz);
+}
+
+const hlMap = {
+  一小时内: 1,
+  两小时内: 2,
+  三小时内: 3,
+  四小时内: 4,
+};
+/**
+ * 计算班次是否在指定小时内可参加
+ * @param zonedTime 带时区的 dayjs 时间
+ * @param wait 等待时长
+ */
+function checkRecent(zonedTime: Dayjs, wait = 2) {
+  const diff = zonedTime.diff(dayjs(), 'hour');
+  return diff > 0 && diff <= wait;
 }
 
 interface RelativeTimeGridProps {
   times: string[];
   tz: string;
+  hl: string;
 }
 
 // 时间根据 24 小时制对应的百分比显示到对应位置
-function RelativeTimeGrid({ times, tz }: RelativeTimeGridProps) {
+function RelativeTimeGrid({ times, tz, hl }: RelativeTimeGridProps) {
   return (
     <div className={styles.relativeTimeGrid}>
       {times.map((time) => {
-        const timeNum = Number.parseInt(time.replace(':', ''));
-        const timePct = `${((timeNum / 2400) * 100).toPrecision(4)}%`;
+        const zonedTime = cstToTimeZone(time, tz);
+        const zonedTimeString = zonedTime.format('HH:mm');
+        const zonedTimeNum = Number.parseInt(zonedTimeString.replace(':', ''));
+        const zonedTimePct = `${((zonedTimeNum / 2400) * 100).toPrecision(4)}%`;
+        const recent = checkRecent(
+          zonedTime,
+          hlMap[hl as keyof typeof hlMap] || 2
+        );
         return (
           <span
             key={time}
             className={styles.timeGridItem}
-            style={{ left: timePct }}
+            style={{
+              left: zonedTimePct,
+              color: recent ? 'var(--color-primary)' : 'inherit',
+              fontWeight: recent ? '500' : 'normal',
+            }}
+            // 服务端时间可能不同
+            suppressHydrationWarning
           >
-            {cstToTimeZone(time, tz)}
+            {zonedTimeString}
           </span>
         );
       })}
@@ -168,6 +197,25 @@ function FFXIV({ data }: FFXIVProps) {
     }
   }, []);
 
+  // 高亮设置
+  const [curHL, setCurHL] = useState('两小时内');
+  const handleHighlightChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const newHL = e.target.value;
+      setLS('ffxiv-hl', newHL);
+      setCurHL(newHL);
+    },
+    []
+  );
+
+  // 确保高亮更新
+  useEffect(() => {
+    const savedHL = getLS('ffxiv-hl');
+    if (typeof savedHL === 'string' && hlMap[savedHL as keyof typeof hlMap]) {
+      setCurHL(savedHL);
+    }
+  }, []);
+
   // 数据处理
   const dcPatches = useMemo(() => {
     // 寻找缓存
@@ -219,12 +267,19 @@ function FFXIV({ data }: FFXIVProps) {
         </div>
         <div className={styles.update}>{updateMessage}</div>
         <div className={styles.selectGrid}>
-          <span>时区</span>
+          <span className={styles.tszspan}>时区</span>
           <ZSelect
             className={styles.tzselect}
             options={tzdb}
             value={curTZ}
             onChange={handleTimeZoneChange}
+          />
+          <span className={styles.hlspan}>高亮班次</span>
+          <ZSelect
+            className={styles.hlselect}
+            options={Object.keys(hlMap)}
+            value={curHL}
+            onChange={handleHighlightChange}
           />
         </div>
       </div>
@@ -253,7 +308,11 @@ function FFXIV({ data }: FFXIVProps) {
                       <tr key={server.name}>
                         <td>{server.name}</td>
                         <td className={styles.times}>
-                          <RelativeTimeGrid times={server.times} tz={curTZ} />
+                          <RelativeTimeGrid
+                            times={server.times}
+                            tz={curTZ}
+                            hl={curHL}
+                          />
                         </td>
                         <td>{server.start}</td>
                         <td>{server.route}</td>

@@ -30,10 +30,14 @@
   padding: $space-card;
   display: flex;
 
-  @media screen and (max-width: 1099px) {
+  @media screen and (max-width: 1280px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  @include responsive {
+    padding-bottom: 8px;
   }
 }
 
@@ -48,7 +52,7 @@
   font-weight: 500;
   color: var(--color-success);
 
-  @media screen and (max-width: 1099px) {
+  @media screen and (max-width: 1280px) {
     margin: 10px;
   }
 }
@@ -58,10 +62,24 @@
   justify-content: center;
   align-items: center;
   margin-left: $space-card;
+
+  @include responsive {
+    width: 280px;
+    margin-left: 0;
+    flex-wrap: wrap;
+    height: 100px;
+    align-items: baseline;
+  }
 }
 
 .tzselect {
   min-width: 200px;
+  margin-left: 8px;
+  margin-right: 20px;
+}
+
+.hlselect {
+  min-width: 100px;
   margin-left: 8px;
 }
 
