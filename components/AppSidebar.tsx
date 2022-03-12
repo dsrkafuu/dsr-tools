@@ -61,7 +61,7 @@ function AppSidebar({ route }: AppSidebarProps) {
       </div>
       <div className={styles.footer}>
         <span>Copyright &copy; 2019-{new Date().getFullYear()}</span>
-        <span>Apache-2.0 | DSRKafuU</span>
+        <span>AGPL-3.0 | DSRKafuU</span>
       </div>
     </div>
   );
