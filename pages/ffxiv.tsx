@@ -19,6 +19,7 @@ interface FFXIVDCData {
 }
 interface FFXIVAPIData {
   stime: number;
+  msg: string;
   dcs: FFXIVDCData[];
 }
 
@@ -283,7 +284,9 @@ function FFXIV({ data }: FFXIVProps) {
           />
         </div>
       </div>
+      {data.msg && <div className={styles.message}>{data.msg}</div>}
       <div className={styles.content}>
+        {!dcPatches.length && <div className={styles.empty}>暂无数据</div>}
         <table className={styles.table}>
           {dcPatches.map((patch) => {
             return (
