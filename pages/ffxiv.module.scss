@@ -1,21 +1,3 @@
-// 时间根据 24 小时制对应的百分比显示到对应位置
-.relativeTimeGrid {
-  height: 30px;
-  display: inline-block;
-  width: 100%;
-  vertical-align: middle;
-  position: relative;
-}
-// 项目自身偏移
-.timeGridItem {
-  position: absolute;
-  height: 30px;
-  line-height: 30px;
-  top: 0;
-  bottom: 0;
-  transform: translateX(-50%);
-}
-
 .container {
   position: relative;
   min-height: 100%;
@@ -137,10 +119,28 @@
 }
 
 .times {
-  position: relative !important;
-  min-width: 240px !important;
-  padding: 0 !important;
-  padding: 0 30px !important; // 给 0 点和 24 点等的偏移空出位置
+  position: relative;
+  min-width: 240px;
+  padding: 0 8px !important;
+  overflow: hidden;
+}
+
+.timeGrid {
+  height: 30px;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.timeGridItem {
+  height: 30px;
+  line-height: 30px;
+
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
 }
 
 .notice {

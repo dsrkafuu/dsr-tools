@@ -102,21 +102,19 @@ function checkRecent(zonedTime: Dayjs, wait = 2) {
   return diff > 0 && diff <= wait;
 }
 
-interface RelativeTimeGridProps {
+interface TimeGridProps {
   times: string[];
   tz: string;
   hl: string;
 }
 
 // 时间根据 24 小时制对应的百分比显示到对应位置
-function RelativeTimeGrid({ times, tz, hl }: RelativeTimeGridProps) {
+function TimeGrid({ times, tz, hl }: TimeGridProps) {
   return (
-    <div className={styles.relativeTimeGrid}>
+    <div className={styles.timeGrid}>
       {times.map((time) => {
         const zonedTime = cstToTimeZone(time, tz);
         const zonedTimeString = zonedTime.format('HH:mm');
-        const zonedTimeNum = Number.parseInt(zonedTimeString.replace(':', ''));
-        const zonedTimePct = `${((zonedTimeNum / 2400) * 100).toPrecision(4)}%`;
         const recent = checkRecent(
           zonedTime,
           hlMap[hl as keyof typeof hlMap] || 2
@@ -126,7 +124,6 @@ function RelativeTimeGrid({ times, tz, hl }: RelativeTimeGridProps) {
             key={time}
             className={styles.timeGridItem}
             style={{
-              left: zonedTimePct,
               color: recent ? 'var(--color-primary)' : 'inherit',
               fontWeight: recent ? '500' : 'normal',
             }}
@@ -311,7 +308,7 @@ function FFXIV({ data }: FFXIVProps) {
                       <tr key={server.name}>
                         <td>{server.name}</td>
                         <td className={styles.times}>
-                          <RelativeTimeGrid
+                          <TimeGrid
                             times={server.times}
                             tz={curTZ}
                             hl={curHL}
