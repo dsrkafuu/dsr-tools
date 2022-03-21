@@ -6,7 +6,7 @@ import dayjs from '../utils/dayjs';
 import { Route } from '../utils/routes';
 import { Sync, ShareAlt, Bars } from '../icons';
 import ZButton from './ZButton';
-import AppBanner from './AppBanner';
+// import AppBanner from './AppBanner';
 
 interface AppHeaderProps {
   route: Route;
@@ -52,7 +52,7 @@ function AppHeader({ route, onSidebarCollapseClick }: AppHeaderProps) {
 
   return (
     <>
-      <AppBanner />
+      {/* <AppBanner /> */}
       <div className={styles.header}>
         <div className={styles.control}>
           <ZButton
