@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 import styles from './ffxiv.module.scss';
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import dayjs, { isDST, tzdb, Dayjs } from '../utils/dayjs';
+import dayjs, { isDST, tzdb } from '../utils/dayjs';
 import ZButton from '../components/ZButton';
 import ZCover from '../components/ZCover';
 import ZList from '../components/ZList';
@@ -86,50 +86,20 @@ function cstToTimeZone(time: string, tz: string) {
   return dayjs.tz(fullCSTTime, 'Asia/Shanghai').tz(tz);
 }
 
-const hlMap = {
-  一小时内: 1,
-  两小时内: 2,
-  三小时内: 3,
-  四小时内: 4,
-};
-/**
- * 计算班次是否在指定小时内可参加
- * @param zonedTime 带时区的 dayjs 时间
- * @param wait 等待时长
- */
-function checkRecent(zonedTime: Dayjs, wait = 2) {
-  const diff = zonedTime.diff(dayjs(), 'hour');
-  return diff > 0 && diff <= wait;
-}
-
 interface TimeGridProps {
   times: string[];
   tz: string;
-  hl: string;
 }
 
 // 时间根据 24 小时制对应的百分比显示到对应位置
-function TimeGrid({ times, tz, hl }: TimeGridProps) {
+function TimeGrid({ times, tz }: TimeGridProps) {
   return (
     <div className={styles.timeGrid}>
       {times.map((time) => {
         const zonedTime = cstToTimeZone(time, tz);
         const zonedTimeString = zonedTime.format('HH:mm');
-        const recent = checkRecent(
-          zonedTime,
-          hlMap[hl as keyof typeof hlMap] || 2
-        );
         return (
-          <span
-            key={time}
-            className={styles.timeGridItem}
-            style={{
-              color: recent ? 'var(--color-primary)' : 'inherit',
-              fontWeight: recent ? '500' : 'normal',
-            }}
-            // 服务端时间可能不同
-            suppressHydrationWarning
-          >
+          <span key={time} className={styles.timeGridItem}>
             {zonedTimeString}
           </span>
         );
@@ -195,25 +165,6 @@ function FFXIV({ data }: FFXIVProps) {
     }
   }, []);
 
-  // 高亮设置
-  const [curHL, setCurHL] = useState('两小时内');
-  const handleHighlightChange = useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
-      const newHL = e.target.value;
-      setLS('ffxiv-hl', newHL);
-      setCurHL(newHL);
-    },
-    []
-  );
-
-  // 确保高亮更新
-  useEffect(() => {
-    const savedHL = getLS('ffxiv-hl');
-    if (typeof savedHL === 'string' && hlMap[savedHL as keyof typeof hlMap]) {
-      setCurHL(savedHL);
-    }
-  }, []);
-
   // 数据处理
   const dcPatches = useMemo(() => {
     // 寻找缓存
@@ -272,13 +223,6 @@ function FFXIV({ data }: FFXIVProps) {
             value={curTZ}
             onChange={handleTimeZoneChange}
           />
-          <span className={styles.hlspan}>高亮班次</span>
-          <ZSelect
-            className={styles.hlselect}
-            options={Object.keys(hlMap)}
-            value={curHL}
-            onChange={handleHighlightChange}
-          />
         </div>
       </div>
       {data.msg && <div className={styles.message}>{data.msg}</div>}
@@ -308,11 +252,7 @@ function FFXIV({ data }: FFXIVProps) {
                       <tr key={server.name}>
                         <td>{server.name}</td>
                         <td className={styles.times}>
-                          <TimeGrid
-                            times={server.times}
-                            tz={curTZ}
-                            hl={curHL}
-                          />
+                          <TimeGrid times={server.times} tz={curTZ} />
                         </td>
                         <td>{server.start}</td>
                         <td>{server.route}</td>
