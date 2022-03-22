@@ -21,7 +21,7 @@ function useDSRA() {
     }
     // dsra is a singleton instance
     const dsra = withDSRA(
-      '6227666d9783ab4da97451e1',
+      '6239c1e5a8cc0d830a00f543',
       'https://analytics.dsrkafuu.cn:8443/'
     );
     // catch first page load
