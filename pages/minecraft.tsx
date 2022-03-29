@@ -18,6 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const data = (res as MinecraftAPIData) || null;
   return {
     props: { data },
+    revalidate: 86400,
   };
 };
 
