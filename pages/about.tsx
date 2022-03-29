@@ -35,7 +35,7 @@ function About() {
       <div className={styles.left}>
         <div className={styles.image}>
           <Image
-            src='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@2.0.0/opengraph/dsrkafuu.jpg'
+            src='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/opengraph/dsrkafuu.png'
             layout='fill'
             objectFit='cover'
           />
