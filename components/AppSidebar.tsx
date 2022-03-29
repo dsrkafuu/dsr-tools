@@ -59,6 +59,17 @@ function AppSidebar({ route }: AppSidebarProps) {
           );
         })}
       </div>
+      <a
+        className={styles.counter}
+        href='https://count.dsrkafuu.net/'
+        target='_blank'
+        rel='noopener'
+      >
+        <img
+          src='https://count.dsrkafuu.net/dsrkafuu:tools?length=6'
+          alt='计数器'
+        />
+      </a>
       <div className={styles.footer}>
         <span>Copyright &copy; 2019-{new Date().getFullYear()}</span>
         <span>AGPL-3.0 | DSRKafuU</span>
