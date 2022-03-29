@@ -23,15 +23,11 @@ interface FFXIVAPIData {
   dcs: FFXIVDCData[];
 }
 
-/**
- * 每十二小时重新生成页面刷新数据
- */
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetchAPI('/ffxiv/hunting');
   const data = (res as FFXIVAPIData) || null;
   return {
     props: { data },
-    revalidate: 43200,
   };
 };
 

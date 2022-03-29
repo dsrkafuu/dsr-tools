@@ -21,27 +21,30 @@ class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?display=swap&family=Inter:wght@400;500&family=Noto+Sans+SC:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Fira+Code:wght@400;500'
           />
           <link
+            rel='icon'
+            sizes='any'
+            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/favicon/favicon.ico'
+          />
+          <link
+            rel='icon'
+            sizes='48x48'
+            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/favicon/favicon-48x48.png'
+          />
+          <link
+            rel='icon'
+            sizes='96x96'
+            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/favicon/favicon-96x96.png'
+          />
+          <link
+            rel='icon'
+            sizes='144x144'
+            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/favicon/favicon-144x144.png'
+          />
+          <link
             rel='apple-touch-icon'
             sizes='180x180'
-            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@3.0.0/favicon/apple-touch-icon.png'
+            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/favicon/apple-touch-icon.png'
           />
-          <link
-            rel='icon'
-            type='image/png'
-            sizes='32x32'
-            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@3.0.0/favicon/favicon-32x32.png'
-          />
-          <link
-            rel='icon'
-            type='image/png'
-            sizes='16x16'
-            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@3.0.0/favicon/favicon-16x16.png'
-          />
-          <link
-            rel='shortcut icon'
-            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@3.0.0/favicon/favicon.ico'
-          />
-          <link rel='manifest' href='/site.webmanifest' />
         </Head>
         <body>
           <div
