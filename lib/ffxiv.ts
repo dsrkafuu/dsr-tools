@@ -160,7 +160,7 @@ async function genDataFromPuppeteer() {
     '#app > div > div.main-container > section > div:nth-child(1) > div:nth-child(8) > div.el-table__body-wrapper',
   ];
   const output = getOutputTemplate();
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
 
   let succeeded = 0;
   // 遍历大区
