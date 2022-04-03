@@ -4,7 +4,14 @@
 }
 
 .cover {
+  height: 100%;
   z-index: 1;
+  background: rgb(175, 191, 225);
+  background: linear-gradient(
+    45deg,
+    rgba(175, 191, 225, 1) 0%,
+    rgba(187, 181, 219, 1) 100%
+  );
 }
 
 .inner {
@@ -20,15 +27,6 @@
 }
 
 .title {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 50px;
-}
-
-.author {
-  color: rgba(255, 255, 255, 0.4);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
 }
