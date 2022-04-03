@@ -1,0 +1,44 @@
+{
+  "version": "1.18.1.211213",
+  "release": "2021-12-13",
+  "info": [
+    "独立 Java 下载请至 \"相关链接\" 部分",
+    "所有游戏帐户将自动保存在本地注册表中",
+    "如对启动器或游戏有其他疑问请查看帮助页面"
+  ],
+  "mods": [
+    ["AI Improvements", "AI 优化"],
+    ["AppleSkin", "饥饿显示优化"],
+    ["Architectury API", "前置 API"],
+    ["Cloth Config API", "前置 API"],
+    ["Controlling", "键位设置优化"],
+    ["CustomSkinLoader", "万用皮肤补丁"],
+    ["Giselbaer's Durability Viewer", "耐久显示"],
+    ["Dynamic FPS", "后台动态 FPS"],
+    ["Fabric API", "前置 API"],
+    ["Indium", "Sodium Indigo 兼容"],
+    ["Inventory Profiles Next", "背包整理"],
+    ["Iris Shaders", "光影"],
+    ["Krypton", "网络优化"],
+    ["LazyDFU", "DFU 载入优化"],
+    ["Lithium", "原版性能优化"],
+    ["Mod Menu", "模组菜单"],
+    ["Not Enough Crashes", "崩溃优化"],
+    ["Roughly Enough Items", "合成表"],
+    ["ShulkerBoxTooltip", "潜影盒预览"],
+    ["Sodium", "渲染引擎优化"],
+    ["Starlight", "光照引擎优化"],
+    ["WTHIT", "方块信息显示"],
+    ["Xaero's Minimap", "小地图"],
+    ["Xaero's World Map", "世界地图"]
+  ],
+  "links": [
+    ["整合包发布页", "https://tools.dsrkafuu.net/minecraft"],
+    [
+      "独立 Java 下载",
+      "https://mega.nz/folder/RyInTQSK#B0flAykAJWuJ0_LIMFohQg"
+    ],
+    ["作者个人主页", "https://dsrkafuu.net/"]
+  ],
+  "download": "https://mega.nz/file/wy4wGKoI#pbJxS-ygSTiqtfsedPAqsbcuxubh1K3dbsLu7IsTQrY"
+}

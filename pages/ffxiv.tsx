@@ -1,38 +1,13 @@
 import { GetStaticProps } from 'next';
 import { Fragment } from 'react';
-import { fetchAPI } from '../lib/api';
-
-interface FFXIVServerData {
-  name: string;
-  times: string[];
-  start: string;
-  route: string;
-  comment: string;
-}
-interface FFXIVPatchData {
-  name: string;
-  servers: FFXIVServerData[];
-}
-interface FFXIVDCData {
-  name: string;
-  patches: FFXIVPatchData[];
-}
-interface FFXIVAPIData {
-  stime: number;
-  msg: string;
-  dcs: FFXIVDCData[];
-}
+import ffxiv, { XIVData, XIVPatchItem } from '../lib/ffxiv';
 
 /**
- * 每十二小时重新生成页面刷新数据
+ * 每天重新生成页面刷新数据
  */
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetchAPI('/ffxiv/hunting');
-  const data = (res as FFXIVAPIData) || null;
-  return {
-    props: { data },
-    revalidate: 43200,
-  };
+  const data = await ffxiv(true);
+  return { props: { data }, revalidate: 86400 };
 };
 
 import styles from './ffxiv.module.scss';
@@ -118,10 +93,10 @@ const validTabQuerys: Array<{ query: DataCenter; name: string }> = [
 ];
 
 // 通过 Tab 名搜索数据的缓存
-const dataSearchCache = new Map<DataCenter, FFXIVPatchData[]>();
+const dataSearchCache = new Map<DataCenter, XIVPatchItem[]>();
 
 interface FFXIVProps {
-  data: FFXIVAPIData | null;
+  data: XIVData;
 }
 
 function FFXIV({ data }: FFXIVProps) {
@@ -225,7 +200,6 @@ function FFXIV({ data }: FFXIVProps) {
           />
         </div>
       </div>
-      {data.msg && <div className={styles.message}>{data.msg}</div>}
       <div className={styles.content}>
         {!dcPatches.length && <div className={styles.empty}>暂无数据</div>}
         <table className={styles.table}>

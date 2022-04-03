@@ -1,24 +1,9 @@
 import { GetStaticProps } from 'next';
-import { fetchAPI } from '../lib/api';
+import minecraftData from '../data/minecraft.json';
 
-interface MinecraftAPIData {
-  version: string;
-  release: string;
-  info: string[];
-  mods: string[][];
-  links: string[][];
-  download: string;
-}
-
-/**
- * 每日重新生成页面刷新数据
- */
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetchAPI('/minecraft/vanilla');
-  const data = (res as MinecraftAPIData) || null;
   return {
-    props: { data },
-    revalidate: 86400,
+    props: { data: minecraftData },
   };
 };
 
@@ -31,7 +16,7 @@ import ZList from '../components/ZList';
 import ZCover from '../components/ZCover';
 
 interface MinecraftProps {
-  data: MinecraftAPIData | null;
+  data: typeof minecraftData;
 }
 
 function Minecraft({ data }: MinecraftProps) {
@@ -82,7 +67,7 @@ function Minecraft({ data }: MinecraftProps) {
       <div className={styles.right}>
         <div className={styles.card}>
           <div className={styles.ctitle}>版本信息</div>
-          <ZList className={styles.ccontent} list={modList} inline />
+          <ZList dense className={styles.ccontent} list={modList} inline />
         </div>
       </div>
     </div>

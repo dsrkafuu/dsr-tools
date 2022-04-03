@@ -1,29 +1,5 @@
 import { GetStaticProps } from 'next';
-
-import { fetchAPI } from '../lib/api';
-
-interface RawBangumiAPIDataItem {
-  id: number;
-  url: string;
-  name: string;
-  name_cn?: string;
-  rating?: {
-    total: number;
-    count: { [key: number]: number };
-    score: number;
-  };
-  images?: {
-    large?: string;
-  };
-  collection?: {
-    doing: number;
-  };
-}
-
-type RawBangumiAPIData = Array<{
-  weekday: { cn: string; id: number };
-  items: RawBangumiAPIDataItem[];
-}>;
+import bangumi from '../lib/bangumi';
 
 interface BangumiAPIDataItem {
   id: number;
@@ -43,11 +19,10 @@ interface BangumiAPIDataDay {
 type BangumiAPIData = BangumiAPIDataDay[];
 
 /**
- * 每周重新生成页面刷新数据
+ * 每天重新生成页面刷新数据
  */
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetchAPI('/bangumi/calendar');
-  const data = (res as RawBangumiAPIData) || null;
+  const data = await bangumi();
   // 解析数据
   let parsedData: BangumiAPIData | null = null;
   if (data && Array.isArray(data)) {
@@ -83,10 +58,8 @@ export const getStaticProps: GetStaticProps = async () => {
     });
   }
   return {
-    props: {
-      data: parsedData,
-    },
-    revalidate: 604800,
+    props: { data: parsedData },
+    revalidate: 86400,
   };
 };
 

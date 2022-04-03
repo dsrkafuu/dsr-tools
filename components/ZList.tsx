@@ -8,14 +8,20 @@ interface ZListItem {
 
 interface ZListProps {
   list: ZListItem[];
+  dense?: boolean;
   inline?: boolean;
   className?: string;
 }
 
-function ZList({ list, inline, className }: ZListProps) {
+function ZList({ list, dense, inline, className }: ZListProps) {
   return (
     <div
-      className={clsx(styles.container, { [styles.inline]: inline }, className)}
+      className={clsx(
+        styles.container,
+        { [styles.dense]: dense },
+        { [styles.inline]: inline },
+        className
+      )}
     >
       {list.map((item, idx) => {
         let titleRender: React.ReactNode = item.title;

@@ -23,15 +23,6 @@
   }
 }
 
-.message {
-  text-align: center;
-  margin: $space-card;
-  background-color: var(--color-bg);
-  box-shadow: var(--box-shadow);
-  border-radius: $corner-radius;
-  padding: $space-card;
-}
-
 .tabs {
   display: flex;
   flex: 1 1 auto;
