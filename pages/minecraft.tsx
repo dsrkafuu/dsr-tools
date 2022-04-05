@@ -1,11 +1,4 @@
-import { GetStaticProps } from 'next';
-import minecraftData from '../data/minecraft.json';
-
-export const getStaticProps: GetStaticProps = async () => {
-  return {
-    props: { data: minecraftData },
-  };
-};
+import data from '../data/minecraft.json';
 
 import styles from './minecraft.module.scss';
 import { useMemo } from 'react';
@@ -15,22 +8,18 @@ import ZButton from '../components/ZButton';
 import ZList from '../components/ZList';
 import ZCover from '../components/ZCover';
 
-interface MinecraftProps {
-  data: typeof minecraftData;
-}
-
-function Minecraft({ data }: MinecraftProps) {
+function Minecraft() {
   const aboutList = useMemo(() => {
     return (data || { info: [] }).info.map((item) => {
       return { content: item };
     });
-  }, [data]);
+  }, []);
 
   const modList = useMemo(() => {
     return (data || { mods: [] }).mods.map((item) => {
       return { title: item[0], content: item[1] };
     });
-  }, [data]);
+  }, []);
 
   if (!data) {
     return (

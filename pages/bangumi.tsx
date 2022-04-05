@@ -19,7 +19,7 @@ interface BangumiAPIDataDay {
 type BangumiAPIData = BangumiAPIDataDay[];
 
 /**
- * 每天重新生成页面刷新数据
+ * 需要手动触发重新构建
  */
 export const getStaticProps: GetStaticProps = async () => {
   const data = await bangumi();
@@ -59,7 +59,6 @@ export const getStaticProps: GetStaticProps = async () => {
   }
   return {
     props: { data: parsedData },
-    revalidate: 86400,
   };
 };
 

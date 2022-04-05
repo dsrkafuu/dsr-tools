@@ -3,11 +3,11 @@ import { Fragment } from 'react';
 import ffxiv, { XIVData, XIVPatchItem } from '../lib/ffxiv';
 
 /**
- * 每天重新生成页面刷新数据
+ * 需要手动触发重新构建 (ISR 不支持无头浏览器运行)
  */
 export const getStaticProps: GetStaticProps = async () => {
   const data = await ffxiv(true);
-  return { props: { data }, revalidate: 86400 };
+  return { props: { data } };
 };
 
 import styles from './ffxiv.module.scss';
