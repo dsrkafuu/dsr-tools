@@ -1,0 +1,17 @@
+# 每天重建站点
+
+name: regenerate
+
+on:
+  schedule:
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - env:
+          VERCEL_HOOK: ${{ secrets.VERCEL_HOOK }}
+        run: curl "$VERCEL_HOOK"
