@@ -14,7 +14,7 @@ import withDSRA from 'dsr-analytics';
 
 function useDSRA() {
   const router = useRouter();
-
+  // [DEBUG] REPLACE GOOGLE ANALYTICS
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
       return;
