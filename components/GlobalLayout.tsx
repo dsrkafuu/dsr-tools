@@ -29,6 +29,10 @@ function GlobalLayout({ children }: GlobalLayoutProps) {
     }
     return matched;
   }, [router.pathname]);
+  const title = useMemo(
+    () => matchedRoute.title + ' | DSRTOOLS',
+    [matchedRoute]
+  );
 
   const sidebarRef = useRef<HTMLDivElement>(null);
 
@@ -54,7 +58,7 @@ function GlobalLayout({ children }: GlobalLayoutProps) {
       suppressHydrationWarning // 移动端端侧边栏首次渲染无法保证 SSR 和 CSR 同步
     >
       <Head>
-        <title>{matchedRoute.title} | DSRTOOLS</title>
+        <title>{title}</title>
       </Head>
       <CSSTransition
         in={!sidebarCollapsed}
