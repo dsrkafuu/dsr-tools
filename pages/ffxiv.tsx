@@ -1,6 +1,7 @@
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 import { Fragment } from 'react';
-import ffxiv, { XIVData, XIVPatchItem } from '../lib/ffxiv';
+import ffxiv from '../lib/ffxiv';
+import type { XIVData, XIVPatchItem } from '../lib/ffxiv';
 
 /**
  * 需要手动触发重新构建 (ISR 不支持无头浏览器运行)
@@ -159,7 +160,7 @@ function FFXIV({ data }: FFXIVProps) {
   // 更新时间转换
   const updateMessage = useMemo(() => {
     const updateTime = dayjs(data?.stime || 0).tz(curTZ);
-    let text = `更新于 ${updateTime.format('YYYY-MM-DD HH:mm')}`;
+    let text = `生成于 ${updateTime.format('YYYY-MM-DD HH:mm')}`;
     if (isDST(updateTime)) {
       text += ' (DST)';
     }

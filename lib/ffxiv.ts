@@ -209,7 +209,7 @@ async function genDataFromPuppeteer() {
   }
 }
 
-export default async (file = false): Promise<XIVData> => {
+async function ffxiv(file = false): Promise<XIVData> {
   if (file) {
     const data = await genDataFromPuppeteer();
     fs.writeFileSync('ffxiv.json', JSON.stringify(data, null, 2));
@@ -222,4 +222,6 @@ export default async (file = false): Promise<XIVData> => {
       return ffxivStaticData;
     }
   }
-};
+}
+
+export default ffxiv;

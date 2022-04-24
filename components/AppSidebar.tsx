@@ -42,7 +42,7 @@ function AppSidebar({ route }: AppSidebarProps) {
             return null;
           }
           return (
-            <Link href={route.path} key={route.path}>
+            <Link href={route.path} key={route.path} passHref>
               <div
                 className={clsx(styles.menuItem, {
                   [styles.menuItem_active]: route.matched,

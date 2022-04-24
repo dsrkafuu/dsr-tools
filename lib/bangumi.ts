@@ -23,8 +23,10 @@ export type BangumiData = Array<{
   items: BangumiItem[];
 }>;
 
-export default async () => {
+async function bangumi() {
   const res = await fetch(BANGUMI_CALENDAR);
   const data: BangumiData = await res.json();
   return data;
-};
+}
+
+export default bangumi;

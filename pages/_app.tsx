@@ -54,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         strategy='afterInteractive'
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
       />
-      <Script strategy='afterInteractive'>
+      <Script strategy='afterInteractive' id='ga'>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         `}
       </Script>
       {/* Crisp Chat */}
-      <Script strategy='afterInteractive'>
+      <Script strategy='afterInteractive' id='crisp'>
         {`window.$crisp=[];window.CRISP_WEBSITE_ID="d3750a6b-c763-4252-8ec7-bce6050774f6";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();`}
       </Script>
       <GlobalLayout>
