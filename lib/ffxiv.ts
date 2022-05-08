@@ -4,7 +4,7 @@ import fs from 'fs';
 import ffxivStaticData from '../data/ffxiv/index.json';
 
 export const DCS = ['陆行鸟', '莫古力', '猫小胖', '豆豆柴'];
-export const PATCHES = ['晓月之终途', '红莲之狂潮'];
+export const PATCHES = ['晓月之终途', '暗影之逆焰', '红莲之狂潮'];
 
 export interface XIVServerItem {
   name: string;
@@ -120,13 +120,11 @@ function parseString(str: string) {
     return '';
   }
   // 数据和谐
-  if (
-    str.includes('狩猎群') ||
-    str.includes('车群') ||
-    str.includes('qq') ||
-    str.includes('QQ')
-  ) {
+  if (str.includes('群') || str.includes('qq') || str.includes('QQ')) {
     return '';
+  }
+  if (/\*[：:]/g.test(str)) {
+    str = str.replace(/\*[：:]/g, '').trim();
   }
   return str;
 }
@@ -157,6 +155,7 @@ async function genDataFromPuppeteer() {
   ];
   const patches = [
     '#app > div > div.main-container > section > div:nth-child(1) > div:nth-child(4) > div.el-table__body-wrapper',
+    '#app > div > div.main-container > section > div:nth-child(1) > div:nth-child(6) > div.el-table__body-wrapper',
     '#app > div > div.main-container > section > div:nth-child(1) > div:nth-child(8) > div.el-table__body-wrapper',
   ];
   const output = getOutputTemplate();
@@ -202,7 +201,11 @@ async function genDataFromPuppeteer() {
   await browser.close();
   // 添加生成时间
   const finalOutput = { stime: Date.now(), dcs: output } as XIVData;
-  if (succeeded === 8 * 2 + 8 * 2 + 7 * 2 + 8 * 2) {
+  const patchNums = patches.length;
+  if (
+    succeeded ===
+    8 * patchNums + 8 * patchNums + 7 * patchNums + 8 * patchNums
+  ) {
     return finalOutput;
   } else {
     throw new Error('部分数据获取失败');
