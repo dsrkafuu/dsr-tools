@@ -9,7 +9,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel='preconnect' href='https://cdn.jsdelivr.net' />
+          <link rel='preconnect' href='https://cdn.dsrkafuu.net' />
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link
             rel='preconnect'
@@ -23,27 +23,27 @@ class MyDocument extends Document {
           <link
             rel='icon'
             sizes='any'
-            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/favicon/favicon.ico'
+            href='https://cdn.dsrkafuu.net/favicon/favicon.ico'
           />
           <link
             rel='icon'
             sizes='48x48'
-            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/favicon/favicon-48x48.png'
+            href='https://cdn.dsrkafuu.net/favicon/favicon-48x48.png'
           />
           <link
             rel='icon'
             sizes='96x96'
-            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/favicon/favicon-96x96.png'
+            href='https://cdn.dsrkafuu.net/favicon/favicon-96x96.png'
           />
           <link
             rel='icon'
             sizes='144x144'
-            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/favicon/favicon-144x144.png'
+            href='https://cdn.dsrkafuu.net/favicon/favicon-144x144.png'
           />
           <link
             rel='apple-touch-icon'
             sizes='180x180'
-            href='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/favicon/apple-touch-icon.png'
+            href='https://cdn.dsrkafuu.net/favicon/apple-touch-icon.png'
           />
         </Head>
         <body>

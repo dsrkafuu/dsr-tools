@@ -3,7 +3,7 @@
   outline: none;
   transition: border-color $transition-fast ease;
   color: var(--color-font);
-  border-radius: $corner-radius;
+  border-radius: $corner-radius-sm;
   border: $border-size solid transparent;
   background-color: var(--color-wrapper);
   line-height: 1.5;

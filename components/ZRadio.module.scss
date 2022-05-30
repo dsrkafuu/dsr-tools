@@ -20,7 +20,7 @@
   transition: background-color $transition-fast ease;
 
   &:hover {
-    background-color: var(--color-transparent-active);
+    background-color: var(--color-bg-active);
   }
 
   &:checked {

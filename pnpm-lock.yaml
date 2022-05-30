@@ -18,7 +18,7 @@ specifiers:
   clsx: ~1.1.1
   dayjs: ~1.11.2
   dsr-analytics: ~1.0.0
-  dsr-design: ~2.6.0
+  dsr-design: ~3.3.0
   eslint: ~8.16.0
   eslint-config-next: ~12.1.6
   eslint-config-prettier: ~8.5.0
@@ -43,7 +43,7 @@ dependencies:
   clsx: 1.1.1
   dayjs: 1.11.2
   dsr-analytics: 1.0.0
-  dsr-design: 2.6.0_normalize.css@8.0.1
+  dsr-design: 3.3.0
   minimatch: 5.1.0
   next: 12.1.6_4lr7wgrejdc22b7ck6oq24c2o4
   normalize.css: 8.0.1
@@ -2723,12 +2723,8 @@ packages:
       web-vitals: 2.1.4
     dev: false
 
-  /dsr-design/2.6.0_normalize.css@8.0.1:
-    resolution: {integrity: sha512-7fgtOMg0j1cAuepmj+tjxcoR3QIMdBLHQO1qQzKtsvjYqz5k3nBiFnWLgsbFlXiL3vsIlpEOrL9FMOVM8g8wJA==}
-    peerDependencies:
-      normalize.css: ^8.0.0
-    dependencies:
-      normalize.css: 8.0.1
+  /dsr-design/3.3.0:
+    resolution: {integrity: sha512-9gSVGg0NWLlwen94xImvF1joD4/cv5M6yNXfRaK2QWtMFL4KuO19XbFtSiRq72frWtcbckzPFlKM7qsJAKl/9Q==}
     dev: false
 
   /electron-to-chromium/1.4.141:

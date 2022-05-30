@@ -4,7 +4,7 @@
   border: none;
   outline: none;
   background-color: transparent;
-  border-radius: $corner-radius;
+  border-radius: $corner-radius-sm;
   cursor: pointer;
   transition: background-color $transition-fast ease;
   font-size: $font-md;
@@ -20,7 +20,7 @@
 
   &:hover,
   &.disabled {
-    background-color: var(--color-transparent-active);
+    background-color: var(--color-bg-active);
   }
 }
 

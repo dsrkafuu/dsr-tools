@@ -36,15 +36,15 @@
 
 .card {
   background-color: var(--color-bg);
-  border-radius: $corner-radius;
+  border-radius: $corner-radius-sm;
   box-shadow: var(--box-shadow);
 }
 
 .image {
   position: relative;
   height: 500px;
-  border-top-left-radius: $corner-radius;
-  border-top-right-radius: $corner-radius;
+  border-top-left-radius: $corner-radius-sm;
+  border-top-right-radius: $corner-radius-sm;
   overflow: hidden;
 
   @include responsive {

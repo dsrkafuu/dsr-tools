@@ -32,11 +32,6 @@ const nextConfig = {
     ];
   },
 
-  // allowed optimization domains
-  images: {
-    domains: ['cdn.jsdelivr.net', 'lain.bgm.tv'],
-  },
-
   // add global variables
   sassOptions: {
     additionalData: `@import './styles/variables.scss';`,

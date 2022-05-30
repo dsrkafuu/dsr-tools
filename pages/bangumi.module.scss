@@ -5,7 +5,7 @@
 
 .control {
   background-color: var(--color-bg);
-  border-radius: $corner-radius;
+  border-radius: $corner-radius-sm;
   box-shadow: var(--box-shadow);
   margin: $space-card;
   padding: $space-card;
@@ -61,7 +61,7 @@
 
 .daycard {
   background-color: var(--color-bg);
-  border-radius: $corner-radius;
+  border-radius: $corner-radius-sm;
   box-shadow: var(--box-shadow);
 }
 
@@ -82,11 +82,11 @@
   margin: $space-card;
   color: var(--color-font);
   text-decoration: none;
-  border-radius: $corner-radius;
+  border-radius: $corner-radius-sm;
   transition: background-color $transition-fast ease;
 
   &:hover {
-    background-color: var(--color-transparent-active);
+    background-color: var(--color-bg-active);
   }
 
   &:first-child {
@@ -102,7 +102,7 @@
   width: 80px;
   height: 80px;
   position: relative;
-  border-radius: $corner-radius;
+  border-radius: $corner-radius-sm;
   overflow: hidden;
   background-color: var(--color-wrapper);
   margin-right: $space-card;
@@ -162,14 +162,14 @@
     width: 160px;
     height: 24px;
     background-color: var(--color-border);
-    border-radius: $corner-radius;
+    border-radius: $corner-radius-sm;
     position: relative;
   }
 
   &inner {
     height: 24px;
     background-color: var(--color-primary);
-    border-radius: $corner-radius;
+    border-radius: $corner-radius-sm;
   }
 
   @media (min-width: 1200px) and (max-width: 1480px) {

@@ -32,7 +32,7 @@
 .image {
   position: relative;
   height: 280px;
-  border-radius: $corner-radius;
+  border-radius: $corner-radius-sm;
   overflow: hidden;
   margin-bottom: $space-card;
   box-shadow: var(--box-shadow);

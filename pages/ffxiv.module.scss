@@ -8,7 +8,7 @@
   margin: $space-card;
   background-color: var(--color-bg);
   box-shadow: var(--box-shadow);
-  border-radius: $corner-radius;
+  border-radius: $corner-radius-sm;
   padding: $space-card;
   display: flex;
 
@@ -66,7 +66,7 @@
   margin-bottom: $space-card;
   background-color: var(--color-bg);
   box-shadow: var(--box-shadow);
-  border-radius: $corner-radius;
+  border-radius: $corner-radius-sm;
   padding: $space-card 0;
   overflow-x: auto;
 }
@@ -83,7 +83,7 @@
     transition: background-color $transition-fast ease;
   }
   tr:hover {
-    background-color: var(--color-transparent-active);
+    background-color: var(--color-bg-active);
   }
 
   th,

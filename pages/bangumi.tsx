@@ -1,64 +1,18 @@
 import type { GetStaticProps } from 'next';
+import type {
+  BangumiAPIDataDay,
+  BangumiAPIData,
+  BangumiAPIDataItem,
+} from '../lib/bangumi';
 import bangumi from '../lib/bangumi';
-
-interface BangumiAPIDataItem {
-  id: number;
-  url: string;
-  rawName: string;
-  transName?: string;
-  image?: string;
-  rating?: number;
-  hot?: number;
-}
-
-interface BangumiAPIDataDay {
-  weekday: string;
-  items: BangumiAPIDataItem[];
-}
-
-type BangumiAPIData = BangumiAPIDataDay[];
 
 /**
  * 需要手动触发重新构建
  */
 export const getStaticProps: GetStaticProps = async () => {
   const data = await bangumi();
-  // 解析数据
-  let parsedData: BangumiAPIData | null = null;
-  if (data && Array.isArray(data)) {
-    parsedData = data.map((weekday) => {
-      const parsed: BangumiAPIDataDay = {
-        weekday: `${weekday.weekday.cn}`.replace('星期', '周'),
-        items: [],
-      };
-      weekday.items.forEach((item) => {
-        const ret: BangumiAPIDataItem = {
-          id: item.id,
-          url: `${item.url}`.replace(/https?:\/\//gi, '//'), // 确保链接不带协议
-          rawName: item.name,
-        };
-        // 翻译名
-        if (item.name_cn) {
-          ret.transName = item.name_cn;
-        }
-        // 图片
-        if (item.images && item.images.large) {
-          ret.image = `${item.images.large}`.replace(/https?:\/\//gi, '//');
-        }
-        // 评分和热度
-        if (item.rating?.score) {
-          ret.rating = item.rating.score;
-        }
-        if (item.collection?.doing) {
-          ret.hot = item.collection.doing;
-        }
-        parsed.items.push(ret);
-      });
-      return parsed;
-    });
-  }
   return {
-    props: { data: parsedData },
+    props: { data },
   };
 };
 
