@@ -63,13 +63,11 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 import styles from './bangumi.module.scss';
-import Image from 'next/image';
 import { useCallback, useMemo, useState } from 'react';
 import ZButton from '../components/ZButton';
 import ZCover from '../components/ZCover';
 import ZRadio from '../components/ZRadio';
-import { Rating } from 'react-simple-star-rating';
-import { FireAlt, Star } from '../icons';
+import { FireAlt } from '../icons';
 
 /**
  * 格式化热度数据
@@ -102,11 +100,11 @@ function BangumiDay({ data }: BangumiDayProps) {
               >
                 <div className={styles.dayimage}>
                   {item.image ? (
-                    <Image
+                    <img
                       src={`https:${item.image}`}
-                      width={80}
-                      height={80}
-                      objectFit='cover'
+                      width='80'
+                      height='80'
+                      referrerPolicy='no-referrer'
                     />
                   ) : null}
                 </div>
@@ -117,16 +115,16 @@ function BangumiDay({ data }: BangumiDayProps) {
                   )}
                   <div className={styles.dayscore}>
                     <div className={styles.rating}>
-                      <Rating
-                        className={styles.rtpn}
-                        ratingValue={(item.rating || 0) * 10}
-                        readonly={true}
-                        allowHalfIcon={true}
-                        allowHover={false}
-                        fillColor='#8aa2d3'
-                        fullIcon={<Star />}
-                        emptyIcon={<Star />}
-                      />
+                      <div className={styles.ratingbar}>
+                        <div
+                          className={styles.ratinginner}
+                          style={{
+                            width: `${Math.round(
+                              ((item.rating || 0) / 10) * 100
+                            )}%`,
+                          }}
+                        ></div>
+                      </div>
                       {typeof item.rating === 'number' && item.rating
                         ? item.rating.toFixed(1)
                         : '-.-'}

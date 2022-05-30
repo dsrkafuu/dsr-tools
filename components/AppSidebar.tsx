@@ -1,6 +1,5 @@
 import styles from './AppSidebar.module.scss';
 import { useMemo } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 import routes, { Route } from '../utils/routes';
@@ -27,11 +26,11 @@ function AppSidebar({ route }: AppSidebarProps) {
   return (
     <div className={clsx(styles.sidebar)}>
       <div className={styles.siteIcon}>
-        <Image
+        <img
           className={styles.siteIconImage}
           src='/images/logo.png'
-          width={80}
-          height={80}
+          width='80'
+          height='80'
         />
       </div>
       <div className={styles.menu}>

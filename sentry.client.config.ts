@@ -6,5 +6,5 @@ SENTRY_DSN &&
   Sentry.init({
     dsn: SENTRY_DSN,
     sampleRate: 1, // report all errors
-    tracesSampleRate: 0.5, // report 50% of traces
+    tracesSampleRate: 0.05, // report 5% of traces
   });

@@ -1,5 +1,4 @@
 import styles from './about.module.scss';
-import Image from 'next/image';
 import ZList from '../components/ZList';
 import pkg from '../package.json';
 import ZButton from '../components/ZButton';
@@ -34,11 +33,7 @@ function About() {
     <div className={styles.container}>
       <div className={styles.left}>
         <div className={styles.image}>
-          <Image
-            src='https://cdn.jsdelivr.net/gh/dsrkafuu/dsr-assets@9.0.0/opengraph/dsrkafuu.png'
-            layout='fill'
-            objectFit='cover'
-          />
+          <img src='https://cdn.dsrkafuu.net/opengraph/dsrkafuu.png' />
         </div>
         <div className={styles.info}>
           <ZButton

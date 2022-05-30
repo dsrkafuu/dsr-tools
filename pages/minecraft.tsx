@@ -2,7 +2,6 @@ import data from '../data/minecraft.json';
 
 import styles from './minecraft.module.scss';
 import { useMemo } from 'react';
-import Image from 'next/image';
 import clsx from 'clsx';
 import ZButton from '../components/ZButton';
 import ZList from '../components/ZList';
@@ -33,11 +32,7 @@ function Minecraft() {
       <div className={styles.left}>
         <div className={styles.card}>
           <div className={styles.image}>
-            <Image
-              src='/images/minecraft.png'
-              layout='fill'
-              objectFit='cover'
-            />
+            <img src='/images/minecraft.png' />
           </div>
           <div className={styles.download}>
             <div className={clsx(styles.version, 'markdown')}>

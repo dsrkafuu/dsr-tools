@@ -8,7 +8,6 @@ export { default as Home } from './home.svg';
 export { default as InfoCircle } from './info-circle.svg';
 export { default as QRCode } from './qrcode.svg';
 export { default as ShareAlt } from './share-alt.svg';
-export { default as Star } from './star.svg';
 export { default as Swords } from './swords.svg';
 export { default as Sync } from './sync.svg';
 export { default as Trash } from './trash.svg';
