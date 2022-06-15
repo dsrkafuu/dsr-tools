@@ -8,6 +8,8 @@
     "build": "vue-tsc && vite build"
   },
   "dependencies": {
+    "@sentry/tracing": "~7.1.1",
+    "@sentry/vue": "~7.1.1",
     "axios": "~0.27.2",
     "dayjs": "~1.11.3",
     "dsr-design": "~3.5.1",

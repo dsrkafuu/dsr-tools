@@ -79,9 +79,12 @@ const modList = computed(() => {
         <div class="card">
           <div class="card__title">相关链接</div>
           <div class="card__btns">
-            <ZButton class="card__btn" type="primary">Modrinth</ZButton>
-            <ZButton class="card__btn" type="primary">白名单申请</ZButton>
-            <ZButton class="card__btn" type="primary">Java 下载</ZButton>
+            <ZButton class="card__btn" type="primary" :href="data?.modrinth">
+              Modrinth
+            </ZButton>
+            <ZButton class="card__btn" type="primary" :href="data?.java">
+              Java 下载
+            </ZButton>
           </div>
         </div>
       </div>
