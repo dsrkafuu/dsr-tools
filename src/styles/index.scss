@@ -1,0 +1,91 @@
+@import 'dsr-design/scss/reset';
+@import 'dsr-design/scss/colors';
+@import 'dsr-design/scss/markdown';
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  color: #fdfdfd;
+  background: var(--color-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+  img {
+    filter: brightness(95%);
+  }
+}
+
+html,
+body {
+  height: 100%;
+  font-size: $font-md;
+  font-family: $font-family-body;
+  color: var(--color-font);
+  background-color: var(--color-body);
+  scroll-behavior: smooth;
+  line-height: 1.5;
+}
+
+pre,
+code {
+  font-family: $font-family-mono;
+}
+
+#app {
+  z-index: 10;
+  height: 100%;
+  display: flex;
+}
+
+#message {
+  z-index: 20;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 0;
+  width: 0;
+  overflow: visible;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin 1s infinite linear;
+}
+
+.undraw {
+  margin: $space-card;
+  background-color: var(--color-bg);
+  border-radius: $corner-radius-lg;
+  box-shadow: var(--box-shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 32px;
+
+  svg {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 24px;
+  }
+
+  span {
+    font-size: 18px;
+  }
+}

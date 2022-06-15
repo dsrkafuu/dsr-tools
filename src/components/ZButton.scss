@@ -1,0 +1,81 @@
+.z-button {
+  appearance: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-radius: $corner-radius-sm;
+  cursor: pointer;
+  transition: background-color $transition-fast ease;
+  font-size: $font-md;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  height: 32px;
+  padding: 4px 15px;
+
+  &:hover,
+  &--disabled {
+    background-color: var(--color-bg-active);
+  }
+
+  // 已关闭的按钮
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  // 各种颜色
+  &__primary {
+    color: #fdfdfd;
+    background-color: var(--color-primary);
+
+    &:hover,
+    &.z-button--disabled {
+      color: #fdfdfd;
+      background-color: var(--color-primary-active);
+    }
+  }
+
+  &__success {
+    color: #fdfdfd;
+    background-color: var(--color-success);
+
+    &:hover,
+    &.z-button--disabled {
+      color: #fdfdfd;
+      background-color: var(--color-success-active);
+    }
+  }
+
+  &__danger {
+    color: #fdfdfd;
+    background-color: var(--color-danger);
+
+    &:hover,
+    &.z-button--disabled {
+      color: #fdfdfd;
+      background-color: var(--color-danger-active);
+    }
+  }
+
+  // 带图标的
+  &__with-icon {
+    justify-content: space-between;
+
+    & > * {
+      margin-right: 6px;
+    }
+  }
+
+  // 只有图标的正方形按钮
+  &__only-icon {
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+  }
+}

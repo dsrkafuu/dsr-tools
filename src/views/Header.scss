@@ -1,0 +1,89 @@
+.header {
+  background-color: var(--color-bg);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  height: $height-navbar;
+}
+
+.menu {
+  padding: 0 18px 0 $space-card;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.meta {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.title {
+  color: var(--color-font);
+  margin: 0;
+  line-height: $height-navbar;
+  font-size: $font-xl;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subtitle {
+  line-height: $height-navbar;
+  margin-left: 10px;
+  opacity: 0.75;
+
+  @include responsive {
+    display: none;
+  }
+}
+
+.control {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-left: $space-card;
+  padding-right: $space-card;
+  position: relative;
+}
+
+.clock {
+  width: 130px;
+  margin-right: 10px;
+
+  @include responsive {
+    display: none;
+  }
+}
+
+.avatar {
+  flex: 0 0 auto;
+  padding-right: $space-card;
+  height: $height-navbar;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__inner {
+    width: 32px;
+    height: 32px;
+    border-radius: $corner-radius-sm;
+    background-color: var(--color-border);
+  }
+}
+
+.user-enter-from,
+.user-leave-to {
+  opacity: 0;
+}
+.user-enter-active,
+.user-leave-active {
+  transition: opacity $transition-fast ease;
+}
+.user-enter-to,
+.user-leave-from {
+  opacity: 1;
+}

@@ -1,0 +1,29 @@
+.z-ext-link {
+  color: inherit;
+  text-decoration: none;
+
+  // 各种颜色
+  &__primary {
+    color: var(--color-primary);
+
+    &:hover {
+      color: var(--color-primary-active);
+    }
+  }
+
+  &__success {
+    color: var(--color-success);
+
+    &:hover {
+      color: var(--color-success-active);
+    }
+  }
+
+  &__danger {
+    color: var(--color-danger);
+
+    &:hover {
+      color: var(--color-danger-active);
+    }
+  }
+}

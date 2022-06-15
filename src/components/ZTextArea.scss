@@ -1,0 +1,16 @@
+.textarea {
+  appearance: none;
+  outline: none;
+  transition: background-color $transition-fast ease;
+  color: var(--color-font);
+  border-radius: $corner-radius-sm;
+  border: $border-size solid transparent;
+  background-color: transparent;
+  line-height: 1.5;
+  padding: 10px 8px;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-bg-active);
+  }
+}

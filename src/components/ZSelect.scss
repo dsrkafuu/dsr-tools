@@ -1,0 +1,27 @@
+.z-select {
+  position: relative;
+  height: 32px;
+  line-height: 32px;
+
+  &__inner {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    appearance: none;
+    outline: none;
+    height: 32px;
+    cursor: pointer;
+    line-height: 32px;
+    border: none;
+    border-radius: $corner-radius-sm;
+    background-color: transparent;
+    color: var(--color-font);
+    padding: 0 6px;
+    transition: background-color $transition-fast ease;
+
+    &:hover,
+    &:focus {
+      background-color: var(--color-bg-active);
+    }
+  }
+}

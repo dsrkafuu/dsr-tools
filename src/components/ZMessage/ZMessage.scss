@@ -1,0 +1,77 @@
+.z-message {
+  position: absolute;
+  right: 40px;
+  height: 42px;
+  background-color: var(--color-bg);
+  border-radius: $corner-radius-lg;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  box-shadow: var(--box-shadow);
+  transition: bottom $transition-fast ease;
+
+  &__type {
+    position: relative;
+    width: 42px;
+    height: 42px;
+
+    svg {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__content {
+    line-height: 42px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 300px;
+  }
+
+  &__close {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--info {
+    color: var(--color-font-inverse);
+    background-color: var(--color-primary);
+    .z-button:hover {
+      background-color: var(--color-primary-active);
+    }
+  }
+  &--success {
+    color: var(--color-font-inverse);
+    background-color: var(--color-success);
+    .z-button:hover {
+      background-color: var(--color-success-active);
+    }
+  }
+  &--error {
+    color: var(--color-font-inverse);
+    background-color: var(--color-danger);
+    .z-button:hover {
+      background-color: var(--color-danger-active);
+    }
+  }
+}
+
+.message-enter-from,
+.message-leave-to {
+  opacity: 0;
+}
+.message-enter-active,
+.message-leave-active {
+  transition: opacity $transition-fast ease;
+}
+.message-enter-to,
+.message-leave-from {
+  opacity: 1;
+}

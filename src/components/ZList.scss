@@ -1,0 +1,38 @@
+.z-list {
+  &__section {
+    border-top: $border-size solid var(--color-border);
+    padding: 10px 0;
+
+    &:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__title {
+    display: inline-block;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  &__content {
+    margin: 0;
+  }
+
+  &--inline {
+    .z-list__section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .z-list__title {
+      margin-bottom: 0;
+      margin-right: $space-para;
+    }
+  }
+}

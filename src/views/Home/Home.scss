@@ -1,0 +1,23 @@
+.home {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgb(175, 191, 225);
+  background: linear-gradient(
+    45deg,
+    rgb(175, 191, 225) 0%,
+    rgb(187, 181, 219) 100%
+  );
+  color: #fdfdfd;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.bio {
+  opacity: 0.75;
+}

@@ -1,0 +1,56 @@
+.sidebar-enter-from,
+.sidebar-leave-to {
+  width: 0;
+  opacity: 0;
+}
+.sidebar-enter-active,
+.sidebar-leave-active {
+  transition: width $transition-slow ease, opacity $transition-slow ease;
+}
+.sidebar-enter-to,
+.sidebar-leave-from {
+  width: $width-sidebar;
+  opacity: 1;
+}
+
+.aside {
+  z-index: 20;
+  position: relative;
+  height: 100%;
+  z-index: 20;
+  flex: 0 0 auto;
+  min-width: 0;
+
+  @include responsive() {
+    height: calc(100% - $height-navbar);
+    position: fixed;
+    left: 0;
+    top: $height-navbar;
+    bottom: 0;
+  }
+}
+
+.content {
+  z-index: 10;
+  height: 100%;
+  z-index: 10;
+  flex: 1 1 auto;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  z-index: 20;
+  flex: 0 0 auto;
+}
+
+.main {
+  z-index: 10;
+  flex: 1 1 auto;
+  min-height: calc(100% - $height-navbar);
+  overflow-y: auto;
+  position: relative;
+}

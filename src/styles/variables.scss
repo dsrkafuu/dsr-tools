@@ -1,0 +1,10 @@
+@import 'dsr-design/scss/variables';
+
+$width-sidebar: 240px;
+$height-navbar: 56px;
+
+@mixin responsive($width: 768px) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
