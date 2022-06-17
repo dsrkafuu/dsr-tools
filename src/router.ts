@@ -7,6 +7,7 @@ import {
   IQRCode,
   ISwords,
   ICalendarWeek,
+  IGrinSquintTears,
 } from './icons';
 
 export const routes = [
@@ -34,6 +35,15 @@ export const routes = [
       icon: IQRCode,
       title: 'KataCode 片假名加密编码',
       shortTitle: 'KataCode',
+    },
+  },
+  {
+    path: '/emojikitchen',
+    component: () => import('./views/EmojiKitchen/EmojiKitchen.vue'),
+    meta: {
+      icon: IGrinSquintTears,
+      title: 'Emoji Kitchen',
+      shortTitle: 'Emoji 合成',
     },
   },
   {

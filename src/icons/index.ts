@@ -7,6 +7,7 @@ export { default as ICurseForge } from './curse-forge.svg';
 export { default as IDiceD6 } from './dice-d6.svg';
 export { default as IExclamationCircle } from './exclamation-circle.svg';
 export { default as IFireAlt } from './fire-alt.svg';
+export { default as IGrinSquintTears } from './grin-squint-tears.svg';
 export { default as IHome } from './home.svg';
 export { default as IInfoCircle } from './info-circle.svg';
 export { default as IModrinth } from './modrinth.svg';
