@@ -10,12 +10,16 @@ const { stale: supStale, data: supData } = useSWR<string[]>(
 );
 const support = computed(() => {
   return (supData.value || []).map((code) => {
-    const codes = code
+    const codePoint = code
       .split('-')
       .filter((x) => x !== 'fe0f')
-      .map((x) => Number.parseInt(x, 16));
-    const char = String.fromCodePoint(...codes);
-    return { id: code, char };
+      .join('_');
+    return {
+      id: code,
+      url:
+        `https://ghproxy.com/https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u` +
+        `${codePoint}.png`,
+    };
   });
 });
 interface EmojiCombo {
@@ -215,7 +219,7 @@ const outList = computed(() => {
           @click="handleLeftSelect(item.id)"
           :id="`emoji_left_${item.id}`"
         >
-          {{ item.char }}
+          <img width="128" height="128" loading="lazy" :src="item.url" />
         </div>
       </div>
       <div class="selector" id="container_right">
@@ -230,7 +234,7 @@ const outList = computed(() => {
           @click="item.valid && handleRightSelect(item.id)"
           :id="`emoji_right_${item.id}`"
         >
-          {{ item.char }}
+          <img width="128" height="128" loading="lazy" :src="item.url" />
         </div>
       </div>
       <div
