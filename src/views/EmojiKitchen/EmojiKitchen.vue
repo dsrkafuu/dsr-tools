@@ -17,7 +17,7 @@ const support = computed(() => {
     return {
       id: code,
       url:
-        `https://ghproxy.com/https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u` +
+        `https://raw.githubusercontent.com/googlefonts/noto-emoji/main/png/128/emoji_u` +
         `${codePoint}.png`,
     };
   });
