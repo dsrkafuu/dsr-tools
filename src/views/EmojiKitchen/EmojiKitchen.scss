@@ -48,6 +48,7 @@ $item-width-mobile: 54px;
 }
 
 @mixin list-selector {
+  user-select: none;
   position: relative;
   background-color: var(--color-bg);
   box-shadow: var(--box-shadow);
