@@ -41,7 +41,10 @@ const depsList = (
   <div class="about">
     <div class="left">
       <div class="image">
-        <img src="https://cdn.dsrkafuu.net/opengraph/dsrkafuu.png" />
+        <img
+          src="https://cdn.dsrkafuu.net/opengraph/dsrkafuu.png"
+          loading="lazy"
+        />
       </div>
       <div class="info">
         <ZButton type="primary" class="info__btn" href="https://dsrkafuu.net">

@@ -61,7 +61,7 @@ const modList = computed(() => {
       <div class="left">
         <div class="card">
           <div class="image">
-            <img src="/images/minecraft.jpg" />
+            <img src="/images/minecraft.jpg" loading="lazy" />
           </div>
           <div class="download">
             <div class="markdown">
