@@ -1,6 +1,5 @@
 .day {
   flex: 1 1 33%;
-  padding: 0 calc($space-card / 2);
   min-width: 0; // for text-overflow: ellipsis;
 
   @media (max-width: 1080px) {

@@ -6,4 +6,5 @@ export { default as ZList } from './ZList.vue';
 export { default as ZLoading } from './ZLoading.vue';
 export { default as ZRadio } from './ZRadio.vue';
 export { default as ZSelect } from './ZSelect.vue';
+export { default as ZStale } from './ZStale.vue';
 export { default as ZTextArea } from './ZTextArea.vue';

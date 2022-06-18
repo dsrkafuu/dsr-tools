@@ -4,10 +4,10 @@ import { computed } from 'vue';
 import dayjs from '../../utils/dayjs';
 import { useSWR } from '../../hooks';
 import { ICurseForge, IModrinth } from '../../icons';
-import { ZButton, ZExtLink, ZList, ZLoading } from '../../components';
+import { ZButton, ZExtLink, ZList, ZLoading, ZStale } from '../../components';
 
 // 拉取数据
-const { data } = useSWR<MCData | null>(
+const { stale, data } = useSWR<MCData | null>(
   'https://cdn.dsrkafuu.net/json/dsrvmc.min.json'
 );
 
@@ -48,6 +48,7 @@ const modList = computed(() => {
           </div>
           <div class="download">
             <div class="markdown">
+              <ZStale :stale="stale" />
               {{ release }}&nbsp;|&nbsp;<code>{{ version }}</code>
             </div>
             <ZButton type="primary" :href="data?.package"> 下载整合包 </ZButton>

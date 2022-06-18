@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { EmojiCombo, EmojiOutData } from './types';
 import { computed, nextTick, ref } from 'vue';
-import { ISpinnerThird, ICheckCircle } from '../../icons';
 import { useSWR } from '../../hooks';
-import { ZButton } from '../../components';
+import { ZButton, ZStale, ZLoading } from '../../components';
 import { isMobile } from '../../utils/env';
 
 const { stale: supStale, data: supData } = useSWR<string[]>(
@@ -193,14 +192,10 @@ const outList = computed(() => {
           清空
         </ZButton>
       </div>
-      <div class="update">
-        <div :class="['status', { 'status--success': !supStale && !outStale }]">
-          <ISpinnerThird v-if="supStale || outStale" />
-          <ICheckCircle v-else />
-        </div>
-      </div>
+      <ZStale :stale="outStale || supStale" />
     </div>
-    <div class="ekapp">
+    <ZLoading v-if="!support.length || !Object.keys(output).length" />
+    <div v-else class="ekapp">
       <div class="selector" id="container_left">
         <div
           :class="[

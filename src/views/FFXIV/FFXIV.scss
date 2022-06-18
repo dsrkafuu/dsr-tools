@@ -1,5 +1,9 @@
 .ffxiv {
   padding: $space-card;
+
+  .z-loading {
+    margin-bottom: $space-card;
+  }
 }
 
 .control {

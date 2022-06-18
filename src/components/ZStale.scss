@@ -1,0 +1,13 @@
+.z-stale {
+  height: 32px;
+  width: 32px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+
+  &--success {
+    color: var(--color-success);
+  }
+}

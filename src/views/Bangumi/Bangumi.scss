@@ -1,13 +1,14 @@
-.container {
+.bangumi {
   position: relative;
   min-height: 100%;
+  padding: $space-card;
 }
 
 .control {
   background-color: var(--color-bg);
   border-radius: $corner-radius-lg;
   box-shadow: var(--box-shadow);
-  margin: $space-card;
+  margin-bottom: $space-card;
   padding: $space-mobile;
   display: flex;
   align-items: center;
@@ -36,6 +37,7 @@
   flex: 0 0 auto;
   display: flex;
   gap: 10px;
+  margin-right: 10px;
 
   @include responsive {
     margin-top: 18px;
@@ -45,5 +47,6 @@
 .content {
   display: flex;
   justify-content: space-between;
-  margin: 0 calc($space-card / 2) $space-card calc($space-card / 2);
+  margin: 0;
+  gap: $space-card;
 }

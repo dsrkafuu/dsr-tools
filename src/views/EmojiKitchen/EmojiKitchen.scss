@@ -6,6 +6,10 @@ $item-width-mobile: 54px;
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  .z-loading {
+    margin-bottom: $space-card;
+  }
 }
 
 .control {

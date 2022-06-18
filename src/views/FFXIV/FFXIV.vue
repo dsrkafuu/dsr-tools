@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import type { FFXIVData } from './types';
 import { computed, ref, watch } from 'vue';
-import { ISpinnerThird, ICheckCircle } from '../../icons';
 import dayjs, { tzdb, isDST } from '../../utils/dayjs';
 import { getLS, setLS } from '../../utils/storage';
 import { useSWR } from '../../hooks';
-import { ZButton, ZSelect, ZList, ZExtLink, ZLoading } from '../../components';
+import {
+  ZButton,
+  ZSelect,
+  ZList,
+  ZExtLink,
+  ZLoading,
+  ZStale,
+} from '../../components';
 import TimeGrid from './TimeGrid.vue';
 
 // 拉取数据
@@ -108,10 +114,7 @@ const dcPatches = computed(() => {
           v-model="curTZ"
           :options="tzdb"
         />
-        <div :class="['status', { 'status--success': !stale }]">
-          <ISpinnerThird v-if="stale" />
-          <ICheckCircle v-else />
-        </div>
+        <ZStale :stale="stale" />
       </div>
     </div>
     <ZLoading v-if="!dcPatches || !dcPatches.length" />

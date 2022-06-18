@@ -2,7 +2,6 @@
   text-align: center;
   width: 100%;
   padding: 0 $space-mobile;
-  margin-bottom: $space-card;
   background-color: var(--color-bg);
   box-shadow: var(--box-shadow);
   border-radius: $corner-radius-lg;
@@ -10,6 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 0 0 auto;
 
   svg {
     font-size: 18px;

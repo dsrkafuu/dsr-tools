@@ -3,7 +3,7 @@ import type { BangumiAPIData } from './types';
 import { computed, ref, toRaw } from 'vue';
 import { cloneDeep } from 'dsr-design/utils';
 import { useSWR } from '../../hooks';
-import { ZButton, ZRadio } from '../../components';
+import { ZButton, ZRadio, ZLoading, ZStale } from '../../components';
 import BangumiDay from './BangumiDay.vue';
 
 const { stale, data } = useSWR<BangumiAPIData>(
@@ -68,31 +68,35 @@ const nextdayData = computed(() => {
 
 <template>
   <div class="bangumi">
-    <div class="control">
-      <div class="weekday">
-        <ZButton
-          v-for="(weekday, idx) of data"
-          :type="idx === curWeekdayIdx ? 'primary' : undefined"
-          :key="idx"
-          @click="setCurWeekdayIdx(idx)"
-        >
-          {{ weekday.weekday }}
-        </ZButton>
+    <ZLoading v-if="!data" />
+    <template v-else>
+      <div class="control">
+        <div class="weekday">
+          <ZButton
+            v-for="(weekday, idx) of data"
+            :type="idx === curWeekdayIdx ? 'primary' : undefined"
+            :key="idx"
+            @click="setCurWeekdayIdx(idx)"
+          >
+            {{ weekday.weekday }}
+          </ZButton>
+        </div>
+        <div class="sorter">
+          <ZRadio :value="sortRule === 0" @click="setSortRule(0)">
+            热度排序
+          </ZRadio>
+          <ZRadio :value="sortRule === 1" @click="setSortRule(1)">
+            评分排序
+          </ZRadio>
+        </div>
+        <ZStale :stale="stale" />
       </div>
-      <div class="sorter">
-        <ZRadio :value="sortRule === 0" @click="setSortRule(0)">
-          热度排序
-        </ZRadio>
-        <ZRadio :value="sortRule === 1" @click="setSortRule(1)">
-          评分排序
-        </ZRadio>
+      <div class="content">
+        <BangumiDay :data="prevdayData" />
+        <BangumiDay :data="todayData" />
+        <BangumiDay :data="nextdayData" />
       </div>
-    </div>
-    <div class="content">
-      <BangumiDay :data="prevdayData" />
-      <BangumiDay :data="todayData" />
-      <BangumiDay :data="nextdayData" />
-    </div>
+    </template>
   </div>
 </template>
 
