@@ -15,10 +15,5 @@
     "jsx": "preserve",
     "noEmit": true
   },
-  "include": ["./src"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+  "include": ["./src"]
 }

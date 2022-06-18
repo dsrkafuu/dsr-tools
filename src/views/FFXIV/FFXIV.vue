@@ -11,28 +11,28 @@ import ZExtLink from '../../components/ZExtLink.vue';
 import ZLoading from '../../components/ZLoading.vue';
 import TimeGrid from './TimeGrid.vue';
 
-interface XIVServerItem {
+interface FFXIVServerItem {
   name: string;
   times?: string[];
   start?: string;
   route?: string;
   comment?: string;
 }
-interface XIVPatchItem {
+interface FFXIVPatchItem {
   name: string;
-  servers: XIVServerItem[];
+  servers: FFXIVServerItem[];
 }
-interface XIVDCItem {
+interface FFXIVDCItem {
   name: string;
-  patches: XIVPatchItem[];
+  patches: FFXIVPatchItem[];
 }
-interface XIVData {
+interface FFXIVData {
   time: number;
-  data: XIVDCItem[];
+  data: FFXIVDCItem[];
 }
 
 // 拉取数据
-const { stale, data } = useSWR<XIVData | null>(
+const { stale, data } = useSWR<FFXIVData | null>(
   'https://cdn.dsrkafuu.net/json/ffxiv.min.json'
 );
 
