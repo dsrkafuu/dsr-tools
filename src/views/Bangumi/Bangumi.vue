@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BangumiAPIData } from '.';
+import type { BangumiAPIData } from './types';
 import { computed, ref, toRaw } from 'vue';
 import { cloneDeep } from 'dsr-design/utils';
 import { useSWR } from '../../hooks';

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { BangumiAPIDataDay } from '.';
+import type { BangumiAPIDataDay } from './types';
 import { IFireAlt } from '../../icons';
+import { ZExtLink } from '../../components';
 
 interface BangumiDayProps {
   data: BangumiAPIDataDay | null;
@@ -21,13 +22,11 @@ const formatHot = (hot = 0) => {
       <div class="card">
         <div class="title">{{ data.weekday }}</div>
         <div class="list">
-          <a
+          <ZExtLink
             v-for="item of data.items"
-            :key="item.id"
             class="item"
+            :key="item.id"
             :href="`//bgm.tv/subject/${item.id}`"
-            target="_blank"
-            rel="noopener"
           >
             <div class="image">
               <img
@@ -35,6 +34,7 @@ const formatHot = (hot = 0) => {
                 :src="item.image"
                 width="80"
                 height="80"
+                loading="lazy"
                 referrerpolicy="no-referrer"
               />
             </div>
@@ -67,7 +67,7 @@ const formatHot = (hot = 0) => {
                 </div>
               </div>
             </div>
-          </a>
+          </ZExtLink>
         </div>
       </div>
     </div>

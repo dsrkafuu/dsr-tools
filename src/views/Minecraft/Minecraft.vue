@@ -1,24 +1,10 @@
 <script setup lang="ts">
+import type { MCData } from './types';
 import { computed } from 'vue';
 import dayjs from '../../utils/dayjs';
 import { useSWR } from '../../hooks';
 import { ICurseForge, IModrinth } from '../../icons';
 import { ZButton, ZExtLink, ZList, ZLoading } from '../../components';
-
-interface MCModItem {
-  name: string;
-  source: 0 | 1;
-  link: string;
-}
-interface MCData {
-  time: number;
-  release: string;
-  version: string;
-  mods: MCModItem[];
-  modrinth: string;
-  java: string;
-  package: string;
-}
 
 // 拉取数据
 const { data } = useSWR<MCData | null>(

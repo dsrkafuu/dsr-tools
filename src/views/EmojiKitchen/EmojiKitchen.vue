@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { EmojiCombo, EmojiOutData } from './types';
 import { computed, nextTick, ref } from 'vue';
 import { ISpinnerThird, ICheckCircle } from '../../icons';
 import { useSWR } from '../../hooks';
@@ -22,14 +23,6 @@ const support = computed(() => {
     };
   });
 });
-interface EmojiCombo {
-  l: string;
-  r: string;
-  t: string;
-}
-interface EmojiOutData {
-  [key: string]: EmojiCombo[];
-}
 const { stale: outStale, data: outData } = useSWR<EmojiOutData>(
   'https://cdn.dsrkafuu.net/json/emoji/output.min.json'
 );

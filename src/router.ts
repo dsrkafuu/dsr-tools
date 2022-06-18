@@ -21,7 +21,7 @@ export const routes = [
   },
   {
     path: '/bangumi',
-    component: () => import('./views/Bangumi'),
+    component: () => import('./views/Bangumi/Bangumi.vue'),
     meta: {
       icon: ICalendarWeek,
       title: '番组每日放送日历',

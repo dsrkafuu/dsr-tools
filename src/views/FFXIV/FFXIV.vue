@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { FFXIVData } from './types';
 import { computed, ref, watch } from 'vue';
 import { ISpinnerThird, ICheckCircle } from '../../icons';
 import dayjs, { tzdb, isDST } from '../../utils/dayjs';
@@ -6,26 +7,6 @@ import { getLS, setLS } from '../../utils/storage';
 import { useSWR } from '../../hooks';
 import { ZButton, ZSelect, ZList, ZExtLink, ZLoading } from '../../components';
 import TimeGrid from './TimeGrid.vue';
-
-interface FFXIVServerItem {
-  name: string;
-  times?: string[];
-  start?: string;
-  route?: string;
-  comment?: string;
-}
-interface FFXIVPatchItem {
-  name: string;
-  servers: FFXIVServerItem[];
-}
-interface FFXIVDCItem {
-  name: string;
-  patches: FFXIVPatchItem[];
-}
-interface FFXIVData {
-  time: number;
-  data: FFXIVDCItem[];
-}
 
 // 拉取数据
 const { stale, data } = useSWR<FFXIVData | null>(
