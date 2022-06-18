@@ -2,9 +2,8 @@
 import type { BangumiAPIData } from '.';
 import { computed, ref, toRaw } from 'vue';
 import { cloneDeep } from 'dsr-design/utils';
-import useSWR from '../../hooks/useSWR';
-import ZButton from '../../components/ZButton.vue';
-import ZRadio from '../../components/ZRadio.vue';
+import { useSWR } from '../../hooks';
+import { ZButton, ZRadio } from '../../components';
 import BangumiDay from './BangumiDay.vue';
 
 const { stale, data } = useSWR<BangumiAPIData>(

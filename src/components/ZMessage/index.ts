@@ -2,7 +2,7 @@ import { createApp, nextTick, reactive } from 'vue';
 import { log } from '../../utils/logger';
 import ZMessage from './ZMessage.vue';
 
-type ZMessageType = 'info' | 'success' | 'error';
+export type ZMessageType = 'info' | 'success' | 'error';
 
 export interface ZMessageItem {
   id: number;

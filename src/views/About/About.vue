@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import pkg from '../../../package.json';
-import ZButton from '../../components/ZButton.vue';
-import ZList from '../../components/ZList.vue';
+import { ZButton, ZList } from '../../components';
 
 const licenseList = [
   {

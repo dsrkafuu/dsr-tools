@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue';
 import { ISpinnerThird, ICheckCircle } from '../../icons';
-import useSWR from '../../hooks/useSWR';
-import ZButton from '../../components/ZButton.vue';
+import { useSWR } from '../../hooks';
+import { ZButton } from '../../components';
 import { isMobile } from '../../utils/env';
 
 const { stale: supStale, data: supData } = useSWR<string[]>(

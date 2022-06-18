@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref } from 'vue';
+import { throttle } from 'dsr-design/utils';
 import { IChevronRight, IChevronLeft, ITrash } from '../../icons';
 import { decodeKata, encodeKata } from '../../utils/katacode';
 import { log } from '../../utils/logger';
-import ZButton from '../../components/ZButton.vue';
-import ZTextArea from '../../components/ZTextArea.vue';
-import ZList from '../../components/ZList.vue';
-import ZMessage from '../../components/ZMessage';
+import { ZButton, ZMessage, ZList, ZTextArea } from '../../components';
 import { isPC } from '../../utils/env';
-import { throttle } from 'dsr-design/utils';
 
 const info = [
   {

@@ -3,12 +3,8 @@ import { computed, ref, watch } from 'vue';
 import { ISpinnerThird, ICheckCircle } from '../../icons';
 import dayjs, { tzdb, isDST } from '../../utils/dayjs';
 import { getLS, setLS } from '../../utils/storage';
-import useSWR from '../../hooks/useSWR';
-import ZButton from '../../components/ZButton.vue';
-import ZSelect from '../../components/ZSelect.vue';
-import ZList from '../../components/ZList.vue';
-import ZExtLink from '../../components/ZExtLink.vue';
-import ZLoading from '../../components/ZLoading.vue';
+import { useSWR } from '../../hooks';
+import { ZButton, ZSelect, ZList, ZExtLink, ZLoading } from '../../components';
 import TimeGrid from './TimeGrid.vue';
 
 interface FFXIVServerItem {

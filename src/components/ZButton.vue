@@ -10,7 +10,6 @@ const props = defineProps<ZButtonProps>();
 
 const tagName = computed(() => (props.href ? 'a' : 'button'));
 
-// 点击事件
 const emit = defineEmits<{
   (event: 'click', e: MouseEvent): void;
 }>();

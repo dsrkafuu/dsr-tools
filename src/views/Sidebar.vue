@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { RouterLink } from 'vue-router';
 import { routes } from '../router';
-import ZExtLink from '../components/ZExtLink.vue';
+import { ZExtLink } from '../components';
 
 const sidebarRoutes = computed(() => {
   return routes.filter((route) => !!route.meta.icon);

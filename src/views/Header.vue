@@ -3,7 +3,7 @@ import { onBeforeUnmount, ref } from 'vue';
 import dayjs from '../utils/dayjs';
 import { IBars, ISignIn, IUser } from '../icons';
 import { useAuthStore } from '../store/auth';
-import ZButton from '../components/ZButton.vue';
+import { ZButton } from '../components';
 import User from './User.vue';
 
 // 菜单事件

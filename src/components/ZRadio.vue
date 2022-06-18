@@ -4,7 +4,6 @@ interface ZRadioProps {
 }
 defineProps<ZRadioProps>();
 
-// 点击事件
 const emit = defineEmits<{
   (event: 'click', e: MouseEvent): void;
 }>();

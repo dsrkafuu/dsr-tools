@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import dayjs from '../../utils/dayjs';
-import useSWR from '../../hooks/useSWR';
+import { useSWR } from '../../hooks';
 import { ICurseForge, IModrinth } from '../../icons';
-import ZButton from '../../components/ZButton.vue';
-import ZList from '../../components/ZList.vue';
-import ZExtLink from '../../components/ZExtLink.vue';
-import ZLoading from '../../components/ZLoading.vue';
+import { ZButton, ZExtLink, ZList, ZLoading } from '../../components';
 
 interface MCModItem {
   name: string;
