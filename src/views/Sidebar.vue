@@ -1,20 +1,49 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onBeforeUnmount, ref, VNodeRef } from 'vue';
 import { RouterLink } from 'vue-router';
 import { routes } from '../router';
 import { ZExtLink } from '../components';
 
 const emit = defineEmits<{
-  (event: 'change:route', path: string): void;
+  (event: 'click:outside'): void;
 }>();
 
 const sidebarRoutes = computed(() => {
   return routes.filter((route) => !!route.meta.icon);
 });
+
+// 外侧点击处理
+const sidebarRef = ref<VNodeRef | null>(null);
+const clickHandler = (e: MouseEvent | PointerEvent) => {
+  const target = e.target as HTMLElement | null;
+  if (target && sidebarRef.value) {
+    // 是否为侧边栏内侧的点击
+    const isInnerClick = (sidebarRef.value as HTMLDivElement).contains(target);
+    if (!isInnerClick) {
+      // 检查是否为点击菜单按钮
+      let isMenuBtn = false;
+      let node: HTMLElement | null = target;
+      while (node) {
+        if (node.id === 'menu-btn') {
+          isMenuBtn = true;
+          break;
+        }
+        node = node.parentElement;
+      }
+      if (!isMenuBtn) {
+        emit('click:outside');
+      }
+    }
+  }
+};
+window.addEventListener('click', clickHandler);
+onBeforeUnmount(() => {
+  window.removeEventListener('click', clickHandler);
+});
 </script>
 
 <template>
-  <div class="sidebar">
+  <div class="sidebar" ref="sidebarRef">
     <div class="icon">DSRTOOLS🍥<span class="icon-version">v6</span></div>
     <div class="menu">
       <RouterLink
@@ -22,7 +51,6 @@ const sidebarRoutes = computed(() => {
         :to="route.path"
         :key="route.path"
         class="menu__item"
-        @click="emit('change:route', route.path)"
       >
         <component :is="route.meta.icon" />
         {{ route.meta.shortTitle || route.meta.title }}

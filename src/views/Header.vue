@@ -56,7 +56,7 @@ const handleMouseLeave = () => {
 <template>
   <div class="header">
     <div class="menu">
-      <ZButton type="primary" @click="emit('toggle', $event)">
+      <ZButton id="menu-btn" type="primary" @click="emit('toggle', $event)">
         <template #icon><IBars /></template>
       </ZButton>
     </div>

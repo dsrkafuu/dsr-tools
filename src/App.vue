@@ -14,8 +14,9 @@ const toggleSidebar = () => {
   log('toggle sidebar to', !sidebarCollapsed.value);
   sidebarCollapsed.value = !sidebarCollapsed.value;
 };
-// 切换路由时隐藏侧边栏
-const handleRouteChange = () => {
+// 点击外侧时隐藏侧边栏
+const handleClickOutside = () => {
+  log('sidebar click outside');
   if (!sidebarCollapsed.value) {
     toggleSidebar();
   }
@@ -43,7 +44,7 @@ onBeforeUnmount(() => {
 <template>
   <transition name="sidebar">
     <aside class="aside" v-if="!sidebarCollapsed">
-      <Sidebar @change:route="handleRouteChange" />
+      <Sidebar @click:outside="handleClickOutside" />
     </aside>
   </transition>
   <div class="content">
