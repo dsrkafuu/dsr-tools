@@ -14,10 +14,10 @@ const toggleSidebar = () => {
   log('toggle sidebar to', !sidebarCollapsed.value);
   sidebarCollapsed.value = !sidebarCollapsed.value;
 };
-// 点击外侧时隐藏侧边栏
+// 点击外侧时隐藏侧边栏 (仅移动端)
 const handleClickOutside = () => {
   log('sidebar click outside');
-  if (!sidebarCollapsed.value) {
+  if (!sidebarCollapsed.value && isMobile()) {
     toggleSidebar();
   }
 };
