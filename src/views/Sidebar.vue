@@ -4,6 +4,10 @@ import { RouterLink } from 'vue-router';
 import { routes } from '../router';
 import { ZExtLink } from '../components';
 
+const emit = defineEmits<{
+  (event: 'change:route', path: string): void;
+}>();
+
 const sidebarRoutes = computed(() => {
   return routes.filter((route) => !!route.meta.icon);
 });
@@ -18,6 +22,7 @@ const sidebarRoutes = computed(() => {
         :to="route.path"
         :key="route.path"
         class="menu__item"
+        @click="emit('change:route', route.path)"
       >
         <component :is="route.meta.icon" />
         {{ route.meta.shortTitle || route.meta.title }}
