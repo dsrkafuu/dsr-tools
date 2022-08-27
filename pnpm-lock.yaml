@@ -15,7 +15,7 @@ specifiers:
   nanoid: ~4.0.0
   pinia: ~2.0.21
   prettier: ~2.7.1
-  sakana-widget: ~1.1.1
+  sakana-widget: ~1.1.2
   sass: ~1.54.5
   stable-hash: ~0.0.2
   typescript: ~4.8.2
@@ -34,7 +34,7 @@ dependencies:
   dsr-design: 3.5.1
   nanoid: 4.0.0
   pinia: 2.0.21_bw4xur2vyhvhfd4whxbr7emp4u
-  sakana-widget: 1.1.1
+  sakana-widget: 1.1.2
   stable-hash: 0.0.2
   vue: 3.2.37
   vue-router: 4.1.5_vue@3.2.37
@@ -1643,8 +1643,8 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
-  /sakana-widget/1.1.1:
-    resolution: {integrity: sha512-rjeilgeUOOzz2VV9x0bfa7UFJ91xTrFhJe2b7GF2+e9Sb3VNs6qb58D3+W5uygB5DVYDf0IKbEU4ZmAFUT5twg==}
+  /sakana-widget/1.1.2:
+    resolution: {integrity: sha512-4n58LZcAaVGEMprslMZs/h7SJcdE3Y9NyTcmcRD0/6Z4xhSOj/xv9oHRNwqrBvu3NYXmpkMFR8ffkArYajikaw==}
     dev: false
 
   /sass/1.54.5:
