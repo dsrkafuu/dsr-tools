@@ -10,7 +10,7 @@
           'z-message--error': item.type === 'error',
         },
       ]"
-      :style="{ bottom: `${22 + idx * 52}px` }"
+      :style="{ top: `${22 + idx * 52}px` }"
     >
       <div class="z-message__type">
         <ICheckCircle v-if="item.type === 'success'" />

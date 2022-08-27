@@ -42,11 +42,21 @@ code {
 #message {
   z-index: 20;
   position: fixed;
-  bottom: 0;
+  top: 0;
   right: 0;
   height: 0;
   width: 0;
   overflow: visible;
+}
+
+#sakana-widget {
+  z-index: 30;
+  position: fixed;
+  right: 60px;
+  bottom: 20px;
+  @include responsive {
+    display: none;
+  }
 }
 
 a,

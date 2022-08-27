@@ -3,6 +3,7 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import * as Sentry from '@sentry/vue';
 import { BrowserTracing } from '@sentry/tracing';
+import SakanaWidget from 'sakana-widget';
 import router from './router';
 import App from './App.vue';
 
@@ -26,3 +27,5 @@ if (SENTRY_DSN) {
 const pinia = createPinia();
 
 app.use(pinia).use(router).mount('#app');
+
+SakanaWidget();
