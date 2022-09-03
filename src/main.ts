@@ -28,4 +28,4 @@ const pinia = createPinia();
 
 app.use(pinia).use(router).mount('#app');
 
-SakanaWidget();
+new SakanaWidget().mount('#sakana-widget');
