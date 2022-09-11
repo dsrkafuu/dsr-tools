@@ -5,7 +5,6 @@ import {
   IHome,
   IInfoCircle,
   IQRCode,
-  ISwords,
   ICalendarWeek,
   IGrinSquintTears,
 } from './icons';
@@ -44,15 +43,6 @@ export const routes = [
       icon: IGrinSquintTears,
       title: 'Emoji Kitchen',
       shortTitle: 'Emoji 合成',
-    },
-  },
-  {
-    path: '/ffxiv',
-    component: () => import('./views/FFXIV/FFXIV.vue'),
-    meta: {
-      icon: ISwords,
-      title: 'FF14 中国服狩猎车时间表',
-      shortTitle: 'FF14 狩猎车',
     },
   },
   {
