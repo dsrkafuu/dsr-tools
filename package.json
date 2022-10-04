@@ -1,38 +1,38 @@
 {
   "name": "dsr-tools-next",
   "private": true,
-  "version": "6.3.3",
+  "version": "6.3.4",
   "scripts": {
     "script:ffxiv": "ts-node ./scripts/ffxiv.ts",
     "dev": "vite",
     "build": "vue-tsc && vite build"
   },
   "dependencies": {
-    "@sentry/tracing": "~7.12.1",
-    "@sentry/vue": "~7.12.1",
+    "@sentry/tracing": "~7.14.1",
+    "@sentry/vue": "~7.14.1",
     "axios": "~0.27.2",
     "dayjs": "~1.11.5",
     "dsr-design": "~3.5.1",
     "nanoid": "~4.0.0",
     "pinia": "~2.0.22",
-    "sakana-widget": "~2.3.0",
+    "sakana-widget": "~2.3.2",
     "stable-hash": "~0.0.2",
-    "vue": "~3.2.39",
+    "vue": "~3.2.40",
     "vue-router": "~4.1.5"
   },
   "devDependencies": {
-    "@types/node": "~18.7.16",
-    "@typescript-eslint/eslint-plugin": "~5.36.2",
-    "@typescript-eslint/parser": "~5.36.2",
-    "@vitejs/plugin-vue": "~3.1.0",
-    "eslint": "~8.23.0",
-    "eslint-plugin-vue": "~9.4.0",
-    "prettier": "~2.7.1",
-    "sass": "~1.54.9",
-    "typescript": "~4.8.3",
-    "vite": "~3.1.0",
-    "vite-plugin-html-env": "~1.2.4",
-    "vite-svg-loader": "~3.6.0",
-    "vue-tsc": "~0.40.13"
+    "@types/node": "^18.8.1",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "@vitejs/plugin-vue": "^3.1.2",
+    "eslint": "^8.24.0",
+    "eslint-plugin-vue": "^9.6.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.55.0",
+    "typescript": "^4.8.4",
+    "vite": "^3.1.4",
+    "vite-plugin-html-env": "^1.2.7",
+    "vite-svg-loader": "^3.6.0",
+    "vue-tsc": "^0.40.13"
   }
 }
